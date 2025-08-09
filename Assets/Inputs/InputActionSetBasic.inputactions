@@ -1,0 +1,74 @@
+{
+    "name": "InputActionSetBasic",
+    "maps": [
+        {
+            "name": "Basic",
+            "id": "0c251d9d-7573-4d0a-bb78-8f19fe537509",
+            "actions": [
+                {
+                    "name": "Interract",
+                    "type": "Button",
+                    "id": "01bb705b-1b8a-4db2-a53a-31b67d40bcc0",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PointerPosition",
+                    "type": "Value",
+                    "id": "6f4c2b8e-37e8-48ce-ab4a-d59aa0a09597",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Place",
+                    "type": "Button",
+                    "id": "0abb53a7-0941-4df8-836b-85c231d8fab6",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "4c1b3aff-e5c6-421c-b27f-bfa8da94fe2b",
+                    "path": "<Keyboard>/anyKey",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interract",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8e524182-0a29-41dc-b3b3-a29161894b56",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PointerPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e8b429ab-74d7-415b-ab3b-f0fcbf9cd7ba",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Place",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
