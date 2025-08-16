@@ -39,10 +39,24 @@ public class Spawner : MonoBehaviour
     
     private void Launch(GameObject g)
     {
-        Rigidbody2D rb = g.GetComponent<Rigidbody2D>();
+        Rigidbody rb;
+        Rigidbody2D rb2D;
+        
         float xForce = Random.Range(-1.5f, 1.5f);
         float yForce = Random.Range(0, 0);
-        rb.AddForce(new Vector2(xForce, yForce), ForceMode2D.Impulse);
+        
+        if (rb = g.GetComponent<Rigidbody>())
+        {
+            rb.AddForce(new Vector2(xForce, yForce), ForceMode.Impulse);
+        }
+
+        if (rb2D = g.GetComponent<Rigidbody2D>())
+        {
+            rb2D.AddForce(new Vector2(xForce, yForce), ForceMode2D.Impulse);
+        }
+        
+
+        
     }
     
 }

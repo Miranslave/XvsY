@@ -226,7 +226,7 @@ namespace Script
 
                 Vector3 pos = highlightInstance.transform.position;
                 GameObject g = Instantiate(_flowerToPlace,pos,Quaternion.identity);
-                _playerManager.AddMoney(-g.GetComponent<Flower>().cost);
+                _playerManager.AddMoney(-g.GetComponent<Unit>().cost);
                 _gridmemory[gridpos.x, gridpos.y].occupant = g;
                 Debug.Log($" cell {gridpos}");
                 Resetcursor();

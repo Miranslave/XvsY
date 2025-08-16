@@ -44,8 +44,8 @@ public class PlayerManager : MonoBehaviour
         {
             Vector3 mouseWorldPos = _camera!.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             mouseWorldPos.z = 0f;
-
             RaycastHit2D hit = Physics2D.Raycast(mouseWorldPos, Vector2.zero);
+            
             if (hit.collider != null && hit.collider.gameObject.CompareTag("Currency") )
             {
                 Currency currency = hit.collider.gameObject.gameObject.GetComponent<Currency>();

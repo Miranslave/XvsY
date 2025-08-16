@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 namespace Script
 {
-    public class Sunflower : Flower
+    public class Sunflower : Unit
     {
 
         public GameObject sunprefab;

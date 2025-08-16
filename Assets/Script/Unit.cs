@@ -4,13 +4,14 @@ using UnityEngine.Serialization;
 
 namespace Script
 {
-    public abstract class Flower : MonoBehaviour
+    public abstract class Unit : MonoBehaviour
     {
         public float health = 100;
         public float cooldown = 3f;
         public int cost;
         public FlowerType type;
         public Coroutine EffectLoopCoroutine;
+        public Weapon weapon;
         
         public abstract void Effect();
         
