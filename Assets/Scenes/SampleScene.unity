@@ -271,7 +271,7 @@ GameObject:
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &114615628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,7 +279,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 114615627}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2d9cc0ae7d910649b9b92ebd9b6f6ce, type: 3}
   m_Name: 
@@ -394,6 +394,7 @@ GameObject:
   - component: {fileID: 299834695}
   - component: {fileID: 299834694}
   - component: {fileID: 299834693}
+  - component: {fileID: 299834697}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -528,6 +529,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 299834691}
   m_CullTransparentMesh: 1
+--- !u!114 &299834697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299834691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 569c6dc041f3ab34d90bb2089435042e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlaceUnit: {fileID: 0}
 --- !u!1 &456160859
 GameObject:
   m_ObjectHideFlags: 0
@@ -1073,30 +1087,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 608c4a23305754e49b7b153180e25cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseUnit: {fileID: 1750819119501913762, guid: 02ec2c4b79250f74ca4b8fba1bd2b2e7, type: 3}
   raceText: {fileID: 1439928259}
   weaponText: {fileID: 14910202}
   abilityText: {fileID: 1758779355}
   races:
-  - Humain
-  - Orc
-  - "Homme-l\xE9zard"
-  - Elfe
-  - Nain
+  - {fileID: 1750819119501913762, guid: 02ec2c4b79250f74ca4b8fba1bd2b2e7, type: 3}
+  - {fileID: 1750819119501913762, guid: 999b79b20369b7648ad1aa5339ffff9b, type: 3}
   weapons:
-  - Arc
-  - Bouclier
-  - Magie
-  - "\xC9p\xE9e"
-  - Hache
-  abilities:
-  - Furie
-  - Vol de vie
-  - AOE
-  - Poison
-  - Critique
+  - {fileID: 6088981991553672797, guid: ec48b4e24495bb84a8972dd7cd4cbe53, type: 3}
+  - {fileID: 6088981991553672797, guid: c954d9294fa3fdb4e9085e81773292ec, type: 3}
+  abilities: []
   spinSpeed: 0.05
   delayBetweenStops: 0.5
+  factory: {fileID: 299834697}
 --- !u!114 &691772221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2086,63 +2089,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &3868371286997114778
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 437991092156134788, guid: c954d9294fa3fdb4e9085e81773292ec, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 437991092156134788, guid: c954d9294fa3fdb4e9085e81773292ec, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 437991092156134788, guid: c954d9294fa3fdb4e9085e81773292ec, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 437991092156134788, guid: c954d9294fa3fdb4e9085e81773292ec, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 437991092156134788, guid: c954d9294fa3fdb4e9085e81773292ec, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 437991092156134788, guid: c954d9294fa3fdb4e9085e81773292ec, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 437991092156134788, guid: c954d9294fa3fdb4e9085e81773292ec, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 437991092156134788, guid: c954d9294fa3fdb4e9085e81773292ec, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 437991092156134788, guid: c954d9294fa3fdb4e9085e81773292ec, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 437991092156134788, guid: c954d9294fa3fdb4e9085e81773292ec, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6088981991553672797, guid: c954d9294fa3fdb4e9085e81773292ec, type: 3}
-      propertyPath: m_Name
-      value: Bow
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c954d9294fa3fdb4e9085e81773292ec, type: 3}
 --- !u!1001 &6602066216231792548
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2218,4 +2164,3 @@ SceneRoots:
   - {fileID: 1688039685}
   - {fileID: 1967145539}
   - {fileID: 114615629}
-  - {fileID: 3868371286997114778}

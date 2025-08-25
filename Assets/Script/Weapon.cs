@@ -25,20 +25,7 @@ public class Weapon : MonoBehaviour
             
         }
     }
-
-    // Update is called once per frame
-    private void Update()
-    {
-        if (_cooldown > 0)
-        {
-            Debug.Log("activation arme");
-            _cooldown -= Time.deltaTime;
-        }
-        else
-        {
-            _cooldown = weaponstat.frequency;
-        }
-    }
+    
 
     public void Fire()
     {
@@ -52,7 +39,7 @@ public class Weapon : MonoBehaviour
             {
                 GameObject g = Instantiate(weaponstat.projectile);
                 g.transform.position = transform.position + Vector3.right;
-                g.GetComponent<Rigidbody>().AddForce(Vector3.right * weaponstat.projectilespeed);
+                g.GetComponent<Rigidbody2D>().AddForce(Vector3.right * weaponstat.projectilespeed);
                 _isOnCd = true;
             }
             else

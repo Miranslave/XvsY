@@ -18,6 +18,7 @@ namespace Script
         public override void Effect()
         {
             Debug.Log("effet de l'espéce");
+            weapon.Fire();
         }
     }
 }

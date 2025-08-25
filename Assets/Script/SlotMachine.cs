@@ -1,24 +1,38 @@
+using System;
 using System.Collections;
 using Script;
 using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class SlotMachine : MonoBehaviour
 {
-    public GameObject BaseUnit;
+    ///public GameObject BaseUnit;
     
     [Header("UI Elements")]
     public TextMeshProUGUI raceText;
     public TextMeshProUGUI weaponText;
     public TextMeshProUGUI abilityText;
 
-    [Header("Options")] public string[] races = { "Humain", "Orc" };//, "Homme-lézard", "Elfe", "Nain" };
-    public string[] weapons = { "Arc", "Bouclier"};//,"Magie", "Épée", "Hache" };
-    public string[] abilities = { "Furie", "Vol de vie"};//,"AOE", "Poison", "Critique" };
+    [Header("Options")] 
+    
+    public GameObject[] races;
+    
+    public GameObject[] weapons;
+    
+    public GameObject[] abilities;
 
     [Header("Timing")]
     public float spinSpeed = 0.05f; // vitesse de défilement
     public float delayBetweenStops = 0.5f; // délai entre chaque arrêt
+
+    [Header("Debug")] 
+    public UnitFactory factory;
+
+    public void Start()
+    {
+        
+    }
 
     public void StartSpin()
     {
@@ -27,34 +41,40 @@ public class SlotMachine : MonoBehaviour
 
     private IEnumerator SpinCoroutine()
     {
+        GameObject raceResult = null;
+        GameObject weaponResult = null;
+        //GameObject abilityResult = null;
         // Lancer chaque roue en parallèle
-        Coroutine raceSpin = StartCoroutine(SpinWheel(raceText, races, 1f));
+        Coroutine raceSpin = StartCoroutine(SpinWheel(raceText, races, 1f, g => raceResult = g));
         yield return new WaitForSeconds(delayBetweenStops);
 
-        Coroutine weaponSpin = StartCoroutine(SpinWheel(weaponText, weapons, 1f));
+        Coroutine weaponSpin = StartCoroutine(SpinWheel(weaponText, weapons, 1f,g => weaponResult = g));
         yield return new WaitForSeconds(delayBetweenStops);
 
-        Coroutine abilitySpin = StartCoroutine(SpinWheel(abilityText, abilities, 1f));
+        //Coroutine abilitySpin = StartCoroutine(SpinWheel(abilityText, abilities, 1f, g => abilityResult = g));
 
         // Attendre que tout soit fini
         yield return raceSpin;
         yield return weaponSpin;
-        yield return abilitySpin;
-
+        //yield return abilitySpin;
+        factory.Assemble(raceResult,weaponResult);
         Debug.Log($"Résultat final : {raceText.text} - {weaponText.text} - {abilityText.text}");
-        GameObject g = Instantiate(BaseUnit);
-        g.GetComponent<BaseUnit>()?.Innit(raceText.text,weaponText.text,abilityText.text);
+        //GameObject g = Instantiate(BaseUnit);
+        //g.GetComponent<BaseUnit>()?.Innit(raceText.text,weaponText.text,abilityText.text);
         
     }
-
-    private IEnumerator SpinWheel(TextMeshProUGUI textElement, string[] options, float duration)
+    
+    private IEnumerator SpinWheel(TextMeshProUGUI textElement, GameObject[] options, float duration,Action<GameObject> onFinished)
     {
         float timer = 0f;
+        GameObject lastChoice = null;
         while (timer < duration)
         {
-            textElement.text = options[Random.Range(0, options.Length)];
+            lastChoice = options[Random.Range(0, options.Length)];
+            textElement.text = lastChoice.name;
             timer += spinSpeed;
             yield return new WaitForSeconds(spinSpeed);
         }
+        onFinished?.Invoke(lastChoice);
     }
 }
