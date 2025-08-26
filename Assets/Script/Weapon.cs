@@ -44,9 +44,13 @@ public class Weapon : MonoBehaviour
             }
             else
             {
+                
+                Debug.Log("Attack mele");
+                /*
                 attackZone.enabled = true;
                 _isOnCd = true;
                 attackZone.enabled = false;
+                */
             }
         }
     }

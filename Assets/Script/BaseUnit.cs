@@ -5,10 +5,7 @@ namespace Script
 {
     public class BaseUnit: Unit
     {
-        public void Start()
-        {
-            StartCoroutine(StartCooldown());
-        }
+
 
 
         public void Innit(string race, string weapon, string effect)

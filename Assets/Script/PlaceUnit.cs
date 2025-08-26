@@ -12,6 +12,7 @@ namespace Script
         private GameObject _player;
         private PlayerManager _playerManager;
         
+        
         public void Start()
         {
             _grid = GameObject.FindGameObjectWithTag("Grid");
@@ -25,7 +26,9 @@ namespace Script
         {
             if(prefab)
                 _gridManager.ChangeHighlight(prefab);
-            if (_playerManager.Money < _unit.cost)
+           
+            
+            /*if (_playerManager.Money < _unit.cost)
             {
                 Debug.Log("No money");
                 return;
@@ -33,7 +36,7 @@ namespace Script
             else
             {
                 
-            }
+            }*/
             
         }
         

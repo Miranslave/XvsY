@@ -17,6 +17,12 @@ public class UnitFactory : MonoBehaviour
         GameObject toSendWeapon = Instantiate(weapon, toSend.transform);
         toSend.GetComponent<BaseUnit>().weapon = toSendWeapon.GetComponent<Weapon>();
         PlaceUnit.prefab = toSend;
+        Deactivate(toSend);
+    }
+
+    public void Deactivate(GameObject toSend)
+    {
+        toSend.SetActive(false);
     }
    
 }

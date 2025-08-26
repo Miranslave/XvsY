@@ -182,6 +182,7 @@ namespace Script
 
         public void Resetcursor()
         {
+            _flowerToPlace = null;
             highlightInstance.GetComponent<SpriteRenderer>().sprite =
                 highlightPrefab.GetComponent<SpriteRenderer>().sprite;
             _ishighlightcursor = true;
@@ -225,7 +226,11 @@ namespace Script
                 }
 
                 Vector3 pos = highlightInstance.transform.position;
-                GameObject g = Instantiate(_flowerToPlace,pos,Quaternion.identity);
+
+                GameObject g = _flowerToPlace; //Instantiate(_flowerToPlace,pos,Quaternion.identity);
+                g.SetActive(true);
+                g.transform.position = pos;
+                g.transform.rotation = Quaternion.identity;
                 _playerManager.AddMoney(-g.GetComponent<Unit>().cost);
                 _gridmemory[gridpos.x, gridpos.y].occupant = g;
                 Debug.Log($" cell {gridpos}");

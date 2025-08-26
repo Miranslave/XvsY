@@ -12,6 +12,10 @@ namespace Script
         public FlowerType type;
         public Coroutine EffectLoopCoroutine;
         public Weapon weapon;
+        public void Start()
+        {
+            StartCoroutine(StartCooldown());
+        }
         
         public abstract void Effect();
         
@@ -26,7 +30,8 @@ namespace Script
         
         private void OnDisable()
         {
-            StopCoroutine(EffectLoopCoroutine);
+            if(EffectLoopCoroutine != null)
+                StopCoroutine(EffectLoopCoroutine);
         }
 
     }

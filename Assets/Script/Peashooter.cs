@@ -12,7 +12,7 @@ namespace Script
         public GameObject bulletprefab;
         
         // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
+        new void Start()
         {
             cost = 50;
             Debug.Log($"{gameObject.name} avec un cooldown de {cooldown}");
