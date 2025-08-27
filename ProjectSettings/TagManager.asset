@@ -15,7 +15,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Background
   - 
   - 
   - 
@@ -45,8 +45,20 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 3265692771
+    locked: 0
   - name: Currency
     uniqueID: 1309908185
+    locked: 0
+  - name: Unit
+    uniqueID: 4053860767
+    locked: 0
+  - name: Weapon
+    uniqueID: 3615937977
+    locked: 0
+  - name: Highlight
+    uniqueID: 1180928307
     locked: 0
   m_RenderingLayers:
   - Default

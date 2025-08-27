@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Script.Struct;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
@@ -14,7 +15,6 @@ public class Weapon : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
-        _isOnCd = false;
         _cooldown = weaponstat.frequency;
         if (weaponstat.isRanged)
         {
@@ -29,17 +29,12 @@ public class Weapon : MonoBehaviour
 
     public void Fire()
     {
-        if (_isOnCd)
-        {
-            return;
-        }
-        else
-        {
+      
             if (weaponstat.isRanged)
             {
                 GameObject g = Instantiate(weaponstat.projectile);
                 g.transform.position = transform.position + Vector3.right;
-                g.GetComponent<Rigidbody2D>().AddForce(Vector3.right * weaponstat.projectilespeed);
+                g.GetComponent<Rigidbody2D>().AddForce(Vector3.right * weaponstat.projectilespeed,ForceMode2D.Impulse);
                 _isOnCd = true;
             }
             else
@@ -52,15 +47,19 @@ public class Weapon : MonoBehaviour
                 attackZone.enabled = false;
                 */
             }
-        }
+        
     }
 
 
     
     public IEnumerator StartCooldown()
     {
-        yield return new WaitForSeconds(weaponstat.frequency); // Attente entre les soleils
-        _isOnCd = false;
+        while (true)
+        {
+            yield return new WaitForSeconds(weaponstat.frequency); 
+            Fire();
+        }
+        
     }
 
    
