@@ -8,6 +8,7 @@ TagManager:
   - Collector
   - Currency
   - Bullet
+  - Enemy
   layers:
   - Default
   - TransparentFX
