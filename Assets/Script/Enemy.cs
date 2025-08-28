@@ -1,4 +1,5 @@
 
+using System;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -29,6 +30,27 @@ public class Enemy : MonoBehaviour
         rb.linearVelocity = direction * speed;
     }
 
-    
-    
+    public void OnCollisionEnter2D(Collision2D other)
+    {
+        GameObject g = other.gameObject;
+        if (g.CompareTag("Bullet"))
+        {
+            int _dmg  = g.GetComponent<Projectile>().ammo.Damage;
+            TakeDmg(_dmg);
+        }
+    }
+
+    public void TakeDmg(int dmg)
+    {
+        health -= dmg;
+        if (health <= 0)
+        {
+            Death();
+        }
+    }
+
+    private void Death()
+    {
+        Destroy(gameObject);
+    }
 }

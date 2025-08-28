@@ -14,7 +14,7 @@ namespace Script
         
         
         // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
+        void Starting()
         {
             cost = 50;
             Debug.Log($"{gameObject.name} avec un cooldown de {cooldown}");

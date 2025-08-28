@@ -2,27 +2,40 @@ using System;
 using System.Collections;
 using Script.Struct;
 using Unity.VisualScripting;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
     [SerializeField] private WeaponStat weaponstat;
+    [SerializeField] private Ammo ammo;
     private float _cooldown;
-    private bool _isOnCd;
     private Collider2D attackZone;
-    
+    private Animator animator;
+    private bool animatorup;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
+        
+       
         _cooldown = weaponstat.frequency;
         if (weaponstat.isRanged)
         {
-            
+            ammo.Prefab.GetComponent<Projectile>().ammo = ammo;
         }
         else
         {
-            
+
+        }
+        
+        if (animator = GetComponent<Animator>())
+        {
+            animatorup = true;
+        }
+        else
+        {
+            animatorup = false;
         }
     }
     
@@ -32,14 +45,16 @@ public class Weapon : MonoBehaviour
       
             if (weaponstat.isRanged)
             {
-                GameObject g = Instantiate(weaponstat.projectile);
+                GameObject g = Instantiate(ammo.Prefab);
                 g.transform.position = transform.position + Vector3.right;
-                g.GetComponent<Rigidbody2D>().AddForce(Vector3.right * weaponstat.projectilespeed,ForceMode2D.Impulse);
-                _isOnCd = true;
+                g.GetComponent<Rigidbody2D>().AddForce(Vector3.right * ammo.Speed,ForceMode2D.Impulse);
             }
             else
             {
-                
+                if (animatorup)
+                {
+                    animator.SetTrigger("attack");
+                }
                 Debug.Log("Attack mele");
                 /*
                 attackZone.enabled = true;
@@ -69,8 +84,8 @@ public class Weapon : MonoBehaviour
         if (g.CompareTag("Enemy"))
         {
             Debug.Log($"Enemy in mele zone {g.name}");
+            g.GetComponent<Enemy>().TakeDmg(1);
         }
         // Check for a mele attack 
-        throw new NotImplementedException();
     }
 }

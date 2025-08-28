@@ -45,13 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b314f17aab4a86240a88b7a6de1bb19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponstat:
-    isRanged: 1
-    dmgZone: {fileID: 0}
-    projectile: {fileID: 2832738556506850047, guid: d25fdc10ebdf8ed48af0c15f2bcdd050, type: 3}
-    projectilespeed: 3
-    frequency: 1
-    damage: 5
+  weaponstat: {fileID: 11400000, guid: 4d539a7f2b822ab46877b188d6f8e14f, type: 2}
+  ammo: {fileID: 11400000, guid: c12fbd725d02d944db9166187d4080be, type: 2}
 --- !u!212 &4913949629073488127
 SpriteRenderer:
   m_ObjectHideFlags: 0
