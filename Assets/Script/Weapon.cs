@@ -17,8 +17,7 @@ public class Weapon : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
-        
-       
+        StartCoroutine(StartWeaponCooldown());
         _cooldown = weaponstat.frequency;
         if (weaponstat.isRanged)
         {
@@ -28,7 +27,6 @@ public class Weapon : MonoBehaviour
         {
 
         }
-        
         if (animator = GetComponent<Animator>())
         {
             animatorup = true;
@@ -42,7 +40,6 @@ public class Weapon : MonoBehaviour
 
     public void Fire()
     {
-      
             if (weaponstat.isRanged)
             {
                 GameObject g = Instantiate(ammo.Prefab);
@@ -62,12 +59,11 @@ public class Weapon : MonoBehaviour
                 attackZone.enabled = false;
                 */
             }
-        
     }
 
 
     
-    public IEnumerator StartCooldown()
+    public IEnumerator StartWeaponCooldown()
     {
         while (true)
         {

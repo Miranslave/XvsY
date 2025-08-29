@@ -16,7 +16,7 @@ namespace Script
         {
             cost = 50;
             Debug.Log($"{gameObject.name} avec un cooldown de {cooldown}");
-            EffectLoopCoroutine = StartCoroutine(StartCooldown());
+            //EffectLoopCoroutine = StartCoroutine(StartCooldown());
         }
 
 

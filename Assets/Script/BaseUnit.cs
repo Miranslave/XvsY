@@ -10,10 +10,12 @@ namespace Script
         {
             name = race + " " + weapon + " " + effect;
         }
+        
+        //Special Capacity if it's an active 
         public override void Effect()
         {
             Debug.Log("effet de l'espéce");
-            weapon.Fire();
         }
+        
     }
 }

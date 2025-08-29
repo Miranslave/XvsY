@@ -1,4 +1,5 @@
 using System.Collections;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -14,12 +15,13 @@ namespace Script
         public Weapon weapon;
         public void Start()
         {
-            StartCoroutine(StartCooldown());
+            StartCoroutine(StartUnitCooldown());
         }
         
         public abstract void Effect();
         
-        public IEnumerator StartCooldown()
+        [NotNull]
+        public IEnumerator StartUnitCooldown()
         {
             while (true)
             {
