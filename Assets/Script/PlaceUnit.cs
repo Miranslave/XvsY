@@ -24,6 +24,7 @@ namespace Script
         
         
         public Image preview;
+        public Sprite placeholder;
         private Unit _unit;
         private GameObject _grid;
         private GridManager _gridManager;
@@ -46,27 +47,20 @@ namespace Script
         {
             if(rolledUnitPrefab)
                 _gridManager.ChangeHighlight(rolledUnitPrefab);
-           
-            
-            /*if (_playerManager.Money < _unit.cost)
-            {
-                Debug.Log("No money");
-                return;
-            }
-            else
-            {
-                
-            }*/
-            
+        }
+
+        public void CleanCurrentPrefab()
+        {
+            rolledUnitPrefab = null;
         }
         
         private void UpdatePreview()
         {
-            if (preview == null) return;
+            if (preview == null)return;
             if (_rolledUnitPrefab == null)
             {
-                preview.sprite = null;
-                preview.color = Color.clear; // cache si pas d’unité
+                preview.sprite = placeholder;
+                //preview.color = Color.clear; // cache si pas d’unité
             }
             else
             {

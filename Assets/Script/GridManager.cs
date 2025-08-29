@@ -37,6 +37,7 @@ namespace Script
         [SerializeField] private Vector3 position;
         [SerializeField] private Tile[,] _gridmemory;
         [SerializeField] private PlayerManager _playerManager;
+        private PlaceUnit _placeUnit;
         
         private SpriteRenderer prefabSR;
         private Vector2 mouspos;
@@ -63,6 +64,8 @@ namespace Script
         {
             prefabSR = prefab.GetComponent<SpriteRenderer>();
             _playerManager = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
+            _placeUnit = GameObject.FindGameObjectWithTag("PlaceUnit").GetComponent<PlaceUnit>();
+            
             CalculateOffset();
             InitGridData();
             CreateHighlight();
@@ -131,7 +134,7 @@ namespace Script
             else
             {
                 highlightInstance.SetActive(false);
-                //Resetcursor();
+               
             }
         }
         void SetupInput()
@@ -183,6 +186,7 @@ namespace Script
         public void Resetcursor()
         {
             _flowerToPlace = null;
+            _placeUnit.CleanCurrentPrefab();
             highlightInstance.GetComponent<SpriteRenderer>().sprite =
                 highlightPrefab.GetComponent<SpriteRenderer>().sprite;
             _ishighlightcursor = true;

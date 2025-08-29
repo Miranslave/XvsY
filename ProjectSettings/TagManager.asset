@@ -9,6 +9,7 @@ TagManager:
   - Currency
   - Bullet
   - Enemy
+  - PlaceUnit
   layers:
   - Default
   - TransparentFX

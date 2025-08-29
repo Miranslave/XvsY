@@ -35,7 +35,8 @@ public class Enemy : MonoBehaviour
         GameObject g = other.gameObject;
         if (g.CompareTag("Bullet"))
         {
-            int _dmg  = g.GetComponent<Projectile>().ammo.Damage;
+            Projectile p = g.GetComponent<Projectile>(); // test
+            int _dmg  = p.ammo.Damage;
             TakeDmg(_dmg);
         }
     }

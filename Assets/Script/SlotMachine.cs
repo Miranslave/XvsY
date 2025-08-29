@@ -28,11 +28,7 @@ public class SlotMachine : MonoBehaviour
 
     [Header("Debug")] 
     public UnitFactory factory;
-
-    public void Start()
-    {
-        
-    }
+    
 
     public void StartSpin()
     {

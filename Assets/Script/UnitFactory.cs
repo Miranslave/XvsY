@@ -13,6 +13,7 @@ public class UnitFactory : MonoBehaviour
 
     public void Assemble(GameObject race, GameObject weapon, Component ability = null)
     {
+        Clean();
         GameObject toSend = Instantiate(race);
         GameObject toSendWeapon = Instantiate(weapon, toSend.transform);
         toSendWeapon.transform.position = toSend.transform.position + new Vector3(0.25f, 0, 0);
@@ -25,5 +26,12 @@ public class UnitFactory : MonoBehaviour
     {
         toSend.SetActive(false);
     }
-   
+
+    public void Clean()
+    {
+        if (PlaceUnit.rolledUnitPrefab)
+        {
+            PlaceUnit.CleanCurrentPrefab();
+        }
+    }
 }
