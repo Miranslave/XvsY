@@ -16,7 +16,7 @@ public class UnitFactory : MonoBehaviour
         Clean();
         GameObject toSend = Instantiate(race);
         GameObject toSendWeapon = Instantiate(weapon, toSend.transform);
-        toSendWeapon.transform.position = toSend.transform.position + new Vector3(0.25f, 0, 0);
+        toSendWeapon.transform.position += new Vector3(0.3f, 0, 0); 
         toSend.GetComponent<BaseUnit>().weapon = toSendWeapon.GetComponent<Weapon>();
         PlaceUnit.rolledUnitPrefab = toSend;
         Deactivate(toSend);

@@ -40,6 +40,7 @@ public class Weapon : MonoBehaviour
 
     public void Fire()
     {
+        /*
             if (weaponstat.isRanged)
             {
                 GameObject g = Instantiate(ammo.Prefab);
@@ -48,20 +49,24 @@ public class Weapon : MonoBehaviour
             }
             else
             {
-                if (animatorup)
-                {
-                    animator.SetTrigger("attack");
-                }
                 Debug.Log("Attack mele");
-                /*
-                attackZone.enabled = true;
-                _isOnCd = true;
-                attackZone.enabled = false;
-                */
-            }
+            }*/
+            PlayAttackAnimation();
+            
     }
 
+    private void PlayAttackAnimation()
+    {
+        if (animatorup)
+        { 
+            animator.SetTrigger("attack");
+            float spawntimer = animator.GetCurrentAnimatorStateInfo(0).length/2;
+            //StartCoroutine(InstantiateProjectile(ammo, spawntimer));
+        }
+    }
 
+   
+    
     
     public IEnumerator StartWeaponCooldown()
     {
@@ -73,6 +78,35 @@ public class Weapon : MonoBehaviour
         
     }
 
+
+    public void FireArrow()
+    {
+        GameObject g = Instantiate(ammo.Prefab);
+        g.transform.position = transform.position + Vector3.right*0.2f;
+        g.GetComponent<Rigidbody2D>().AddForce(Vector3.right * ammo.Speed,ForceMode2D.Impulse);
+    }
+    
+    private IEnumerator InstantiateProjectile(Ammo projectile, float delay, int numberofprojectile = 1)
+    {
+        yield return new WaitForSeconds(delay);
+        if (numberofprojectile > 1)
+        {
+            for (int i = 0; i < numberofprojectile; i++)
+            {
+                GameObject g = Instantiate(projectile.Prefab);
+                g.transform.position = transform.position + Vector3.right;
+                g.GetComponent<Rigidbody2D>().AddForce(Vector3.right * projectile.Speed,ForceMode2D.Impulse);
+            }
+        }
+        else
+        {
+            GameObject g = Instantiate(projectile.Prefab);
+            g.transform.position = transform.position + Vector3.right;
+            g.GetComponent<Rigidbody2D>().AddForce(Vector3.right * projectile.Speed,ForceMode2D.Impulse);
+        }
+    }
+    
+    
    
     public void OnCollisionEnter2D(Collision2D other)
     {

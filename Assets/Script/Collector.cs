@@ -27,7 +27,7 @@ public class Collector : MonoBehaviour
         
         if (g.CompareTag(Tag))
         {
-            Debug.Log($"Collected object with tag: {g.tag}");
+            //Debug.Log($"Collected object with tag: {g.tag}");
             Destroy(g); // ou autre logique
         }
     }
