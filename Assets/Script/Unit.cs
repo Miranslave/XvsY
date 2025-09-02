@@ -16,6 +16,7 @@ namespace Script
         public Weapon weapon;
         public bool EnemyInSight = false;
         public LayerMask layerMask;
+        public bool RaycastDebugMod;
         
         public void Start()
         {
@@ -44,7 +45,8 @@ namespace Script
         {
             float attackrange = weapon.GetRange();
             RaycastHit2D hit = Physics2D.Raycast(this.gameObject.transform.position, transform.right,attackrange,layerMask);
-            Debug.DrawRay(this.gameObject.transform.position, Vector2.right * attackrange, hit ? Color.green : Color.red);
+            if(RaycastDebugMod)
+                Debug.DrawRay(this.gameObject.transform.position, Vector2.right * attackrange, hit ? Color.green : Color.red);
             if (hit)
             {
                 //Debug.Log("we hit "+hit.collider.gameObject.name);
