@@ -1,9 +1,10 @@
 using System;
 using System.Collections;
+using Script;
 using Script.Struct;
-using Unity.VisualScripting;
 using UnityEditor.Animations;
 using UnityEngine;
+using Unit = Unity.VisualScripting.Unit;
 
 public class Weapon : MonoBehaviour
 {
@@ -14,18 +15,24 @@ public class Weapon : MonoBehaviour
     private Animator animator;
     private bool animatorup;
     
+    private static readonly int Attack = Animator.StringToHash("attack");
+    private BaseUnit _unit;
+
+
+
+    public float GetRange()
+    {
+        return weaponstat.range;
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
+        _unit = gameObject.GetComponentInParent<BaseUnit>();
         StartCoroutine(StartWeaponCooldown());
         _cooldown = weaponstat.frequency;
         if (weaponstat.isRanged)
         {
             ammo.Prefab.GetComponent<Projectile>().ammo = ammo;
-        }
-        else
-        {
-
         }
         if (animator = GetComponent<Animator>())
         {
@@ -36,35 +43,27 @@ public class Weapon : MonoBehaviour
             animatorup = false;
         }
     }
-    
+
+    private void Update()
+    {
+        //CheckIfEnemyInLane();
+    }
+
 
     public void Fire()
     {
-        /*
-            if (weaponstat.isRanged)
-            {
-                GameObject g = Instantiate(ammo.Prefab);
-                g.transform.position = transform.position + Vector3.right;
-                g.GetComponent<Rigidbody2D>().AddForce(Vector3.right * ammo.Speed,ForceMode2D.Impulse);
-            }
-            else
-            {
-                Debug.Log("Attack mele");
-            }*/
             PlayAttackAnimation();
-            
     }
 
     private void PlayAttackAnimation()
     {
         if (animatorup)
         { 
-            animator.SetTrigger("attack");
-            float spawntimer = animator.GetCurrentAnimatorStateInfo(0).length/2;
+            animator.SetTrigger(Attack);
             //StartCoroutine(InstantiateProjectile(ammo, spawntimer));
         }
     }
-
+    
    
     
     
@@ -72,8 +71,12 @@ public class Weapon : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(weaponstat.frequency); 
-            Fire();
+            yield return new WaitForSeconds(weaponstat.frequency);
+            if (_unit.EnemyInSight)
+            {
+                Fire();  
+            }
+            
         }
         
     }
@@ -86,35 +89,14 @@ public class Weapon : MonoBehaviour
         g.GetComponent<Rigidbody2D>().AddForce(Vector3.right * ammo.Speed,ForceMode2D.Impulse);
     }
     
-    private IEnumerator InstantiateProjectile(Ammo projectile, float delay, int numberofprojectile = 1)
-    {
-        yield return new WaitForSeconds(delay);
-        if (numberofprojectile > 1)
-        {
-            for (int i = 0; i < numberofprojectile; i++)
-            {
-                GameObject g = Instantiate(projectile.Prefab);
-                g.transform.position = transform.position + Vector3.right;
-                g.GetComponent<Rigidbody2D>().AddForce(Vector3.right * projectile.Speed,ForceMode2D.Impulse);
-            }
-        }
-        else
-        {
-            GameObject g = Instantiate(projectile.Prefab);
-            g.transform.position = transform.position + Vector3.right;
-            g.GetComponent<Rigidbody2D>().AddForce(Vector3.right * projectile.Speed,ForceMode2D.Impulse);
-        }
-    }
-    
     
    
-    public void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         GameObject g = other.gameObject;
         if (g.CompareTag("Enemy"))
         {
-            Debug.Log($"Enemy in mele zone {g.name}");
-            g.GetComponent<Enemy>().TakeDmg(1);
+            g.GetComponent<Enemy>().TakeDmg(weaponstat.damage);
         }
         // Check for a mele attack 
     }

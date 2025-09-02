@@ -128,133 +128,133 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BowAnimation_0
+      name: BowAttack_0
       rect:
         serializedVersion: 2
-        x: 10
-        y: 5
-        width: 22
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.54960656, y: 0.5150976}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 9ec7a114bd78ae300800000000000000
-      internalID: 282187302423919849
+      spriteID: aeb39cb0c2b23c648a47c6bd803d7df6
+      internalID: 270119502
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BowAnimation_1
+      name: BowAttack_1
       rect:
         serializedVersion: 2
-        x: 39
-        y: 5
-        width: 21
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5474497, y: 0.5150976}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ac8f437e2fab42c00800000000000000
-      internalID: 875029780040579274
+      spriteID: d707ebc24acda1a4ebdb9ea94887c85e
+      internalID: -1720577473
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BowAnimation_2
+      name: BowAttack_2
       rect:
         serializedVersion: 2
-        x: 69
-        y: 5
-        width: 21
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5474496, y: 0.5150976}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ca4dc9d848c4775f0800000000000000
-      internalID: -759053879993379668
+      spriteID: 052eea9366c9054459146abd6426d75b
+      internalID: 1977665705
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BowAnimation_3
+      name: BowAttack_3
       rect:
         serializedVersion: 2
-        x: 98
-        y: 5
-        width: 21
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5772476, y: 0.5146144}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a791c2d7ff78a5d90800000000000000
-      internalID: -7108219530464454278
+      spriteID: 55ffd5c7272a49c4da2198003a4f795e
+      internalID: -934921535
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BowAnimation_4
+      name: BowAttack_4
       rect:
         serializedVersion: 2
-        x: 137
-        y: 5
-        width: 21
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5501065, y: 0.5146144}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ba070253508137a80800000000000000
-      internalID: -8470400063508549461
+      spriteID: 67bf421001f53c545b016534a521af72
+      internalID: -1940606563
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BowAnimation_5
+      name: BowAttack_5
       rect:
         serializedVersion: 2
-        x: 170
-        y: 5
-        width: 12
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5501065, y: 0.5146144}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e1435cf63a66d95c0800000000000000
-      internalID: -4207093624753277922
+      spriteID: 6f180e086f4a37a41bd6047b3567c71a
+      internalID: 1413610838
       vertices: []
       indices: 
       edges: []
@@ -263,7 +263,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: de6bbf099d95c5f428a768b52dc36ec7
     internalID: 0
     vertices: []
     indices: 
@@ -271,14 +271,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":32.0,"y":32.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      BowAnimation_0: 282187302423919849
-      BowAnimation_1: 875029780040579274
-      BowAnimation_2: -759053879993379668
-      BowAnimation_3: -7108219530464454278
-      BowAnimation_4: -8470400063508549461
-      BowAnimation_5: -4207093624753277922
+      BowAttack_0: 270119502
+      BowAttack_1: -1720577473
+      BowAttack_2: 1977665705
+      BowAttack_3: -934921535
+      BowAttack_4: -1940606563
+      BowAttack_5: 1413610838
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

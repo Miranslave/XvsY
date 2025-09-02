@@ -33,6 +33,10 @@ public class SlotMachine : MonoBehaviour
     public void StartSpin()
     {
         StartCoroutine(SpinCoroutine());
+        if (factory.PlaceUnit.rolledUnitPrefab)
+        {
+            Destroy(factory.PlaceUnit.rolledUnitPrefab);
+        }
     }
 
     private IEnumerator SpinCoroutine()
@@ -54,7 +58,7 @@ public class SlotMachine : MonoBehaviour
         yield return weaponSpin;
         //yield return abilitySpin;
         factory.Assemble(raceResult,weaponResult);
-        Debug.Log($"Résultat final : {raceText.text} - {weaponText.text} - {abilityText.text}");
+        //Debug.Log($"Résultat final : {raceText.text} - {weaponText.text} - {abilityText.text}");
         //GameObject g = Instantiate(BaseUnit);
         //g.GetComponent<BaseUnit>()?.Innit(raceText.text,weaponText.text,abilityText.text);
         

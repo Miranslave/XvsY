@@ -8,5 +8,6 @@ namespace Script.Struct
         public bool isRanged; 
         public float frequency;
         public int damage;
+        public float range;
     }
 }

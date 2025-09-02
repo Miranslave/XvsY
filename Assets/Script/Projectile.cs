@@ -10,7 +10,8 @@ public class Projectile : MonoBehaviour
     {
         if (!ammo.Cross)
         {
-            Destroy(this.gameObject);
+            if(other.gameObject.CompareTag("Enemy"))
+                Destroy(this.gameObject);
         }
     }
 }

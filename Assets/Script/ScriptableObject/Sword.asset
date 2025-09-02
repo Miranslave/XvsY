@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Sword
   m_EditorClassIdentifier: 
   isRanged: 0
-  frequency: 0.4
-  damage: 2
+  frequency: 0.2
+  damage: 3
+  range: 2

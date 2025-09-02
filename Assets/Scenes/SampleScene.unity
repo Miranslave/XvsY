@@ -1257,6 +1257,11 @@ RectTransform:
   m_AnchoredPosition: {x: 278, y: 374}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!4 &190402119 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7950588671187252811, guid: fb9dca8afa7919544ae8172d465d9521, type: 3}
+  m_PrefabInstance: {fileID: 3561576664875348367}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &259008291
 GameObject:
   m_ObjectHideFlags: 0
@@ -1498,6 +1503,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlaceUnit: {fileID: 0}
+--- !u!4 &301839037 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3471221267998642234, guid: fb9dca8afa7919544ae8172d465d9521, type: 3}
+  m_PrefabInstance: {fileID: 3561576664875348367}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &303374927 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3856651029701979006, guid: fb9dca8afa7919544ae8172d465d9521, type: 3}
+  m_PrefabInstance: {fileID: 3561576664875348367}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &456160859
 GameObject:
   m_ObjectHideFlags: 0
@@ -2225,6 +2240,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 691772218}
   m_CullTransparentMesh: 1
+--- !u!4 &813410583 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1075195232424245681, guid: fb9dca8afa7919544ae8172d465d9521, type: 3}
+  m_PrefabInstance: {fileID: 3561576664875348367}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &939590179
 GameObject:
   m_ObjectHideFlags: 0
@@ -2372,6 +2392,11 @@ MonoBehaviour:
   m_DefaultActionMap: Basic
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 519420031}
+--- !u!4 &1354804514 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 818623659892916848, guid: fb9dca8afa7919544ae8172d465d9521, type: 3}
+  m_PrefabInstance: {fileID: 3561576664875348367}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1378175085
 GameObject:
   m_ObjectHideFlags: 0
@@ -3225,6 +3250,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &2135624196 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7318944733770994082, guid: fb9dca8afa7919544ae8172d465d9521, type: 3}
+  m_PrefabInstance: {fileID: 3561576664875348367}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3561576664875348367
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3233,6 +3263,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3053175920138385628, guid: fb9dca8afa7919544ae8172d465d9521, type: 3}
+      propertyPath: Spawnpoint.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3053175920138385628, guid: fb9dca8afa7919544ae8172d465d9521, type: 3}
+      propertyPath: 'Spawnpoint.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2135624196}
+    - target: {fileID: 3053175920138385628, guid: fb9dca8afa7919544ae8172d465d9521, type: 3}
+      propertyPath: 'Spawnpoint.Array.data[2]'
+      value: 
+      objectReference: {fileID: 303374927}
+    - target: {fileID: 3053175920138385628, guid: fb9dca8afa7919544ae8172d465d9521, type: 3}
+      propertyPath: 'Spawnpoint.Array.data[3]'
+      value: 
+      objectReference: {fileID: 301839037}
+    - target: {fileID: 3053175920138385628, guid: fb9dca8afa7919544ae8172d465d9521, type: 3}
+      propertyPath: 'Spawnpoint.Array.data[4]'
+      value: 
+      objectReference: {fileID: 1354804514}
+    - target: {fileID: 3053175920138385628, guid: fb9dca8afa7919544ae8172d465d9521, type: 3}
+      propertyPath: 'Spawnpoint.Array.data[5]'
+      value: 
+      objectReference: {fileID: 813410583}
+    - target: {fileID: 3053175920138385628, guid: fb9dca8afa7919544ae8172d465d9521, type: 3}
+      propertyPath: 'Spawnpoint.Array.data[6]'
+      value: 
+      objectReference: {fileID: 190402119}
     - target: {fileID: 6800151684671945841, guid: fb9dca8afa7919544ae8172d465d9521, type: 3}
       propertyPath: m_Name
       value: MultiSpawner

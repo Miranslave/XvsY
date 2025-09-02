@@ -14,7 +14,7 @@ namespace Script
         //Special Capacity if it's an active 
         public override void Effect()
         {
-            Debug.Log("effet de l'espéce");
+            //Debug.Log("effet de l'espéce");
         }
         
     }

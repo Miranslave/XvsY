@@ -11,11 +11,12 @@ public class EnemySpawner : MonoBehaviour
     public List<Transform> Spawnpoint;
     public GameObject enemyToSpawn;
     public Coroutine currentwork;
+    public int n = 0;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        currentwork = StartCoroutine(Timer());
+        //currentwork = StartCoroutine(Timer());
     }
 
     private void OnDisable()
@@ -40,7 +41,7 @@ public class EnemySpawner : MonoBehaviour
     {
         while (true)
         {
-            float  t = Random.Range(3, 5);
+            float t = 5;//Random.Range(3, 5);
             yield return new WaitForSeconds(t);
             Spawn();
         }
@@ -49,6 +50,8 @@ public class EnemySpawner : MonoBehaviour
     void Spawn()
     {
         Transform spawnedTransform = Spawnpoint[Random.Range(0, Spawnpoint.Count)];
-        Instantiate(enemyToSpawn, spawnedTransform.position, Quaternion.identity);
+        GameObject g = Instantiate(enemyToSpawn, spawnedTransform.position, Quaternion.identity);
+        g.name = "slime " + n;
+        n++;
     }
 }

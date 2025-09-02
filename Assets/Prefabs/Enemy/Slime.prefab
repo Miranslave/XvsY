@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7651310856400057274}
   - component: {fileID: 3754553064032259909}
   - component: {fileID: 2724813332498340413}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Slime
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -167,5 +167,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   dmg: 1
-  speed: 2
+  speed: 1
   baseTarget: {fileID: 0}
