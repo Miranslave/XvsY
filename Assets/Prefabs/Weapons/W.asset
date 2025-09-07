@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0b07baf11ec4d38accb4c395784d891, type: 3}
-  m_Name: Bow
+  m_Name: W
   m_EditorClassIdentifier: 
-  isRanged: 1
-  frequency: 3
-  damage: 1
-  range: 8
+  isRanged: 0
+  frequency: 0
+  damage: 0
+  range: 0

@@ -11,6 +11,7 @@ namespace Script
         public float health = 100;
         public float cooldown = 3f;
         public int cost;
+        public int level = 1;
         public FlowerType type;
         public Coroutine EffectLoopCoroutine;
         public Weapon weapon;
@@ -61,6 +62,13 @@ namespace Script
                 EnemyInSight = false;
             }
             
+        }
+
+        public void OnUpgrade()
+        {
+            level++;
+            health = health * 1.5f;
+            weapon.OnUpgrade();
         }
         
         private void OnDisable()

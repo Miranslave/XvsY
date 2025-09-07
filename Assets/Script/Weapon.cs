@@ -88,6 +88,12 @@ public class Weapon : MonoBehaviour
         g.transform.position = transform.position + Vector3.right*0.2f;
         g.GetComponent<Rigidbody2D>().AddForce(Vector3.right * ammo.Speed,ForceMode2D.Impulse);
     }
+
+    public void OnUpgrade()
+    {
+        weaponstat.frequency = weaponstat.frequency * 0.9f;
+        weaponstat.damage = weaponstat.damage + 1;
+    }
     
     
    

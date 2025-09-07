@@ -11,7 +11,9 @@ public class SlotMachine : MonoBehaviour
     
     [Header("UI Elements")]
     public TextMeshProUGUI raceText;
+    public GameObject raceSpinUI;
     public TextMeshProUGUI weaponText;
+    public GameObject weaponSpinUI;
     public TextMeshProUGUI abilityText;
 
     [Header("Options")] 
@@ -45,10 +47,10 @@ public class SlotMachine : MonoBehaviour
         GameObject weaponResult = null;
         //GameObject abilityResult = null;
         // Lancer chaque roue en parallèle
-        Coroutine raceSpin = StartCoroutine(SpinWheel(raceText, races, 1f, g => raceResult = g));
+        Coroutine raceSpin = StartCoroutine(SpinWheel(raceSpinUI,raceText, races, 1f, g => raceResult = g));
         yield return new WaitForSeconds(delayBetweenStops);
 
-        Coroutine weaponSpin = StartCoroutine(SpinWheel(weaponText, weapons, 1f,g => weaponResult = g));
+        Coroutine weaponSpin = StartCoroutine(SpinWheel(weaponSpinUI,weaponText, weapons, 1f,g => weaponResult = g));
         yield return new WaitForSeconds(delayBetweenStops);
 
         //Coroutine abilitySpin = StartCoroutine(SpinWheel(abilityText, abilities, 1f, g => abilityResult = g));
@@ -64,7 +66,7 @@ public class SlotMachine : MonoBehaviour
         
     }
     
-    private IEnumerator SpinWheel(TextMeshProUGUI textElement, GameObject[] options, float duration,Action<GameObject> onFinished)
+    private IEnumerator SpinWheel(GameObject uiGameObject,TextMeshProUGUI textElement, GameObject[] options, float duration,Action<GameObject> onFinished)
     {
         float timer = 0f;
         GameObject lastChoice = null;
@@ -75,6 +77,7 @@ public class SlotMachine : MonoBehaviour
             timer += spinSpeed;
             yield return new WaitForSeconds(spinSpeed);
         }
+        uiGameObject.GetComponent<SlotsUI>().LaunchSlot(lastChoice);
         onFinished?.Invoke(lastChoice);
     }
 }

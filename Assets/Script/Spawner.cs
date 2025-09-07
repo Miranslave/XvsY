@@ -32,7 +32,7 @@ public class Spawner : MonoBehaviour
 
     void Spawn()
     {
-        GameObject g = Instantiate(prefab);
+        GameObject g = Instantiate(prefab,this.transform);
         g.transform.position = this.transform.position;
         Launch(g);
     }

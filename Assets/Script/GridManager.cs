@@ -223,22 +223,39 @@ namespace Script
 
 
                 
-                if (_gridmemory[gridpos.x, gridpos.y].IsOccupied)
-                {
-                    Debug.LogError($"Tile à {gridpos} est occupé !");
-                    return;
-                }
+
 
                 Vector3 pos = highlightInstance.transform.position;
 
                 GameObject g = _flowerToPlace; //Instantiate(_flowerToPlace,pos,Quaternion.identity);
-                g.SetActive(true);
-                g.transform.position = pos;
-                g.transform.rotation = Quaternion.identity;
-                _playerManager.AddMoney(-g.GetComponent<Unit>().cost);
-                _gridmemory[gridpos.x, gridpos.y].occupant = g;
-                Debug.Log($" cell {gridpos}");
-                Resetcursor();
+                if (_gridmemory[gridpos.x, gridpos.y].IsOccupied)
+                {
+                    //check if the same unit is there
+                    if (_gridmemory[gridpos.x, gridpos.y].occupant.name == g.name)
+                    {
+                        _gridmemory[gridpos.x, gridpos.y].occupant.GetComponent<Unit>().OnUpgrade();
+                        Debug.LogError($"Tile à {gridpos} UPGRADE !");
+                        Resetcursor();
+                        
+                    }
+                    else
+                    {
+                        Debug.LogError($"Tile à {gridpos} est occupé !");
+                        return;
+                    }
+                }
+                else
+                {
+                    g.SetActive(true);
+                    g.transform.position = pos;
+                    g.transform.rotation = Quaternion.identity;
+                
+                    _gridmemory[gridpos.x, gridpos.y].occupant = g;
+                    Debug.Log($" cell {gridpos}");
+                    Resetcursor();
+                }
+
+
             }
 
         }
