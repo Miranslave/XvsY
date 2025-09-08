@@ -1,13 +1,17 @@
+using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.U2D;
 using UnityEngine;
 
 public class SlotsUI : MonoBehaviour
 {
 
-    [SerializeField] private Animator _animator;
-    [SerializeField] private Animation _animation;
-    [SerializeField] private SpriteRenderer _spriteRenderer;
-    public  List<Sprite> _list;
+
+    [SerializeField] private SpriteRenderer _result;
+    [SerializeField] private SpriteRenderer _top;
+    [SerializeField] private SpriteRenderer _bottom;
+    public  List<GameObject> _list;
+    private Dictionary<Weapon,Sprite> _sprtlist;
     private GameObject g;
     
     
@@ -15,34 +19,55 @@ public class SlotsUI : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _animator = GetComponent<Animator>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
+        inniticonList();
     }
 
+    private void inniticonList()
+    {
+        _sprtlist = new Dictionary<Weapon, Sprite>();
+        foreach (var variabWeapon in _list)
+        {
+            _sprtlist.Add(variabWeapon.GetComponent<Weapon>(),variabWeapon.GetComponent<Weapon>().Icon1);
+        }
+    }
+    
     public void LaunchSlot(GameObject weapon)
     {
         g = weapon;
-        _animator.SetTrigger("ROLLS");
+        StartCoroutine(Roll(weapon.GetComponent<Weapon>()));
     }
 
-    public void SetEndSprite()
+    public void SetEndSprite(Weapon w)
     {
         if(!g) return;
-        switch (g.name)
-        {
-            case "Sword":
-                Debug.Log("sword sprite");
-                _spriteRenderer.color = Color.cyan;
-                _spriteRenderer.sprite = _list[0];
-                break;
-            case "Bow":
-                Debug.Log("bow sprite");
-                _spriteRenderer.color = Color.red;
-                _spriteRenderer.sprite = _list[1];
-                break;
-        }
+        _result.sprite = _sprtlist[w];
 
     }
+
+    IEnumerator Roll(Weapon w)
+    {
+        float rollTime = 2f;          // durée totale du spin
+        float interval = 0.1f;        // vitesse de changement de sprite
+        float elapsed = 0f;
+
+        while (elapsed < rollTime)
+        {
+            // Choisit un sprite aléatoire dans la liste
+            Sprite randomSprite = _list[Random.Range(0, _list.Count)].GetComponent<Weapon>().Icon1;
+
+            // Mets à jour les 3 slots (optionnel : pour donner l’illusion que ça bouge)
+            _result.sprite = randomSprite;
+            if (_top) _top.sprite = _list[Random.Range(0, _list.Count)].GetComponent<Weapon>().Icon1;
+            if (_bottom) _bottom.sprite = _list[Random.Range(0, _list.Count)].GetComponent<Weapon>().Icon1;
+
+            yield return new WaitForSeconds(interval);
+            elapsed += interval;
+        }
+
+        // Une fois terminé → fixe le sprite final
+        SetEndSprite(w);
+    }
+    
 
 
 }

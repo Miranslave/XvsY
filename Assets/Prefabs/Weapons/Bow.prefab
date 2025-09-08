@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponstat: {fileID: 11400000, guid: 4d539a7f2b822ab46877b188d6f8e14f, type: 2}
   ammo: {fileID: 11400000, guid: c12fbd725d02d944db9166187d4080be, type: 2}
+  Icon: {fileID: 7032685582455520434, guid: aea054ee20763674689a2b9c2c826574, type: 3}
 --- !u!212 &4913949629073488127
 SpriteRenderer:
   m_ObjectHideFlags: 0

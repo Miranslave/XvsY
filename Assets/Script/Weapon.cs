@@ -10,6 +10,10 @@ public class Weapon : MonoBehaviour
 {
     [SerializeField] private WeaponStat weaponstat;
     [SerializeField] private Ammo ammo;
+    [SerializeField] private Sprite Icon;
+
+    public Sprite Icon1 => Icon;
+
     private float _cooldown;
     private Collider2D attackZone;
     private Animator animator;
