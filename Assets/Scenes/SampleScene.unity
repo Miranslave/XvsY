@@ -3606,6 +3606,34 @@ PrefabInstance:
       propertyPath: '_list.Array.data[1]'
       value: 
       objectReference: {fileID: 6088981991553672797, guid: c954d9294fa3fdb4e9085e81773292ec, type: 3}
+    - target: {fileID: 6895182281167456584, guid: db0ba59052b7f054b8fd920bdb980132, type: 3}
+      propertyPath: listToDraw.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6895182281167456584, guid: db0ba59052b7f054b8fd920bdb980132, type: 3}
+      propertyPath: listToDraw.Array.data[0].icon
+      value: 
+      objectReference: {fileID: -1904446444876296550, guid: aea054ee20763674689a2b9c2c826574, type: 3}
+    - target: {fileID: 6895182281167456584, guid: db0ba59052b7f054b8fd920bdb980132, type: 3}
+      propertyPath: listToDraw.Array.data[1].icon
+      value: 
+      objectReference: {fileID: 7032685582455520434, guid: aea054ee20763674689a2b9c2c826574, type: 3}
+    - target: {fileID: 6895182281167456584, guid: db0ba59052b7f054b8fd920bdb980132, type: 3}
+      propertyPath: listToDraw.Array.data[0].probs
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6895182281167456584, guid: db0ba59052b7f054b8fd920bdb980132, type: 3}
+      propertyPath: listToDraw.Array.data[1].probs
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6895182281167456584, guid: db0ba59052b7f054b8fd920bdb980132, type: 3}
+      propertyPath: listToDraw.Array.data[0].prefab
+      value: 
+      objectReference: {fileID: 6088981991553672797, guid: ec48b4e24495bb84a8972dd7cd4cbe53, type: 3}
+    - target: {fileID: 6895182281167456584, guid: db0ba59052b7f054b8fd920bdb980132, type: 3}
+      propertyPath: listToDraw.Array.data[1].prefab
+      value: 
+      objectReference: {fileID: 6088981991553672797, guid: c954d9294fa3fdb4e9085e81773292ec, type: 3}
     m_RemovedComponents:
     - {fileID: 8422797509531585631, guid: db0ba59052b7f054b8fd920bdb980132, type: 3}
     m_RemovedGameObjects: []
