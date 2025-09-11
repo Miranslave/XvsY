@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Script;
+using Unity.VisualScripting;
 using UnityEditor.U2D;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -16,19 +17,19 @@ public class SlotsUI : MonoBehaviour
     
     
     [Header("Rollables")]
-    public List<Rollable> listToDraw;
+    private List<Rollable> listToDraw;
     
     [Header("Slots machine Parameters")]
     [SerializeField] private float rollTime = 2f;          // durée totale du spin
     [SerializeField] private float interval = 0.1f;        // vitesse de changement de sprite
     [SerializeField] private float elapsed = 0f;
-    
-    
+
+    public List<GameObject> WeightedListToDraw;
     // Current_G
     private GameObject g;
-    [SerializeField] private List<Vector2> probsList; // Vector2.x is lower value Vector2.y is highest value
+   // Vector2.x is lower value Vector2.y is highest value
 
-
+    /*
     public void Awake()
     {
         Normalizing(listToDraw);
@@ -37,50 +38,54 @@ public class SlotsUI : MonoBehaviour
     // Statistics
     private void Normalizing(List<Rollable> list_r)
     {
-        probsList = new List<Vector2>();
+        List<float> list_probs = new List<float>();
         float total = 0;
         foreach (var x in list_r)
         {
             total += x.probs;
+            list_probs.Add(x.probs);
         }
 
-        if (total <100)
-        {
-            // divide and add
-            Debug.Log("total sup à 100");
-        }
+        var normalized_list = SetTo100sys(list_probs, total);
+        WeightedListToDraw = GameObjectProbLinker(normalized_list);
+    }
 
-        if (total > 100)
+    
+    private List<int> SetTo100sys(List<float> probsList,float total)
+    {
+        List<int> res = new List<int>();
+        for (int i = 0; i < probsList.Count ; i++)
         {
-            // normalize all shit
-            Debug.Log("total sup à 100");
+            // 0 to 1 value
+            float temp_val = probsList[i] / total;
+            //normalized to 100 
+            float norm_temp_val = temp_val * 100;
+            // Gameobject number to create    
+            int NormalizedNbGameObject = Mathf.RoundToInt(norm_temp_val);
+            res.Add(NormalizedNbGameObject);
         }
+        return res;
+    }
 
-        if (total == 100)
+    private List<GameObject> GameObjectProbLinker(List<int> probs)
+    {
+        List<GameObject> res = new List<GameObject>();
+        for (int i = 0; i < listToDraw.Count ; i++)
         {
-            Debug.Log("100 pile");
-            float str_ptr = 0;
-            float end_ptr = 0;
-            // perfect case 
-            Vector2 initVector2 = new Vector2(str_ptr, list_r[0].probs);
-            probsList.Add(initVector2);
-            for(int i = 1; i<=list_r.Count-1;i++){
-                // get higher end of i-1
-                end_ptr = probsList[i - 1].y;
-                Vector2 current_interval = new Vector2(end_ptr,end_ptr+list_r[i].probs);
-                probsList.Add(current_interval);
+            GameObject temp = listToDraw[i].prefab;
+            for (int j = 0; j < probs[i]; j++)
+            {
+                res.Add(temp);
             }
         }
+        return res;
     }
+    */
     
-    
-    
-    
-    
-    public void LaunchSlot(GameObject gDrawn)
+    public void LaunchSlot(GameObject gDrawn,List<Rollable> rollables)
     {
         //launch the ROLLLLLLLS
-        StartCoroutine(Roll(gDrawn));
+        StartCoroutine(Roll(gDrawn,rollables));
     }
 
     public void SetEndSprite(GameObject gDrawn)
@@ -97,17 +102,21 @@ public class SlotsUI : MonoBehaviour
         }
     }
 
-    IEnumerator Roll(GameObject gDrawn)
+    IEnumerator Roll(GameObject gDrawn,List<Rollable>rollables)
     {
+        if (listToDraw == null)
+        {
+            listToDraw = rollables;
+        }
         while (elapsed < rollTime)
         {
             // Choisit un sprite aléatoire dans la liste
-            Sprite randomSprite = listToDraw[Random.Range(0, listToDraw.Count)].icon;
+            Sprite randomSprite = rollables[Random.Range(0, rollables.Count)].icon;
             
             // Mets à jour les 3 slots (optionnel : pour donner l’illusion que ça bouge)
             _result.sprite = randomSprite;
-            if (_top) _top.sprite = listToDraw[Random.Range(0, listToDraw.Count)].icon;
-            if (_bottom) _bottom.sprite = listToDraw[Random.Range(0, listToDraw.Count)].icon;
+            if (_top) _top.sprite = rollables[Random.Range(0, rollables.Count)].icon;
+            if (_bottom) _bottom.sprite = rollables[Random.Range(0, rollables.Count)].icon;
 
             yield return new WaitForSeconds(interval);
             elapsed += interval;
