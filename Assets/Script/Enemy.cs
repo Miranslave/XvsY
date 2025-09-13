@@ -62,22 +62,11 @@ public class Enemy : MonoBehaviour
     public void TakeDmg(int dmg)
     {
         DmgTaken = true;
-        health -= dmg;
         rb.linearVelocity = new Vector2(1.5f, 0);
         _animator.SetTrigger("TakeHit");
     }
 
-    public void CheckDeath()
-    {
-        DmgTaken = false;
-        if (health <= 0)
-        {
-            Death();
-        }
-    }
 
-    private void Death()
-    {
-        Destroy(gameObject);
-    }
+
+
 }

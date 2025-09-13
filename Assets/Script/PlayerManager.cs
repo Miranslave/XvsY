@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField] private int _money;
-
+    [SerializeField] private HealthComponent _healthComponent;
     public int Money
     {
         get => _money;
@@ -20,7 +20,7 @@ public class PlayerManager : MonoBehaviour
     }
 
     [SerializeField] private GridManager _gridManager;
-    public UIManager _uiManager;
+    [SerializeField] private UIManager _uiMoneyManager;
     private Camera _camera;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -29,6 +29,7 @@ public class PlayerManager : MonoBehaviour
         _money = 0;
         _camera = Camera.main;
         _gridManager = FindFirstObjectByType<GridManager>();
+        _uiMoneyManager.Innit(Money);
     }
 
     // Update is called once per frame
@@ -57,10 +58,11 @@ public class PlayerManager : MonoBehaviour
     public void AddMoney(int toadd)
     {
         Money += toadd;
+        _healthComponent.TakeDamage(toadd);
     }
 
     void OnMoneyChanged()
     {
-        _uiManager.IncreaseMoneyUI(Money);
+        _uiMoneyManager.NewValue(Money);
     }
 }

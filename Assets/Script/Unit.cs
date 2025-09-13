@@ -8,7 +8,7 @@ namespace Script
 {
     public abstract class Unit : MonoBehaviour
     {
-        public float health = 100;
+        public HealthComponent healthComponent;
         public float cooldown = 3f;
         public int cost;
         public int level = 1;
@@ -67,7 +67,7 @@ namespace Script
         public void OnUpgrade()
         {
             level++;
-            health = health * 1.5f;
+            healthComponent.SetNewHealth(healthComponent.max_health * 1.5f);
             weapon.OnUpgrade();
         }
         
