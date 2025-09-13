@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8234653602553223046}
   - component: {fileID: 7545063323370378797}
   - component: {fileID: 6941098000298480737}
+  - component: {fileID: 5729364908325464636}
   m_Layer: 8
   m_Name: Human
   m_TagString: Unit
@@ -101,15 +102,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdbbe1053def4f35b57f9025871ec0b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  healthComponent: {fileID: 5729364908325464636}
   cooldown: 3
-  cost: 0
-  type: 0
+  level: 1
   weapon: {fileID: 0}
   EnemyInSight: 0
   layerMask:
     serializedVersion: 2
     m_Bits: 128
+  RaycastDebugMod: 0
 --- !u!61 &6941098000298480737
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -156,3 +157,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.5379081, y: 0.82188445}
   m_EdgeRadius: 0
+--- !u!114 &5729364908325464636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750819119501913762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42052311802e4054fbfa80c5bd623823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  max_health: 100
+  linkedToUI: 0
+  healthUiComp: {fileID: 0}

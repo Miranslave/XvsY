@@ -10,9 +10,7 @@ namespace Script
     {
         public HealthComponent healthComponent;
         public float cooldown = 3f;
-        public int cost;
         public int level = 1;
-        public FlowerType type;
         public Coroutine EffectLoopCoroutine;
         public Weapon weapon;
         public bool EnemyInSight = false;

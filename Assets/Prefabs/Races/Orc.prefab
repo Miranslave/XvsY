@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8234653602553223046}
   - component: {fileID: 7545063323370378797}
   - component: {fileID: 7658637450397983631}
+  - component: {fileID: 7224009298018353196}
   m_Layer: 8
   m_Name: Orc
   m_TagString: Unit
@@ -102,15 +103,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdbbe1053def4f35b57f9025871ec0b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 150
+  healthComponent: {fileID: 7224009298018353196}
   cooldown: 3
-  cost: 0
-  type: 0
+  level: 1
   weapon: {fileID: 0}
   EnemyInSight: 0
   layerMask:
     serializedVersion: 2
     m_Bits: 128
+  RaycastDebugMod: 0
 --- !u!61 &7658637450397983631
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -157,6 +158,21 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.4447713, y: 0.56170976}
   m_EdgeRadius: 0
+--- !u!114 &7224009298018353196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750819119501913762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42052311802e4054fbfa80c5bd623823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  max_health: 100
+  linkedToUI: 0
+  healthUiComp: {fileID: 0}
 --- !u!1 &7840126654718917567
 GameObject:
   m_ObjectHideFlags: 0

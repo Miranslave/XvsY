@@ -14,8 +14,12 @@ public class HealthComponent : MonoBehaviour
     void Start()
     {
         current_health = max_health;
-        if(healthUiComp)
+        if (healthUiComp)
+        {
+            linkedToUI = true;
             healthUiComp.Innit(max_health); 
+        }
+           
     }
 
     public void SetNewHealth(float newhealth)

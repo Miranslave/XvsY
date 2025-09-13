@@ -21,9 +21,9 @@ public class SlotMachine : MonoBehaviour
     [SerializeField] private List<Rollable> AbilitiesListToDraw;
     
     [Header("Slots machine Parameters")]
-    [SerializeField] private float rollTime = 2f;          // durée totale du spin
+    /*[SerializeField] private float rollTime = 2f;          // durée totale du spin
     [SerializeField] private float interval = 0.1f;        // vitesse de changement de sprite
-    [SerializeField] private float elapsed = 0f;
+    [SerializeField] private float elapsed = 0f;*/
     
     [Header("Timing")]
     public float delayBetweenStops = 0.5f; // délai entre chaque arrêt

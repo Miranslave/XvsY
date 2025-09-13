@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     private Rigidbody2D rb;
     private Animator _animator;
     private bool DmgTaken = false;
+    [SerializeField] private HealthComponent healthComponent;
     
     private void Awake()
     {
@@ -62,6 +63,7 @@ public class Enemy : MonoBehaviour
     public void TakeDmg(int dmg)
     {
         DmgTaken = true;
+        healthComponent.TakeDamage(dmg);
         rb.linearVelocity = new Vector2(1.5f, 0);
         _animator.SetTrigger("TakeHit");
     }
