@@ -30,6 +30,8 @@ public class SlotMachine : MonoBehaviour
     
     [Header("Debug")] 
     public UnitFactory factory;
+
+    public PlayerManager playerManager;
     [SerializeField] private List<GameObject> RaceWeightedListToDraw;
     [SerializeField] private List<GameObject> WeaponWeightedListToDraw;
     [SerializeField] private List<GameObject> AbilitiesWeightedListToDraw;
@@ -38,15 +40,22 @@ public class SlotMachine : MonoBehaviour
     {
         RaceWeightedListToDraw = Normalizing(RaceListToDraw);
         WeaponWeightedListToDraw = Normalizing(WeaponListToDraw);
+        playerManager = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
+        
     }
 
     public void StartSpin()
     {
-        StartCoroutine(SpinCoroutine());
-        if (factory.PlaceUnit.rolledUnitPrefab)
+        if (playerManager.Money > 50)
         {
-            Destroy(factory.PlaceUnit.rolledUnitPrefab);
+            playerManager.AddMoney(-50);
+            StartCoroutine(SpinCoroutine());
+            if (factory.PlaceUnit.rolledUnitPrefab)
+            {
+                Destroy(factory.PlaceUnit.rolledUnitPrefab);
+            }
         }
+
     }
 
     private IEnumerator SpinCoroutine()

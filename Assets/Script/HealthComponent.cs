@@ -6,7 +6,7 @@ public class HealthComponent : MonoBehaviour
 
 
     public float max_health;
-    private float current_health;
+    [SerializeField] private float current_health;
     [SerializeField] private bool linkedToUI = false;
     [SerializeField] private UIManager healthUiComp; //temporary
     
@@ -37,7 +37,8 @@ public class HealthComponent : MonoBehaviour
     public void TakeDamage(float dmg)
     {
         current_health -= dmg;
-        healthUiComp.NewValue(current_health);
+        if(linkedToUI)
+            healthUiComp.NewValue(current_health);
         if (current_health <= 0)
         {
             Death();

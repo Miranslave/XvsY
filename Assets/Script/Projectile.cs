@@ -14,4 +14,9 @@ public class Projectile : MonoBehaviour
                 Destroy(this.gameObject);
         }
     }
+
+    public void Killthis()
+    {
+        Destroy(this.gameObject);
+    }
 }

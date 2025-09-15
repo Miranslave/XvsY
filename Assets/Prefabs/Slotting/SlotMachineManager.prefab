@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2304864468222342489
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 819094147245943718}
+  - component: {fileID: 9188849068979527199}
+  m_Layer: 0
+  m_Name: SlotMachineManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &819094147245943718
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2304864468222342489}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.81, y: -6.86, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9188849068979527199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2304864468222342489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 608c4a23305754e49b7b153180e25cc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raceSpinUI: {fileID: 0}
+  weaponSpinUI: {fileID: 0}
+  RaceListToDraw:
+  - icon: {fileID: 2731708229096555494, guid: aea054ee20763674689a2b9c2c826574, type: 3}
+    probs: 48.8
+    prefab: {fileID: 1750819119501913762, guid: 999b79b20369b7648ad1aa5339ffff9b, type: 3}
+  - icon: {fileID: 7970356542635057792, guid: aea054ee20763674689a2b9c2c826574, type: 3}
+    probs: 35.5
+    prefab: {fileID: 1750819119501913762, guid: 02ec2c4b79250f74ca4b8fba1bd2b2e7, type: 3}
+  WeaponListToDraw:
+  - icon: {fileID: 7032685582455520434, guid: aea054ee20763674689a2b9c2c826574, type: 3}
+    probs: 27.7
+    prefab: {fileID: 6088981991553672797, guid: c954d9294fa3fdb4e9085e81773292ec, type: 3}
+  - icon: {fileID: -1904446444876296550, guid: aea054ee20763674689a2b9c2c826574, type: 3}
+    probs: 68.6
+    prefab: {fileID: 6088981991553672797, guid: ec48b4e24495bb84a8972dd7cd4cbe53, type: 3}
+  AbilitiesListToDraw: []
+  delayBetweenStops: 0.5
+  factory: {fileID: 0}
+  RaceWeightedListToDraw: []
+  WeaponWeightedListToDraw: []
+  AbilitiesWeightedListToDraw: []

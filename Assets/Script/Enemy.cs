@@ -1,17 +1,25 @@
 using System;
+using Script;
 using UnityEngine;
+using UnitBase = Unity.VisualScripting.UnitBase;
 
 public class Enemy : MonoBehaviour
 {
-
-    public int health = 1;
     public int dmg = 1;
     public float speed = 2;
     [SerializeField] private Transform baseTarget;
     private Rigidbody2D rb;
     private Animator _animator;
     private bool DmgTaken = false;
+    private bool Attacking = false;
     [SerializeField] private HealthComponent healthComponent;
+    
+    [Header("Raycast")]
+    public float rangeRaycast;
+    public bool RaycastDebugMod;
+    public LayerMask layerMaskToDetect;
+    public bool UnitInRange;
+    public GameObject UnitRaycasted;
     
     private void Awake()
     {
@@ -21,11 +29,16 @@ public class Enemy : MonoBehaviour
         rb.freezeRotation = true; // évite la rotation physique
         baseTarget = GameObject.FindGameObjectWithTag("Player").transform;
     }
-    
-    
+
+    private void Update()
+    {
+        CheckIfEnemyInLane();
+        
+    }
+
     private void FixedUpdate() // utiliser FixedUpdate pour la physique
     {
-        if (!DmgTaken)
+        if (!DmgTaken && !UnitInRange)
         {
             MoveToTarget(baseTarget);
         }
@@ -38,6 +51,28 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void CheckIfEnemyInLane()
+    {
+        
+        RaycastHit2D hit = Physics2D.Raycast(this.gameObject.transform.position, transform.right,rangeRaycast,layerMaskToDetect);
+        if(RaycastDebugMod)
+            Debug.DrawRay(this.gameObject.transform.position, Vector2.right * rangeRaycast, hit ? Color.green : Color.red);
+        if (hit)
+        {
+            //Debug.Log("we hit "+hit.collider.gameObject.name);
+            if (hit.collider.gameObject.CompareTag("Enemy"))
+            {
+                UnitRaycasted = hit.collider.gameObject;
+                UnitInRange = true;
+            }
+                
+        }
+        else
+        {
+            UnitInRange = false;
+        }
+            
+    }
 
 
     private void MoveToTarget(Transform target)
@@ -54,18 +89,52 @@ public class Enemy : MonoBehaviour
         GameObject g = other.gameObject;
         if (g.CompareTag("Bullet"))
         {
-            Projectile p = g.GetComponent<Projectile>(); // test
+            Projectile p = g.GetComponent<Projectile>();
+            // test
+            if (p == null)
+            {
+                p = g.GetComponentInParent<Projectile>();
+            }
             int _dmg  = p.ammo.Damage;
             TakeDmg(_dmg);
         }
+    }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        GameObject g = other.gameObject;
+        if (g.CompareTag("Bullet"))
+        {
+            Projectile p = g.GetComponentInParent<Projectile>();
+            int _dmg  = p.ammo.Damage;
+            TakeDmg(_dmg);
+        }
+    }
+
+
+    private void Attack()
+    {
+        UnitRaycasted.GetComponent<Unit>().takedmg(dmg);
     }
 
     public void TakeDmg(int dmg)
     {
         DmgTaken = true;
         healthComponent.TakeDamage(dmg);
-        rb.linearVelocity = new Vector2(1.5f, 0);
+        //EnemyHitPhysics();
         _animator.SetTrigger("TakeHit");
+    }
+
+
+    // to modify to get different behavior (keep static) get pushed harder
+    public void EnemyHitPhysics()
+    {
+        rb.linearVelocity = new Vector2(1.5f, 0);
+    }
+
+    public void endKnockBack()
+    {
+        
     }
 
 

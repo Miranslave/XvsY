@@ -21,6 +21,8 @@ public class Weapon : MonoBehaviour
     
     private static readonly int Attack = Animator.StringToHash("attack");
     private BaseUnit _unit;
+    
+    
 
 
 
@@ -47,11 +49,7 @@ public class Weapon : MonoBehaviour
             animatorup = false;
         }
     }
-
-    private void Update()
-    {
-        //CheckIfEnemyInLane();
-    }
+    
 
 
     public void Fire()
@@ -91,6 +89,14 @@ public class Weapon : MonoBehaviour
         GameObject g = Instantiate(ammo.Prefab);
         g.transform.position = transform.position + Vector3.right*0.2f;
         g.GetComponent<Rigidbody2D>().AddForce(Vector3.right * ammo.Speed,ForceMode2D.Impulse);
+    }
+
+
+    public void CastMagic()
+    {
+        GameObject g = Instantiate(ammo.Prefab);
+        g.GetComponent<Summoned>().toFollowed = _unit.enemy_Gameobject;
+        g.GetComponent<Summoned>().Offset = new Vector3(0,0.38f,0);
     }
 
     public void OnUpgrade()

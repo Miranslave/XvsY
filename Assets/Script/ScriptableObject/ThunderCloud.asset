@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0b07baf11ec4d38accb4c395784d891, type: 3}
-  m_Name: W
+  m_Script: {fileID: 11500000, guid: 3b59501ad0ab2564a85d7110a4946b33, type: 3}
+  m_Name: ThunderCloud
   m_EditorClassIdentifier: 
-  isRanged: 0
-  frequency: 0
-  damage: 0
-  range: 0
+  speed: 5
+  damage: 2
+  cross: 0
+  prefab: {fileID: 7903214943953086655, guid: 79a2fe8432f086c4f97fe5918c8e848b, type: 3}

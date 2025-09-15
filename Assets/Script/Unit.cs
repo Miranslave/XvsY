@@ -14,7 +14,8 @@ namespace Script
         public Coroutine EffectLoopCoroutine;
         public Weapon weapon;
         public bool EnemyInSight = false;
-        public LayerMask layerMask;
+        public GameObject enemy_Gameobject;
+        public LayerMask layerMaskEnemyToDetect;
         public bool RaycastDebugMod;
         
         public void Start()
@@ -43,7 +44,7 @@ namespace Script
         public void CheckIfEnemyInLane()
         {
             float attackrange = weapon.GetRange();
-            RaycastHit2D hit = Physics2D.Raycast(this.gameObject.transform.position, transform.right,attackrange,layerMask);
+            RaycastHit2D hit = Physics2D.Raycast(this.gameObject.transform.position, transform.right,attackrange,layerMaskEnemyToDetect);
             if(RaycastDebugMod)
                 Debug.DrawRay(this.gameObject.transform.position, Vector2.right * attackrange, hit ? Color.green : Color.red);
             if (hit)
@@ -51,6 +52,7 @@ namespace Script
                 //Debug.Log("we hit "+hit.collider.gameObject.name);
                 if (hit.collider.gameObject.CompareTag("Enemy"))
                 {
+                    enemy_Gameobject = hit.collider.gameObject;
                     EnemyInSight = true;
                 }
                 
@@ -73,6 +75,11 @@ namespace Script
         {
             if(EffectLoopCoroutine != null)
                 StopCoroutine(EffectLoopCoroutine);
+        }
+
+        public void takedmg(float dmg)
+        {
+            healthComponent.TakeDamage(dmg);
         }
 
     }

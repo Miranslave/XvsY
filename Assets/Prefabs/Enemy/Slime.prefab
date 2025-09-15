@@ -169,8 +169,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   dmg: 1
-  speed: 1
+  speed: 0.2
   baseTarget: {fileID: 0}
+  healthComponent: {fileID: 3327845185524717763}
 --- !u!95 &-5405266382901624128
 Animator:
   serializedVersion: 7
@@ -205,6 +206,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42052311802e4054fbfa80c5bd623823, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  max_health: 5
   linkedToUI: 0
   healthUiComp: {fileID: 0}

@@ -26,7 +26,7 @@ public class PlayerManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _money = 0;
+        _money = Money;
         _camera = Camera.main;
         _gridManager = FindFirstObjectByType<GridManager>();
         _uiMoneyManager.Innit(Money);
