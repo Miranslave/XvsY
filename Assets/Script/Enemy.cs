@@ -54,18 +54,17 @@ public class Enemy : MonoBehaviour
     public void CheckIfEnemyInLane()
     {
         
-        RaycastHit2D hit = Physics2D.Raycast(this.gameObject.transform.position, transform.right,rangeRaycast,layerMaskToDetect);
+        RaycastHit2D hit = Physics2D.Raycast(this.gameObject.transform.position, -1*transform.right,rangeRaycast,layerMaskToDetect);
         if(RaycastDebugMod)
-            Debug.DrawRay(this.gameObject.transform.position, Vector2.right * rangeRaycast, hit ? Color.green : Color.red);
+            Debug.DrawRay(this.gameObject.transform.position, Vector2.left * rangeRaycast, hit ? Color.green : Color.red);
         if (hit)
         {
             //Debug.Log("we hit "+hit.collider.gameObject.name);
-            if (hit.collider.gameObject.CompareTag("Enemy"))
+            if (hit.collider.gameObject.CompareTag("Unit"))
             {
                 UnitRaycasted = hit.collider.gameObject;
                 UnitInRange = true;
             }
-                
         }
         else
         {
@@ -139,5 +138,15 @@ public class Enemy : MonoBehaviour
 
 
 
+#if UNITY_EDITOR
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Vector3 origin = this.transform.position;
+        if(RaycastDebugMod)
+            Gizmos.DrawLine(origin,origin+(-transform.right)*rangeRaycast);
+    }
+
+#endif
 
 }

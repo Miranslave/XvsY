@@ -167,11 +167,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 275df11446f79d6409528fa23e5db5a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
   dmg: 1
   speed: 0.2
   baseTarget: {fileID: 0}
   healthComponent: {fileID: 3327845185524717763}
+  rangeRaycast: 5
+  RaycastDebugMod: 1
+  layerMaskToDetect:
+    serializedVersion: 2
+    m_Bits: 256
+  UnitInRange: 0
+  UnitRaycasted: {fileID: 0}
 --- !u!95 &-5405266382901624128
 Animator:
   serializedVersion: 7
@@ -207,5 +213,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   max_health: 5
+  current_health: 0
   linkedToUI: 0
   healthUiComp: {fileID: 0}
