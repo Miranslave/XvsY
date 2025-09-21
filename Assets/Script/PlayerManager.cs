@@ -58,11 +58,15 @@ public class PlayerManager : MonoBehaviour
     public void AddMoney(int toadd)
     {
         Money += toadd;
-        _healthComponent.TakeDamage(toadd);
     }
 
     void OnMoneyChanged()
     {
         _uiMoneyManager.NewValue(Money);
+    }
+
+    void TakeDmg()
+    {
+        
     }
 }

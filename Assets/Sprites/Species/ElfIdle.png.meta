@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: ad014b70c17cf7d46948dd55fe3dd955
+guid: c59fa8f50b7c2ff489ed9b72e1e4a2fd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -9080909269791386775
-    second: Male Orc_0
+      213: -7655150461635808075
+    second: ElfIdle_0
+  - first:
+      213: -8667766223454287856
+    second: ElfIdle_1
+  - first:
+      213: -2595090310506151524
+    second: ElfIdle_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +52,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -113,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Male Orc_0
+      name: ElfIdle_0
       rect:
         serializedVersion: 2
-        x: 7
+        x: 5
         y: 2
-        width: 19
-        height: 24
+        width: 23
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +134,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9635880c1212af180800000000000000
-      internalID: -9080909269791386775
+      spriteID: 5b4b700c63173c590800000000000000
+      internalID: -7655150461635808075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ElfIdle_1
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 2
+        width: 23
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 018c0e62b88e5b780800000000000000
+      internalID: -8667766223454287856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ElfIdle_2
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 2
+        width: 23
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c91093aac136cfbd0800000000000000
+      internalID: -2595090310506151524
       vertices: []
       indices: 
       edges: []
@@ -138,7 +188,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Male Orc_0: -9080909269791386775
+      ElfIdle_0: -7655150461635808075
+      ElfIdle_1: -8667766223454287856
+      ElfIdle_2: -2595090310506151524
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

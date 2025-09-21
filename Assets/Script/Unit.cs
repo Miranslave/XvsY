@@ -17,10 +17,12 @@ namespace Script
         public GameObject enemy_Gameobject;
         public LayerMask layerMaskEnemyToDetect;
         public bool RaycastDebugMod;
+        public Animator unit_animator;
         
         public void Start()
         {
             StartCoroutine(StartUnitCooldown());
+            unit_animator = GetComponent<Animator>();
         }
 
         public void Update()
@@ -67,6 +69,7 @@ namespace Script
         public void OnUpgrade()
         {
             level++;
+            unit_animator.SetTrigger("LvlUp");
             healthComponent.SetNewHealth(healthComponent.max_health * 1.5f);
             weapon.OnUpgrade();
         }

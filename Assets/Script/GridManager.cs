@@ -178,7 +178,7 @@ namespace Script
 
         public void ChangeHighlight(GameObject g)
         {
-            highlightInstance.GetComponent<SpriteRenderer>().sprite = g.GetComponent<SpriteRenderer>().sprite;
+            highlightInstance.GetComponent<SpriteRenderer>().sprite = g.GetComponentInChildren<SpriteRenderer>().sprite;
             _flowerToPlace = g;
             _ishighlightcursor = false;
         }
@@ -221,22 +221,18 @@ namespace Script
                     return;
                 }
 
-
-                
-
-
                 Vector3 pos = highlightInstance.transform.position;
-
-                GameObject g = _flowerToPlace; //Instantiate(_flowerToPlace,pos,Quaternion.identity);
+                GameObject g_incursor = _flowerToPlace; //Instantiate(_flowerToPlace,pos,Quaternion.identity);
+                
                 if (_gridmemory[gridpos.x, gridpos.y].IsOccupied)
                 {
+                    GameObject g_ingrid = _gridmemory[gridpos.x, gridpos.y].occupant;
                     //check if the same unit is there
-                    if (_gridmemory[gridpos.x, gridpos.y].occupant.name == g.name)
+                    if (CheckSameUnit(g_incursor,g_ingrid))
                     {
                         _gridmemory[gridpos.x, gridpos.y].occupant.GetComponent<Unit>().OnUpgrade();
                         Debug.LogError($"Tile à {gridpos} UPGRADE !");
                         Resetcursor();
-                        
                     }
                     else
                     {
@@ -246,11 +242,11 @@ namespace Script
                 }
                 else
                 {
-                    g.SetActive(true);
-                    g.transform.position = pos;
-                    g.transform.rotation = Quaternion.identity;
+                    g_incursor.SetActive(true);
+                    g_incursor.transform.position = pos;
+                    g_incursor.transform.rotation = Quaternion.identity;
                 
-                    _gridmemory[gridpos.x, gridpos.y].occupant = g;
+                    _gridmemory[gridpos.x, gridpos.y].occupant = g_incursor;
                     Debug.Log($" cell {gridpos}");
                     Resetcursor();
                 }
@@ -258,6 +254,16 @@ namespace Script
 
             }
 
+        }
+
+
+        bool CheckSameUnit(GameObject g_ingrid,GameObject g_incursor)
+        {
+            if (g_ingrid.name != g_incursor.name)
+                return false;
+            if (g_ingrid.GetComponent<BaseUnit>().weapon.name != g_incursor.GetComponent<BaseUnit>().weapon.name)
+                return false;
+            return true;
         }
 
 
