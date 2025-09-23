@@ -63,6 +63,8 @@ public class Enemy : MonoBehaviour
             if (hit.collider.gameObject.CompareTag("Unit"))
             {
                 UnitRaycasted = hit.collider.gameObject;
+                if(!Attacking)
+                    Attack();
                 UnitInRange = true;
             }
         }
@@ -113,7 +115,9 @@ public class Enemy : MonoBehaviour
 
     private void Attack()
     {
-        UnitRaycasted.GetComponent<Unit>().takedmg(dmg);
+        Attacking = true;
+        _animator.SetTrigger("Attack");
+         UnitRaycasted.GetComponent<Unit>().takedmg(dmg);
     }
 
     public void TakeDmg(int dmg)
@@ -134,6 +138,11 @@ public class Enemy : MonoBehaviour
     public void endKnockBack()
     {
         
+    }
+
+    public void ResetAttackState()
+    {
+        Attacking = false;
     }
 
 

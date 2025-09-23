@@ -40,7 +40,7 @@ namespace Script
         private PlaceUnit _placeUnit;
         
         private SpriteRenderer prefabSR;
-        private Vector2 mouspos;
+        public Vector2 mouspos;
         private Vector2Int gridpos;
         
         public GridManager(Vector3 position)
@@ -231,6 +231,7 @@ namespace Script
                     if (CheckSameUnit(g_incursor,g_ingrid))
                     {
                         _gridmemory[gridpos.x, gridpos.y].occupant.GetComponent<Unit>().OnUpgrade();
+                        Destroy(g_incursor);
                         Debug.LogError($"Tile à {gridpos} UPGRADE !");
                         Resetcursor();
                     }

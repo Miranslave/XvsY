@@ -44,6 +44,11 @@ public class HealthComponent : MonoBehaviour
             Death();
         }
     }
+
+    public float getCurrentHealth()
+    {
+        return current_health;
+    }
     
     private void Death()
     {

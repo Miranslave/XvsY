@@ -3,6 +3,7 @@ using System.Collections;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace Script
 {
@@ -18,7 +19,7 @@ namespace Script
         public LayerMask layerMaskEnemyToDetect;
         public bool RaycastDebugMod;
         public Animator unit_animator;
-        
+        public Sprite icon;
         public void Start()
         {
             StartCoroutine(StartUnitCooldown());
