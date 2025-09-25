@@ -8,13 +8,14 @@ using Unit = Unity.VisualScripting.Unit;
 
 public class Weapon : MonoBehaviour
 {
+    [Header("Weapon info")]
     [SerializeField] private WeaponStat weaponstat;
     [SerializeField] private Ammo ammo;
-    [SerializeField] private Sprite Icon;
-
+    [SerializeField] private Sprite Icon; 
     public Sprite Icon1 => Icon;
-
     private float _cooldown;
+    
+    [Header("Components")]
     private Collider2D attackZone;
     private Animator animator;
     private bool animatorup;

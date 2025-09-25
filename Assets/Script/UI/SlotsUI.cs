@@ -9,7 +9,7 @@ using Random = UnityEngine.Random;
 
 public class SlotsUI : MonoBehaviour
 {
-
+    
     [Header("SpritesRenderers")]
     [SerializeField] private SpriteRenderer _result;
     [SerializeField] private SpriteRenderer _top;
@@ -27,60 +27,7 @@ public class SlotsUI : MonoBehaviour
     public List<GameObject> WeightedListToDraw;
     // Current_G
     private GameObject g;
-   // Vector2.x is lower value Vector2.y is highest value
-
-    /*
-    public void Awake()
-    {
-        Normalizing(listToDraw);
-    }
-
-    // Statistics
-    private void Normalizing(List<Rollable> list_r)
-    {
-        List<float> list_probs = new List<float>();
-        float total = 0;
-        foreach (var x in list_r)
-        {
-            total += x.probs;
-            list_probs.Add(x.probs);
-        }
-
-        var normalized_list = SetTo100sys(list_probs, total);
-        WeightedListToDraw = GameObjectProbLinker(normalized_list);
-    }
-
-    
-    private List<int> SetTo100sys(List<float> probsList,float total)
-    {
-        List<int> res = new List<int>();
-        for (int i = 0; i < probsList.Count ; i++)
-        {
-            // 0 to 1 value
-            float temp_val = probsList[i] / total;
-            //normalized to 100 
-            float norm_temp_val = temp_val * 100;
-            // Gameobject number to create    
-            int NormalizedNbGameObject = Mathf.RoundToInt(norm_temp_val);
-            res.Add(NormalizedNbGameObject);
-        }
-        return res;
-    }
-
-    private List<GameObject> GameObjectProbLinker(List<int> probs)
-    {
-        List<GameObject> res = new List<GameObject>();
-        for (int i = 0; i < listToDraw.Count ; i++)
-        {
-            GameObject temp = listToDraw[i].prefab;
-            for (int j = 0; j < probs[i]; j++)
-            {
-                res.Add(temp);
-            }
-        }
-        return res;
-    }
-    */
+   
     
     public void LaunchSlot(GameObject gDrawn,List<Rollable> rollables)
     {

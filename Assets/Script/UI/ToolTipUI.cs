@@ -8,8 +8,8 @@ public class ToolTipUI : MonoBehaviour
 {
     public GameObject tooltipUI;
     public TMP_Text nameText, hpText, dmgText;
-    public Image spriteIcon;
-    
+    public Image spriteIcon,WeaponIcon;
+    public Vector2 Offset; 
     [SerializeField] private LayerMask layertohit;
     [SerializeField] private GridManager g;
     
@@ -28,9 +28,10 @@ public class ToolTipUI : MonoBehaviour
     
     
     
-    void Checktooltip(){
-        
-        tooltipUI.transform.position = g.mouspos + new Vector2(20f, -20f);
+    void Checktooltip()
+    {
+
+        tooltipUI.transform.position = g.mouspos + Offset;
 
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(g.mouspos), Vector2.zero,layertohit);
         if (hit.collider != null)
@@ -51,7 +52,7 @@ public class ToolTipUI : MonoBehaviour
         {
             currentUnit = null;
             if (showTooltipRoutine != null) StopCoroutine(showTooltipRoutine);
-            tooltipUI.SetActive(false);
+            //tooltipUI.SetActive(false);
         }
     }
     
@@ -64,8 +65,9 @@ public class ToolTipUI : MonoBehaviour
         {
             tooltipUI.SetActive(true);
             spriteIcon.sprite = unit.icon;
-            nameText.text = unit.name;
+            nameText.text = unit.base_name;
             hpText.text = $"HP: {unit.healthComponent.getCurrentHealth()}";
+            WeaponIcon.sprite = unit.weapon.Icon1;
             dmgText.text = $"DMG: {unit.weapon.GetDmg()}";
         }
     }

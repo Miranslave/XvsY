@@ -9,17 +9,30 @@ namespace Script
 {
     public abstract class Unit : MonoBehaviour
     {
-        public HealthComponent healthComponent;
-        public float cooldown = 3f;
+    
+        [Header("Unit info")]
+        public Sprite icon;
+        public string base_name;
+        [SerializeField] private float effect_cooldown = 3f;
         public int level = 1;
-        public Coroutine EffectLoopCoroutine;
+        
+        
+        [Header("Components")]
+        public HealthComponent healthComponent;
         public Weapon weapon;
+        public Animator unit_animator;
+        
+
+        
+        private Coroutine EffectLoopCoroutine;
+        
+        [Header("Raycast")]
         public bool EnemyInSight = false;
         public GameObject enemy_Gameobject;
-        public LayerMask layerMaskEnemyToDetect;
-        public bool RaycastDebugMod;
-        public Animator unit_animator;
-        public Sprite icon;
+        [SerializeField] private LayerMask layerMaskEnemyToDetect;
+        [SerializeField] private bool RaycastDebugMod;
+        
+        
         public void Start()
         {
             StartCoroutine(StartUnitCooldown());
@@ -38,7 +51,7 @@ namespace Script
         {
             while (true)
             {
-                yield return new WaitForSeconds(cooldown); // Attente entre les soleils
+                yield return new WaitForSeconds(effect_cooldown); // Attente entre les soleils
                 Effect();                                
             }
         }

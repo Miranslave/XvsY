@@ -19,8 +19,9 @@ public class SlotMachine : MonoBehaviour
     [SerializeField] private List<Rollable> RaceListToDraw;
     [SerializeField] private List<Rollable> WeaponListToDraw;
     [SerializeField] private List<Rollable> AbilitiesListToDraw;
-    
-    [Header("Slots machine Parameters")]
+
+    [Header("Slots machine Animator")] 
+    [SerializeField] private Animator _animator;
     /*[SerializeField] private float rollTime = 2f;          // durée totale du spin
     [SerializeField] private float interval = 0.1f;        // vitesse de changement de sprite
     [SerializeField] private float elapsed = 0f;*/
@@ -41,7 +42,6 @@ public class SlotMachine : MonoBehaviour
         RaceWeightedListToDraw = Normalizing(RaceListToDraw);
         WeaponWeightedListToDraw = Normalizing(WeaponListToDraw);
         playerManager = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
-        
     }
 
     public void StartSpin()
@@ -49,6 +49,7 @@ public class SlotMachine : MonoBehaviour
         if (playerManager.Money > 50)
         {
             playerManager.AddMoney(-50);
+            _animator.SetTrigger("SlotStart");
             StartCoroutine(SpinCoroutine());
             if (factory.PlaceUnit.rolledUnitPrefab)
             {
@@ -75,10 +76,9 @@ public class SlotMachine : MonoBehaviour
         yield return raceSpin;
         yield return weaponSpin;
         //yield return abilitySpin;
+        _animator.SetTrigger("SlotEnd");
         factory.Assemble(raceResult,weaponResult);
-        //Debug.Log($"Résultat final : {raceText.text} - {weaponText.text} - {abilityText.text}");
-        //GameObject g = Instantiate(BaseUnit);
-        //g.GetComponent<BaseUnit>()?.Innit(raceText.text,weaponText.text,abilityText.text);
+
         
     }
     

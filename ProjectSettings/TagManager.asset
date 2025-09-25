@@ -22,7 +22,7 @@ TagManager:
   - Enemy
   - Unit
   - Unit_UI
-  - 
+  - SLOTS
   - 
   - 
   - 
@@ -62,6 +62,9 @@ TagManager:
     locked: 0
   - name: Highlight
     uniqueID: 1180928307
+    locked: 0
+  - name: SLOTS
+    uniqueID: 1023288627
     locked: 0
   m_RenderingLayers:
   - Default

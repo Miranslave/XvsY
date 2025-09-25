@@ -5,14 +5,22 @@ using UnitBase = Unity.VisualScripting.UnitBase;
 
 public class Enemy : MonoBehaviour
 {
+
+
+    [Header("Enemy info")] [SerializeField]
+    private string name;
     public int dmg = 1;
     public float speed = 2;
     [SerializeField] private Transform baseTarget;
-    private Rigidbody2D rb;
-    private Animator _animator;
+   
+    [Header("Components")]
+    [SerializeField] private HealthComponent healthComponent;
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Animator _animator;
+    
     private bool DmgTaken = false;
     private bool Attacking = false;
-    [SerializeField] private HealthComponent healthComponent;
+    
     
     [Header("Raycast")]
     public float rangeRaycast;

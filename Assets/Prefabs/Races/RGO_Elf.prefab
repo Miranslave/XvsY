@@ -49,18 +49,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdbbe1053def4f35b57f9025871ec0b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthComponent: {fileID: 5729364908325464636}
-  cooldown: 3
+  icon: {fileID: 2048155614, guid: aea054ee20763674689a2b9c2c826574, type: 3}
+  base_name: Elve
+  effect_cooldown: 3
   level: 1
+  healthComponent: {fileID: 5729364908325464636}
   weapon: {fileID: 0}
+  unit_animator: {fileID: 0}
   EnemyInSight: 0
   enemy_Gameobject: {fileID: 0}
   layerMaskEnemyToDetect:
     serializedVersion: 2
     m_Bits: 128
   RaycastDebugMod: 0
-  unit_animator: {fileID: 0}
-  icon: {fileID: 2048155614, guid: aea054ee20763674689a2b9c2c826574, type: 3}
 --- !u!61 &6941098000298480737
 BoxCollider2D:
   m_ObjectHideFlags: 0
