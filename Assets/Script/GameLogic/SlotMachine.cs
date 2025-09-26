@@ -76,7 +76,7 @@ public class SlotMachine : MonoBehaviour
         yield return raceSpin;
         yield return weaponSpin;
         //yield return abilitySpin;
-        _animator.SetTrigger("SlotEnd");
+        
         factory.Assemble(raceResult,weaponResult);
 
         
@@ -150,5 +150,10 @@ public class SlotMachine : MonoBehaviour
             }
         }
         return res;
+    }
+
+    public void SetEndOfRoll()
+    {
+        _animator.SetTrigger("SlotEnd");
     }
 }
