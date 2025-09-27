@@ -79,7 +79,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -241106529
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7d56a3b32bc7f0e4c888ad5ddcbaf6bd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -167,10 +167,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 275df11446f79d6409528fa23e5db5a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: Slime
   dmg: 25
-  speed: 0.2
+  speed: 1.6
   baseTarget: {fileID: 0}
   healthComponent: {fileID: 3327845185524717763}
+  rb: {fileID: 0}
+  _animator: {fileID: 0}
   rangeRaycast: 0.5
   RaycastDebugMod: 1
   layerMaskToDetect:

@@ -65,8 +65,8 @@ public class PlayerManager : MonoBehaviour
         _uiMoneyManager.NewValue(Money);
     }
 
-    void TakeDmg()
+    public void TakeDmg(float dmg)
     {
-        
+        _healthComponent.TakeDamage(dmg);
     }
 }

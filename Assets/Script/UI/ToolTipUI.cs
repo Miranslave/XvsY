@@ -52,7 +52,7 @@ public class ToolTipUI : MonoBehaviour
         {
             currentUnit = null;
             if (showTooltipRoutine != null) StopCoroutine(showTooltipRoutine);
-            //tooltipUI.SetActive(false);
+            tooltipUI.SetActive(false);
         }
     }
     
@@ -68,7 +68,17 @@ public class ToolTipUI : MonoBehaviour
             nameText.text = unit.base_name;
             hpText.text = $"HP: {unit.healthComponent.getCurrentHealth()}";
             WeaponIcon.sprite = unit.weapon.Icon1;
-            dmgText.text = $"DMG: {unit.weapon.GetDmg()}";
+
+            if (unit.weapon.GetIsRanged())
+            {
+                dmgText.text = $"DMG: {unit.weapon.GetAmmoDmg()}";
+            }
+            else
+            {
+                dmgText.text = $"DMG: {unit.weapon.GetDmg()}";
+            }
+                
+            
         }
     }
     

@@ -169,7 +169,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SlottsIcon_2
+      name: SwordIcon
       rect:
         serializedVersion: 2
         x: 2
@@ -276,7 +276,7 @@ TextureImporter:
       ElveIcon: 2048155614
       HumanIcon: 7970356542635057792
       OrcIcon: 2731708229096555494
-      SlottsIcon_2: -1904446444876296550
+      SwordIcon: -1904446444876296550
       ThunderIcon: 7852020177221308206
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0

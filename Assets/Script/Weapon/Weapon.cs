@@ -22,10 +22,16 @@ public class Weapon : MonoBehaviour
     
     private static readonly int Attack = Animator.StringToHash("attack");
     private BaseUnit _unit;
-    
-    
 
+    public bool GetIsRanged()
+    {
+        return weaponstat.isRanged;
+    }
 
+    public float GetAmmoDmg()
+    {
+        return ammo.Damage;
+    }
 
     public float GetRange()
     {

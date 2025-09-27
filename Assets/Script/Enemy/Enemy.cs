@@ -99,7 +99,6 @@ public class Enemy : MonoBehaviour
         if (g.CompareTag("Bullet"))
         {
             Projectile p = g.GetComponent<Projectile>();
-            // test
             if (p == null)
             {
                 p = g.GetComponentInParent<Projectile>();
@@ -132,8 +131,12 @@ public class Enemy : MonoBehaviour
     {
         DmgTaken = true;
         healthComponent.TakeDamage(dmg);
-        //EnemyHitPhysics();
         _animator.SetTrigger("TakeHit");
+    }
+
+    public void ResetDmgTaken()
+    {
+        DmgTaken = false;
     }
 
 
