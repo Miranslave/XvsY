@@ -31,6 +31,7 @@ public class SlotMachine : MonoBehaviour
     
     [Header("Debug")] 
     public UnitFactory factory;
+    public PlaceUnitManager placeManager;
 
     public PlayerManager playerManager;
     [SerializeField] private List<GameObject> RaceWeightedListToDraw;
@@ -51,9 +52,15 @@ public class SlotMachine : MonoBehaviour
             playerManager.AddMoney(-50);
             _animator.SetTrigger("SlotStart");
             StartCoroutine(SpinCoroutine());
-            if (factory.PlaceUnit.rolledUnitPrefab)
+
+            PlaceUnit p;
+            if (placeManager.GetFirstUnusedPlaceUnit(out p))
             {
-                Destroy(factory.PlaceUnit.rolledUnitPrefab);
+                factory.PlaceUnit_current = p;
+            }
+            else
+            {
+                Debug.LogWarning("not a single slot available");
             }
         }
 

@@ -27,16 +27,20 @@ namespace Script
         public Sprite placeholder;
         private Unit _unit;
         private GameObject _grid;
-        private GridManager _gridManager;
-        private GameObject _player;
-        private PlayerManager _playerManager;
-
+       
+        
+        [Header("debug testing")]
+        [SerializeField] private GridManager _gridManager;
+        [SerializeField] private GameObject _player;
+        [SerializeField] private PlayerManager _playerManager;
+        [SerializeField] private UnitFactory _unitFactory;
         
 
   
         public void Start()
         {
             _grid = GameObject.FindGameObjectWithTag("Grid");
+            _unitFactory = GameObject.FindGameObjectWithTag("UnitFactory").GetComponent<UnitFactory>();
             _player = GameObject.FindGameObjectWithTag("Player");
             //_unit = prefab.GetComponent<Unit>();
             _playerManager = _player.GetComponent<PlayerManager>();
@@ -46,7 +50,7 @@ namespace Script
         public void ChangeCursor()
         {
             if(rolledUnitPrefab)
-                _gridManager.ChangeHighlight(rolledUnitPrefab);
+                _gridManager.ChangeHighlight(rolledUnitPrefab,this);
         }
 
         public void CleanCurrentPrefab()

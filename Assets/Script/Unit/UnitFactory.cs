@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class UnitFactory : MonoBehaviour
 {
-    public PlaceUnit PlaceUnit;
+    public PlaceUnit PlaceUnit_current;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        PlaceUnit = GetComponent<PlaceUnit>();
+        PlaceUnit_current = GetComponent<PlaceUnit>();
     }
 
 
@@ -18,7 +18,7 @@ public class UnitFactory : MonoBehaviour
         GameObject toSendWeapon = Instantiate(weapon, toSend.transform);
         //toSendWeapon.transform.position += new Vector3(0.3f, 0, 0); 
         toSend.GetComponent<BaseUnit>().weapon = toSendWeapon.GetComponent<Weapon>();
-        PlaceUnit.rolledUnitPrefab = toSend;
+        PlaceUnit_current.rolledUnitPrefab = toSend;
         Deactivate(toSend);
     }
 
@@ -29,9 +29,9 @@ public class UnitFactory : MonoBehaviour
 
     public void Clean()
     {
-        if (PlaceUnit.rolledUnitPrefab)
+        if (PlaceUnit_current.rolledUnitPrefab)
         {
-            PlaceUnit.CleanCurrentPrefab();
+            PlaceUnit_current.CleanCurrentPrefab();
         }
     }
 }

@@ -11,6 +11,7 @@ TagManager:
   - Enemy
   - PlaceUnit
   - Unit
+  - UnitFactory
   layers:
   - Default
   - TransparentFX

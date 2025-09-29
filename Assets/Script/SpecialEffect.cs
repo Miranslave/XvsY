@@ -7,7 +7,8 @@ public class SpecialEffect : MonoBehaviour
     public void SpawnSparks()
     {
         GameObject g  = Instantiate(sparkPrefab, this.transform.position, Quaternion.identity);
-        g.GetComponent<ParticleSystem>().Play();
-       // Destroy(sparks.gameObject, 1f); // Auto clean
+        ParticleSystem p = g.GetComponent<ParticleSystem>();
+        p.Play();
+        Destroy(g, 2f); // Auto clean
     }
 }

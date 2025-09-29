@@ -176,10 +176,11 @@ namespace Script
             return false;
         }
 
-        public void ChangeHighlight(GameObject g)
+        public void ChangeHighlight(GameObject g,PlaceUnit p)
         {
             highlightInstance.GetComponent<SpriteRenderer>().sprite = g.GetComponentInChildren<SpriteRenderer>().sprite;
             _flowerToPlace = g;
+            _placeUnit = p;
             _ishighlightcursor = false;
         }
 
@@ -205,19 +206,19 @@ namespace Script
             {
                 if (_ishighlightcursor)
                 {
-                    Debug.LogError("this is just the highlight :V");
+                    Debug.LogWarning("this is just the highlight :V");
                     return;
                 }
                 
                 if (highlightInstance == null)
                 {
-                    Debug.LogError("highlightInstance est null !");
+                    Debug.LogWarning("highlightInstance est null !");
                     return;
                 }
 
                 if (gridpos.x < 0 || gridpos.y < 0 || gridpos.x >= width || gridpos.y >= height)
                 {
-                    Debug.LogError($"gridpos hors grille : {gridpos}");
+                    Debug.LogWarning($"gridpos hors grille : {gridpos}");
                     return;
                 }
 
@@ -293,115 +294,6 @@ namespace Script
             }
         }
 #endif
-        
-        
-        
-        
-        /*
-        void Awake()
-        {
-            Controls = new InputActionSetBasic();
-            Controls.Enable();
-            if (Mouse.current != null && !Mouse.current.enabled)
-            {
-                InputSystem.EnableDevice(Mouse.current);
-                Debug.Log("Mouse device activé manuellement.");
-            }
-        }
-        void Start()
-        {
-            prefabSR = prefab.GetComponent<SpriteRenderer>();
-            offset = new Vector2(width * cellWidth / 2f,height * cellHeight / 2f);
-            _gridmemory = new Tile[width, height];
-            var bounds = prefabSR.bounds;
-
-
-
-            //cellWidth = bounds.size.x;
-            //cellHeight = bounds.size.y;
-            highlightInstance = Instantiate(highlightPrefab);
-            highlightInstance.SetActive(false);
-            Vector2 spriteSize = highlightInstance.GetComponent<SpriteRenderer>().sprite.bounds.size;
-            SpriteRenderer sr = highlightInstance.GetComponent<SpriteRenderer>();
-            Vector2 nativeSize = sr.sprite.bounds.size;
-            Vector3 newScale = new Vector3(
-                cellWidth / nativeSize.x,
-                cellHeight / nativeSize.y,
-                1f
-            );
-            highlightInstance.transform.localScale = newScale;
-            //Innit();
-
-        }
-
-
-        // Update is called once per frame
-        void Update()
-        {
-            Vector2 pointerPos = Controls.Basic.PointerPosition.ReadValue<Vector2>();
-            //Debug.Log($"PointerPosition = {pointerPos}");
-            Vector3 worldPos = Camera.main.ScreenToWorldPoint(pointerPos);
-            worldPos.z = 0f; // Tu veux travailler en 2D uniquement
-
-            // 3. Essayer de récupérer l’indice de case (x, y)
-            int x, y;
-            if (GetGridIndexFromWorld(worldPos, out x, out y))
-            {
-
-                Debug.Log($"Tu es sur la case : [{x}, {y}]");
-                // On calcule la position logique de la case dans le monde
-                Vector3 highlightPos = new Vector3(
-                    x * cellWidth - offset.x + cellWidth / 2f + transform.position.x,
-                    y * cellHeight - offset.y + cellHeight / 2f + transform.position.y,
-                    0
-                );
-
-                highlightInstance.SetActive(true);
-                highlightInstance.transform.position = highlightPos;
-            }
-            else
-            {
-                Debug.Log("La souris est hors grille");
-                highlightInstance.SetActive(false);
-            }
-        }
-
-        public void tracker(InputAction.CallbackContext context)
-        {
-             mouspos = Controls.Basic.PointerPosition.ReadValue<Vector2>();
-            Debug.Log(mouspos);
-        }
-        public void interract(InputAction.CallbackContext context)
-        {
-            Debug.Log(context + "keyboard");
-        }
-
-
-        
-        void Innit()
-        {
-            for (int x = 0; x < width; x++)
-            {
-                for (int y = 0; y < height; y++)
-                {
-
-                    if ((x+y) % 2 == 0)
-                    {
-                        prefabSR.sprite = sprites[0];
-                    }
-                    else
-                    {
-                        prefabSR.sprite = sprites[1];
-                    }
-                    Tile tempTile = new Tile();
-                    tempTile.gridPosition = new Vector2(x * cellWidth - offset.x, y * cellHeight - offset.y);
-                    tempTile.Innit(prefab);
-                    _gridmemory[x, y] = tempTile;
-                    GameObject g = Instantiate(tempTile.occupant, new Vector3(tempTile.gridPosition.x, tempTile.gridPosition.y, 0),Quaternion.identity);
-                    g.name = "cell " + x +" - " + y;
-                }
-            }
-        }*/
         
     }
 }

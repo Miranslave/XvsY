@@ -130,6 +130,7 @@ public class Enemy : MonoBehaviour
     public void TakeDmg(int dmg)
     {
         DmgTaken = true;
+        rb.linearVelocity = Vector2.zero;
         healthComponent.TakeDamage(dmg);
         _animator.SetTrigger("TakeHit");
     }
