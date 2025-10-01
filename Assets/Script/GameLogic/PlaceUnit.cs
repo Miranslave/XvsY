@@ -23,8 +23,10 @@ namespace Script
      
         
         
-        public Image preview;
+        public Image Race_preview;
+        public Image Weapon_preview;
         public Sprite placeholder;
+        public Sprite weaponplaceholder;
         private Unit _unit;
         private GameObject _grid;
        
@@ -60,20 +62,22 @@ namespace Script
         
         private void UpdatePreview()
         {
-            if (preview == null)return;
+            if (Race_preview == null || Weapon_preview == null)return;
             if (_rolledUnitPrefab == null)
             {
-                preview.sprite = placeholder;
+                Race_preview.sprite = placeholder;
+                Weapon_preview.sprite = weaponplaceholder;
                 //preview.color = Color.clear; // cache si pas d’unité
             }
             else
             {
                 // Essaye de récupérer un sprite depuis ton prefab
-                SpriteRenderer sr = _rolledUnitPrefab.GetComponentInChildren<SpriteRenderer>();
-                if (sr != null)
+                Unit u;
+                if (u = _rolledUnitPrefab.GetComponent<Unit>())
                 {
-                    preview.sprite = sr.sprite;
-                    preview.color = Color.white;
+                    Race_preview.sprite = u.icon;
+                    Weapon_preview.sprite = u.weapon.Icon1;
+                    Race_preview.color = Color.white;
                 }
             }
         }

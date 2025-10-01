@@ -19,6 +19,7 @@ public class UnitFactory : MonoBehaviour
         //toSendWeapon.transform.position += new Vector3(0.3f, 0, 0); 
         toSend.GetComponent<BaseUnit>().weapon = toSendWeapon.GetComponent<Weapon>();
         PlaceUnit_current.rolledUnitPrefab = toSend;
+        toSend.transform.SetParent(PlaceUnit_current.transform);
         Deactivate(toSend);
     }
 

@@ -179,7 +179,9 @@ namespace Script
         public void ChangeHighlight(GameObject g,PlaceUnit p)
         {
             highlightInstance.GetComponent<SpriteRenderer>().sprite = g.GetComponentInChildren<SpriteRenderer>().sprite;
+            g.transform.SetParent(null);
             _flowerToPlace = g;
+            
             _placeUnit = p;
             _ishighlightcursor = false;
         }

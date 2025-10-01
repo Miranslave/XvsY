@@ -49,19 +49,24 @@ public class SlotMachine : MonoBehaviour
     {
         if (playerManager.Money > 50)
         {
-            playerManager.AddMoney(-50);
-            _animator.SetTrigger("SlotStart");
-            StartCoroutine(SpinCoroutine());
 
             PlaceUnit p;
             if (placeManager.GetFirstUnusedPlaceUnit(out p))
             {
                 factory.PlaceUnit_current = p;
+                playerManager.AddMoney(-50);
+                //_animator.SetTrigger("SlotStart");
+                StartCoroutine(SpinCoroutine());
+
             }
             else
             {
                 Debug.LogWarning("not a single slot available");
             }
+        }
+        else
+        {
+            Debug.LogWarning("Nicky minaj no Money JUSTINNNNNNNNNNNNNN ");
         }
 
     }
@@ -161,6 +166,6 @@ public class SlotMachine : MonoBehaviour
 
     public void SetEndOfRoll()
     {
-        _animator.SetTrigger("SlotEnd");
+        //_animator.SetTrigger("SlotEnd");
     }
 }
