@@ -9,12 +9,12 @@ namespace Script.Status
             this.slowFactor = slowFactor;
         }
 
-        public override void Apply(Enemy target)
+        public void Apply(Enemy target)
         {
             target.speed *= slowFactor;
         }
         
-        public override void Remove(Enemy target)
+        public void Remove(Enemy target)
         {
             target.speed /= slowFactor; // remet la vitesse normale
         }

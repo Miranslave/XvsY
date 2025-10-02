@@ -11,14 +11,14 @@ namespace Script
             this.duration = duration;
         }
         
-        public virtual void Apply(Enemy target) { }        // Quand l’effet est appliqué
+        public virtual void Apply(EntityBase target) { }        // Quand l’effet est appliqué
         
-        public virtual void Update(Enemy target, float dt) // Chaque frame
+        public virtual void Update(EntityBase target, float dt) // Chaque frame
         {
             elapsedTime += dt;
         }
         
-        public virtual void Remove(Enemy target) { }       // Quand l’effet expire
+        public virtual void Remove(EntityBase target) { }       // Quand l’effet expire
 
         public bool IsExpired() => elapsedTime >= duration;
     }
