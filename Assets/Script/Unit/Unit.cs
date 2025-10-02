@@ -7,20 +7,18 @@ using UnityEngine.UI;
 
 namespace Script
 {
-    public abstract class Unit : MonoBehaviour
+    public abstract class Unit : EntityBase
     {
     
         [Header("Unit info")]
         public Sprite icon;
-        public string base_name;
-        [SerializeField] private float effect_cooldown = 3f;
         public int level = 1;
+        [SerializeField] private float effect_cooldown = 3f;
+        
         
         
         [Header("Components")]
-        public HealthComponent healthComponent;
         public Weapon weapon;
-        public Animator unit_animator;
         
 
         
@@ -32,11 +30,15 @@ namespace Script
         [SerializeField] private LayerMask layerMaskEnemyToDetect;
         [SerializeField] private bool RaycastDebugMod;
         
+        protected override void Awake()
+        {
+            base.Awake();
+        }
         
         public void Start()
         {
-            StartCoroutine(StartUnitCooldown());
-            unit_animator = GetComponent<Animator>();
+            EffectLoopCoroutine = StartCoroutine(StartUnitCooldown());
+            
         }
 
         public void Update()
@@ -83,7 +85,7 @@ namespace Script
         public void OnUpgrade()
         {
             level++;
-            unit_animator.SetTrigger("LvlUp");
+            animator.SetTrigger("LvlUp");
             healthComponent.SetNewHealth(healthComponent.max_health * 1.5f);
             weapon.OnUpgrade();
         }

@@ -14,7 +14,7 @@ public class ToolTipUI : MonoBehaviour
     [SerializeField] private GridManager g;
     
     public float hoverDelay = 0.2f;
-    private float hoverTimer = 0f;
+    //private float hoverTimer = 0f;
     
     private Coroutine showTooltipRoutine;
     private Unit currentUnit;
@@ -65,7 +65,7 @@ public class ToolTipUI : MonoBehaviour
         {
             tooltipUI.SetActive(true);
             spriteIcon.sprite = unit.icon;
-            nameText.text = unit.base_name;
+            nameText.text = unit.entityName;
             hpText.text = $"HP: {unit.healthComponent.getCurrentHealth()}";
             WeaponIcon.sprite = unit.weapon.Icon1;
 

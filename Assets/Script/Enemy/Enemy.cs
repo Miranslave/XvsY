@@ -3,23 +3,11 @@ using Script;
 using UnityEngine;
 using UnitBase = Unity.VisualScripting.UnitBase;
 
-public class Enemy : MonoBehaviour
+public class Enemy : EntityBase
 {
-
-
-    [Header("Enemy info")] [SerializeField]
-    private string name;
-    public int dmg = 1;
-    public float speed = 2;
+    [Header("Enemy info")] 
     [SerializeField] private Transform baseTarget;
-   
-    [Header("Components")]
-    [SerializeField] private HealthComponent healthComponent;
-    [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private Animator _animator;
     
-    private bool DmgTaken = false;
-    private bool Attacking = false;
     
     
     [Header("Raycast")]
@@ -28,13 +16,10 @@ public class Enemy : MonoBehaviour
     public LayerMask layerMaskToDetect;
     public bool UnitInRange;
     public GameObject UnitRaycasted;
-    
-    private void Awake()
+
+    protected override void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
-        _animator = GetComponent<Animator>();
-        rb.gravityScale = 0; // pas de gravité
-        rb.freezeRotation = true; // évite la rotation physique
+        base.Awake();
         baseTarget = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -50,13 +35,7 @@ public class Enemy : MonoBehaviour
         {
             MoveToTarget(baseTarget);
         }
-        if(rb.linearVelocity != Vector2.zero){
-            _animator.SetBool("IsMoving",true);
-        }
-        else
-        {
-            _animator.SetBool("IsMoving",false);
-        }
+        animator.SetBool("IsMoving", rb.linearVelocity != Vector2.zero);
     }
 
     public void CheckIfEnemyInLane()
@@ -93,69 +72,26 @@ public class Enemy : MonoBehaviour
         rb.linearVelocity = direction * speed;
     }
 
-    public void OnCollisionEnter2D(Collision2D other)
-    {
-        GameObject g = other.gameObject;
-        if (g.CompareTag("Bullet"))
-        {
-            Projectile p = g.GetComponent<Projectile>();
-            if (p == null)
-            {
-                p = g.GetComponentInParent<Projectile>();
-            }
-            int _dmg  = p.ammo.Damage;
-            TakeDmg(_dmg);
-        }
-    }
 
-    public void OnTriggerEnter2D(Collider2D other)
-    {
-        GameObject g = other.gameObject;
-        if (g.CompareTag("Bullet"))
-        {
-            Projectile p = g.GetComponentInParent<Projectile>();
-            int _dmg  = p.ammo.Damage;
-            TakeDmg(_dmg);
-        }
-    }
+
+
 
 
     private void Attack()
     {
         Attacking = true;
-        _animator.SetTrigger("Attack");
-         UnitRaycasted.GetComponent<Unit>().takedmg(dmg);
+        animator.SetTrigger("Attack");
+        UnitRaycasted.GetComponent<Unit>().takedmg(dmg);
     }
 
-    public void TakeDmg(int dmg)
-    {
-        DmgTaken = true;
-        rb.linearVelocity = Vector2.zero;
-        healthComponent.TakeDamage(dmg);
-        _animator.SetTrigger("TakeHit");
-    }
-
-    public void ResetDmgTaken()
-    {
-        DmgTaken = false;
-    }
-
+    
 
     // to modify to get different behavior (keep static) get pushed harder
     public void EnemyHitPhysics()
     {
         rb.linearVelocity = new Vector2(1.5f, 0);
     }
-
-    public void endKnockBack()
-    {
-        
-    }
-
-    public void ResetAttackState()
-    {
-        Attacking = false;
-    }
+    
 
 
 
