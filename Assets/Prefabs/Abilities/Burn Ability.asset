@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86282df07558412993c22861cdc85de2, type: 3}
+  m_Name: Burn Ability
+  m_EditorClassIdentifier: Assembly-CSharp::StatusAbility
+  abilityType: 1
+  effectName: Burning
+  Icon: {fileID: 21300000, guid: 13a4c7d033a5b99478350bda18125076, type: 3}
+  chance: 1
+  statusEffect: {fileID: 11400000, guid: 51033057e1794204c856c302981fc3ad, type: 2}

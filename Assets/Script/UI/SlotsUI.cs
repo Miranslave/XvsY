@@ -34,20 +34,17 @@ public class SlotsUI : MonoBehaviour
         //launch the ROLLLLLLLS
         StartCoroutine(Roll(gDrawn,rollables));
     }
-
-    public void SetEndSprite(GameObject gDrawn)
+    
+    public void LaunchSlot(ScriptableObject sDrawn,List<Rollable> rollables)
     {
-        Reset();
-        if(!gDrawn) return;
-        foreach (var vaRollable in listToDraw)
-        {
-            if (vaRollable.prefab == gDrawn)
-            {
-                _result.sprite = vaRollable.icon;
-                return;
-            }
-        }
+        //launch the ROLLLLLLLS
+        StartCoroutine(Roll(sDrawn,rollables));
     }
+
+    
+    
+    
+
 
     IEnumerator Roll(GameObject gDrawn,List<Rollable>rollables)
     {
@@ -72,7 +69,60 @@ public class SlotsUI : MonoBehaviour
         // Une fois terminé → fixe le sprite final
         SetEndSprite(gDrawn);
     }
+    
+    IEnumerator Roll(ScriptableObject sDrawn,List<Rollable>rollables)
+    {
+        if (listToDraw == null)
+        {
+            listToDraw = rollables;
+        }
+        while (elapsed < rollTime)
+        {
+            // Choisit un sprite aléatoire dans la liste
+            Sprite randomSprite = rollables[Random.Range(0, rollables.Count)].icon;
+            
+            // Mets à jour les 3 slots (optionnel : pour donner l’illusion que ça bouge)
+            _result.sprite = randomSprite;
+            if (_top) _top.sprite = rollables[Random.Range(0, rollables.Count)].icon;
+            if (_bottom) _bottom.sprite = rollables[Random.Range(0, rollables.Count)].icon;
 
+            yield return new WaitForSeconds(interval);
+            elapsed += interval;
+        }
+
+        // Une fois terminé → fixe le sprite final
+        SetEndSprite(sDrawn);
+    }
+
+    
+    public void SetEndSprite(GameObject gDrawn)
+    {
+        Reset();
+        if(!gDrawn) return;
+        foreach (var vaRollable in listToDraw)
+        {
+            if (vaRollable.prefab == gDrawn)
+            {
+                _result.sprite = vaRollable.icon;
+                return;
+            }
+        }
+    }
+    
+    public void SetEndSprite(ScriptableObject gDrawn)
+    {
+        Reset();
+        if(!gDrawn) return;
+        foreach (var vaRollable in listToDraw)
+        {
+            if (vaRollable.effect == gDrawn)
+            {
+                _result.sprite = vaRollable.icon;
+                return;
+            }
+        }
+    }
+    
     private void Reset()
     {
         elapsed = 0;

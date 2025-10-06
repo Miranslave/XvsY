@@ -14,6 +14,7 @@ public class SlotMachine : MonoBehaviour
     [Header("UI Elements")]
     public GameObject raceSpinUI;
     public GameObject weaponSpinUI;
+    public GameObject abilitySpinUI;
     
     [Header("Rollables")] 
     [SerializeField] private List<Rollable> RaceListToDraw;
@@ -21,7 +22,7 @@ public class SlotMachine : MonoBehaviour
     [SerializeField] private List<Rollable> AbilitiesListToDraw;
 
     [Header("Slots machine Animator")] 
-    [SerializeField] private Animator _animator;
+    //[SerializeField] private Animator _animator;
     /*[SerializeField] private float rollTime = 2f;          // durée totale du spin
     [SerializeField] private float interval = 0.1f;        // vitesse de changement de sprite
     [SerializeField] private float elapsed = 0f;*/
@@ -36,12 +37,13 @@ public class SlotMachine : MonoBehaviour
     public PlayerManager playerManager;
     [SerializeField] private List<GameObject> RaceWeightedListToDraw;
     [SerializeField] private List<GameObject> WeaponWeightedListToDraw;
-    [SerializeField] private List<GameObject> AbilitiesWeightedListToDraw;
+    [SerializeField] private List<SpecialCapacity> AbilitiesWeightedListToDraw;
     
     private void Awake()
     {
         RaceWeightedListToDraw = Normalizing(RaceListToDraw);
         WeaponWeightedListToDraw = Normalizing(WeaponListToDraw);
+        AbilitiesWeightedListToDraw = NormalizingScriptable(AbilitiesListToDraw);
         playerManager = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
     }
 
@@ -75,21 +77,21 @@ public class SlotMachine : MonoBehaviour
     {
         GameObject raceResult = null;
         GameObject weaponResult = null;
-        //GameObject abilityResult = null;
+        SpecialCapacity abilityResult = null;
         // Lancer chaque roue en parallèle
         Coroutine raceSpin = StartCoroutine(SpinWheel(raceSpinUI,RaceWeightedListToDraw,RaceListToDraw, g => raceResult = g));
         yield return new WaitForSeconds(delayBetweenStops);
 
         Coroutine weaponSpin = StartCoroutine(SpinWheel(weaponSpinUI,WeaponWeightedListToDraw,WeaponListToDraw,g => weaponResult = g));
         yield return new WaitForSeconds(delayBetweenStops);
-        //Coroutine abilitySpin = StartCoroutine(SpinWheel(abilityText, abilities, 1f, g => abilityResult = g));
+        Coroutine abilitySpin = StartCoroutine(SpinWheel(abilitySpinUI, AbilitiesWeightedListToDraw,AbilitiesListToDraw, So => abilityResult = So));
 
         // Attendre que tout soit fini
         yield return raceSpin;
         yield return weaponSpin;
-        //yield return abilitySpin;
+        yield return abilitySpin;
         
-        factory.Assemble(raceResult,weaponResult);
+        factory.Assemble(raceResult,weaponResult,abilityResult);
 
         
     }
@@ -99,6 +101,22 @@ public class SlotMachine : MonoBehaviour
         GameObject Choice = null;
         Choice = GameObjectWeightedList[Random.Range(0, GameObjectWeightedList.Count)];
         
+        if (uiGameObject)
+        {
+            uiGameObject.GetComponent<SlotsUI>().LaunchSlot(Choice,rollables);
+        }
+        else
+        {
+            Debug.LogError("UI GAMEOBJECT NOT FOUND");
+            yield break;
+        }
+        onFinished?.Invoke(Choice);
+    }
+    
+    private IEnumerator SpinWheel(GameObject uiGameObject,List<SpecialCapacity> scriptableObjectsWeightedList,List<Rollable> rollables,Action<SpecialCapacity> onFinished)
+    {
+        SpecialCapacity Choice = null;
+        Choice = scriptableObjectsWeightedList[Random.Range(0, scriptableObjectsWeightedList.Count)];
         if (uiGameObject)
         {
             uiGameObject.GetComponent<SlotsUI>().LaunchSlot(Choice,rollables);
@@ -133,6 +151,23 @@ public class SlotMachine : MonoBehaviour
         return GameObjectProbLinker(normalized_list,list_r);
     }
 
+    private List<SpecialCapacity> NormalizingScriptable(List<Rollable> list_r)
+    {
+        List<float> list_probs = new List<float>();
+        float total = 0;
+        foreach (var x in list_r)
+        {
+            total += x.probs;
+            list_probs.Add(x.probs);
+        }
+        
+        var normalized_list = SetTo100sys(list_probs, total);
+        if (normalized_list.Count == 0)
+        {
+            Debug.LogError("Error normalized list is empty");
+        }
+        return ScriptableObjectsProbLinker(normalized_list,list_r);
+    }
     
     private List<int> SetTo100sys(List<float> probsList,float total)
     {
@@ -164,8 +199,18 @@ public class SlotMachine : MonoBehaviour
         return res;
     }
 
-    public void SetEndOfRoll()
+    private List<SpecialCapacity> ScriptableObjectsProbLinker(List<int> probs,List<Rollable> rollables)
     {
-        //_animator.SetTrigger("SlotEnd");
+        List<SpecialCapacity> res = new List<SpecialCapacity>();
+        for (int i = 0; i < rollables.Count ; i++)
+        {
+            SpecialCapacity temp = rollables[i].effect;
+            for (int j = 0; j < probs[i]; j++)
+            {
+                res.Add(temp);
+            }
+        }
+        return res;
     }
+ 
 }

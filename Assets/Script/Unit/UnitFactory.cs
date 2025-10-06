@@ -1,4 +1,5 @@
 using Script;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UnitFactory : MonoBehaviour
@@ -11,13 +12,14 @@ public class UnitFactory : MonoBehaviour
     }
 
 
-    public void Assemble(GameObject race, GameObject weapon, Component ability = null)
+    public void Assemble(GameObject race, GameObject weapon, SpecialCapacity ability)
     {
         Clean();
         GameObject toSend = Instantiate(race);
         GameObject toSendWeapon = Instantiate(weapon, toSend.transform);
         //toSendWeapon.transform.position += new Vector3(0.3f, 0, 0); 
         toSend.GetComponent<BaseUnit>().weapon = toSendWeapon.GetComponent<Weapon>();
+        toSend.GetComponent<BaseUnit>().specialCapacity = ability;
         PlaceUnit_current.rolledUnitPrefab = toSend;
         toSend.transform.SetParent(PlaceUnit_current.transform);
         Deactivate(toSend);

@@ -1,8 +1,13 @@
+using Unity.VisualScripting;
+using UnityEngine;
+
 namespace Script
 {
-    public abstract class StatusEffect
+    
+    public abstract class StatusEffect : ScriptableObject
     {
-        public float duration; //durée en secondes
+        public string name;
+        public float duration = 1f; //durée en secondes
         protected float elapsedTime = 0f;
         
         
@@ -13,10 +18,6 @@ namespace Script
         
         public virtual void Apply(EntityBase target) { }        // Quand l’effet est appliqué
         
-        public virtual void Update(EntityBase target, float dt) // Chaque frame
-        {
-            elapsedTime += dt;
-        }
         
         public virtual void Remove(EntityBase target) { }       // Quand l’effet expire
 

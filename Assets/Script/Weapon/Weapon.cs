@@ -11,7 +11,8 @@ public class Weapon : MonoBehaviour
     [Header("Weapon info")]
     [SerializeField] private WeaponStat weaponstat;
     [SerializeField] private Ammo ammo;
-    [SerializeField] private Sprite Icon; 
+    [SerializeField] private Sprite Icon;
+    [SerializeField] private StatusEffect _statusEffect;
     public Sprite Icon1 => Icon;
     private float _cooldown;
     
@@ -32,7 +33,15 @@ public class Weapon : MonoBehaviour
     {
         return ammo.Damage;
     }
+    public void SetAmmoStatus(StatusEffect statusEffect)
+    {
+        ammo.StatusEffect = statusEffect;
+    }
 
+    public void SetWeaponStatus(StatusEffect statusEffect)
+    {
+        _statusEffect = statusEffect;
+    }
     public float GetRange()
     {
         return weaponstat.range;
@@ -98,7 +107,14 @@ public class Weapon : MonoBehaviour
 
     public void FireArrow()
     {
+        
         GameObject g = Instantiate(ammo.Prefab);
+        bool isCriticalStrike  = _unit.CheckCrit();
+        if (isCriticalStrike)
+        {
+            g.GetComponent<Ammo>().Damage *= 1.5f;
+            Debug.Log("CRITICAL STRIKE");
+        }
         g.transform.position = transform.position + Vector3.right*0.2f;
         g.GetComponent<Rigidbody2D>().AddForce(Vector3.right * ammo.Speed,ForceMode2D.Impulse);
     }
@@ -107,6 +123,12 @@ public class Weapon : MonoBehaviour
     public void CastMagic()
     {
         GameObject g = Instantiate(ammo.Prefab);
+        bool isCriticalStrike  = _unit.CheckCrit();
+        if (isCriticalStrike)
+        {
+            g.GetComponent<Ammo>().Damage *= 1.5f;
+            Debug.Log("CRITICAL STRIKE");
+        }
         g.GetComponent<Summoned>().toFollowed = _unit.enemy_Gameobject;
         g.GetComponent<Summoned>().Offset = new Vector3(0,0.38f,0);
     }
@@ -124,7 +146,22 @@ public class Weapon : MonoBehaviour
         GameObject g = other.gameObject;
         if (g.CompareTag("Enemy"))
         {
-            g.GetComponent<Enemy>().TakeDmg(weaponstat.damage);
+            Enemy enemyhit =  g.GetComponent<Enemy>();
+            bool isCriticalStrike  = _unit.CheckCrit();
+            if (isCriticalStrike)
+            {
+                enemyhit.TakeDmg(weaponstat.damage * 1.5f);
+                Debug.Log("CRITICAL STRIKE");
+            }
+            else
+            {
+                enemyhit.TakeDmg(weaponstat.damage);
+            }
+            
+            if (_statusEffect)
+            {
+                _statusEffect.Apply(enemyhit);
+            }
         }
         // Check for a mele attack 
     }

@@ -9,5 +9,6 @@ namespace Script
         [Range(0,100)]
         public float probs;
         public GameObject prefab;
+        public SpecialCapacity effect;
     }
 }

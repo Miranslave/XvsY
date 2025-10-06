@@ -8,6 +8,7 @@ namespace Script
         public string entityName;
         public int dmg = 1;
         public float speed = 2;
+        [Range(0f, 100f)] public float critChance = 0f;
 
         [Header("Components")]
         public HealthComponent healthComponent;
@@ -32,13 +33,20 @@ namespace Script
         
         
         // ----------------- Combat / Vie -----------------
-        public virtual void TakeDmg(int amount)
+        public virtual void TakeDmg(float amount)
         {
             DmgTaken = true;
             if (rb != null) rb.linearVelocity = Vector2.zero;
 
             healthComponent.TakeDamage(amount);
             animator.SetTrigger("TakeHit");
+        }
+
+        public virtual void TakeDmgOverTime(float duration, float amountpertick, float tickrate)
+        {
+            DmgTaken = true;
+            if (rb != null) rb.linearVelocity = Vector2.zero;
+            healthComponent.TakeDamageOverTime(duration,amountpertick,tickrate);
         }
 
         public void ResetDmgTaken() => DmgTaken = false;
@@ -68,7 +76,18 @@ namespace Script
             if (p != null)
             {
                 TakeDmg(p.ammo.Damage);
+                p.statusEffect?.Apply(this);
             }
+        }
+
+        public bool CheckCrit()
+        {
+            int crit_roll = Random.Range(0, 100);
+            if (crit_roll <= critChance)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

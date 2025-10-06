@@ -1,9 +1,11 @@
+using UnityEngine;
+
 namespace Script.Status
 {
+    [CreateAssetMenu(menuName = "StatusEffects/Slow")]
     public class Slow : StatusEffect
     {
-        private float slowFactor;
-        
+        [SerializeField] private float slowFactor;
         public Slow(float duration,float slowFactor) : base(duration)
         {
             this.slowFactor = slowFactor;

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using JetBrains.Annotations;
+using Script.Status;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -13,15 +14,13 @@ namespace Script
         [Header("Unit info")]
         public Sprite icon;
         public int level = 1;
-        [SerializeField] private float effect_cooldown = 3f;
+        [SerializeField] public float effect_cooldown = 3f;
         
         
         
         [Header("Components")]
         public Weapon weapon;
-        
-
-        
+        public SpecialCapacity specialCapacity;
         private Coroutine EffectLoopCoroutine;
         
         [Header("Raycast")]
@@ -37,8 +36,8 @@ namespace Script
         
         public void Start()
         {
+
             EffectLoopCoroutine = StartCoroutine(StartUnitCooldown());
-            
         }
 
         public void Update()
@@ -101,5 +100,26 @@ namespace Script
             healthComponent.TakeDamage(dmg);
         }
 
+        private void CapacityAdding()
+        {
+            if (specialCapacity.abilityType == AbilityType.StatModifier)
+            {
+                StatModifierAbility statModifierAbility = (StatModifierAbility)specialCapacity;
+                statModifierAbility.Apply(this);
+            }
+            if(specialCapacity.abilityType == AbilityType.Status)
+            {
+                StatusAbility statusAbility = (StatusAbility)specialCapacity;
+                if (weapon.GetIsRanged())
+                {
+                    weapon.SetAmmoStatus(statusAbility.statusEffect);
+                }
+                else
+                {
+                    weapon.SetAmmoStatus(statusAbility.statusEffect);
+                }
+                
+            }
+        }
     }
 }

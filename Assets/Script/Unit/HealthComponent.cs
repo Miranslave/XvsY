@@ -1,3 +1,5 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -32,7 +34,22 @@ public class HealthComponent : MonoBehaviour
             healthUiComp.NewValue(current_health);
         }
     }
-    
+
+    public void TakeDamageOverTime(float duration,float dmgpertick,float tickrate)
+    {
+        StartCoroutine(DotDamage(duration, dmgpertick,tickrate));
+    }
+
+    IEnumerator DotDamage(float duration, float dmgpertick,float tickrate)
+    {
+        float timer = 0f;
+        while (timer < duration)
+        {
+            TakeDamage(dmgpertick);
+            yield return new WaitForSeconds(tickrate);
+            timer += tickrate;
+        }
+    }
     
     public void TakeDamage(float dmg)
     {
