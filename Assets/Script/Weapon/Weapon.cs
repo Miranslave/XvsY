@@ -14,6 +14,12 @@ public class Weapon : MonoBehaviour
     [SerializeField] private Sprite Icon;
     [SerializeField] private StatusEffect _statusEffect;
     public Sprite Icon1 => Icon;
+    public StatusEffect StatusEffect
+    {
+        get => _statusEffect;
+        set => _statusEffect = value;
+    }
+
     private float _cooldown;
     
     [Header("Components")]
@@ -109,7 +115,9 @@ public class Weapon : MonoBehaviour
     {
         
         GameObject g = Instantiate(ammo.Prefab);
+
         bool isCriticalStrike  = _unit.CheckCrit();
+        AmmoAddingEffect(g);
         if (isCriticalStrike)
         {
             g.GetComponent<Ammo>().Damage *= 1.5f;
@@ -124,6 +132,7 @@ public class Weapon : MonoBehaviour
     {
         GameObject g = Instantiate(ammo.Prefab);
         bool isCriticalStrike  = _unit.CheckCrit();
+        AmmoAddingEffect(g);
         if (isCriticalStrike)
         {
             g.GetComponent<Ammo>().Damage *= 1.5f;
@@ -164,5 +173,11 @@ public class Weapon : MonoBehaviour
             }
         }
         // Check for a mele attack 
+    }
+
+    private void AmmoAddingEffect(GameObject g)
+    {
+        Projectile p = g.GetComponent<Projectile>();
+        p.statusEffect = _statusEffect;
     }
 }

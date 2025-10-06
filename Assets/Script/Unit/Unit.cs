@@ -32,11 +32,12 @@ namespace Script
         protected override void Awake()
         {
             base.Awake();
+            
         }
         
         public void Start()
         {
-
+            CapacityAdding();
             EffectLoopCoroutine = StartCoroutine(StartUnitCooldown());
         }
 
@@ -114,11 +115,7 @@ namespace Script
                 {
                     weapon.SetAmmoStatus(statusAbility.statusEffect);
                 }
-                else
-                {
-                    weapon.SetAmmoStatus(statusAbility.statusEffect);
-                }
-                
+                weapon.StatusEffect = statusAbility.statusEffect;
             }
         }
     }
