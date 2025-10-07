@@ -8351,6 +8351,8 @@ MonoBehaviour:
   current_health: 0
   linkedToUI: 1
   healthUiComp: {fileID: 1225749824}
+  Uihitdmg: {fileID: 0}
+  _Canvas: {fileID: 0}
 --- !u!114 &1622949163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9537,8 +9539,16 @@ PrefabInstance:
       value: 0.00004386902
       objectReference: {fileID: 0}
     - target: {fileID: 3307059452589623461, guid: 1db289330bfd3b141bf9dd51f6198a78, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3307059452589623461, guid: 1db289330bfd3b141bf9dd51f6198a78, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3307059452589623461, guid: 1db289330bfd3b141bf9dd51f6198a78, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3591951415945691861, guid: 1db289330bfd3b141bf9dd51f6198a78, type: 3}
       propertyPath: m_AnchorMax.y

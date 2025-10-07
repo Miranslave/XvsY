@@ -120,7 +120,7 @@ public class Weapon : MonoBehaviour
         AmmoAddingEffect(g);
         if (isCriticalStrike)
         {
-            g.GetComponent<Ammo>().Damage *= 1.5f;
+            //g.GetComponent<Projectile>().ammo.StatusEffect *= 1.5f;
             Debug.Log("CRITICAL STRIKE");
         }
         g.transform.position = transform.position + Vector3.right*0.2f;

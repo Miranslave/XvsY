@@ -52,6 +52,7 @@ MonoBehaviour:
   entityName: Elf
   dmg: 1
   speed: 2
+  critChance: 0
   healthComponent: {fileID: 5729364908325464636}
   rb: {fileID: 0}
   animator: {fileID: 0}
@@ -59,6 +60,7 @@ MonoBehaviour:
   level: 1
   effect_cooldown: 3
   weapon: {fileID: 0}
+  specialCapacity: {fileID: 0}
   EnemyInSight: 0
   enemy_Gameobject: {fileID: 0}
   layerMaskEnemyToDetect:
@@ -127,6 +129,7 @@ MonoBehaviour:
   current_health: 0
   linkedToUI: 0
   healthUiComp: {fileID: 5850468873791413829}
+  Uihitdmg: {fileID: 2743584755829223540, guid: dc55ff1aa5086d248b2e2072f08dab01, type: 3}
 --- !u!114 &5850468873791413829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,6 +223,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -241,6 +246,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -241106529
   m_SortingLayer: 4
   m_SortingOrder: 0

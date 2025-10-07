@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Wand
   m_EditorClassIdentifier: 
   isRanged: 1
-  frequency: 10
+  frequency: 5
   damage: 5
   range: 10

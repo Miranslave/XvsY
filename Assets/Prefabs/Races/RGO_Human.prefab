@@ -129,6 +129,7 @@ MonoBehaviour:
   current_health: 0
   linkedToUI: 0
   healthUiComp: {fileID: 5474410724378677168}
+  Uihitdmg: {fileID: 2743584755829223540, guid: dc55ff1aa5086d248b2e2072f08dab01, type: 3}
 --- !u!114 &5474410724378677168
 MonoBehaviour:
   m_ObjectHideFlags: 0

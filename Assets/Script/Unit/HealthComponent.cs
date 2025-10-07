@@ -10,11 +10,20 @@ public class HealthComponent : MonoBehaviour
     public float max_health;
     [SerializeField] private float current_health;
     [SerializeField] private bool linkedToUI = false;
-    [SerializeField] private UIManager healthUiComp; //temporary
-    
+    [SerializeField] private UIManager healthUiComp;//temporary
+    [SerializeField] private GameObject Uihitdmg;
+
+    [SerializeField] private Canvas _Canvas;
+
+    private bool ui_hit_dmg = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        _Canvas = this.GetComponentInChildren<Canvas>();
+        if (_Canvas)
+        {
+            ui_hit_dmg = true;
+        }
         current_health = max_health;
         if (healthUiComp)
         {
@@ -28,6 +37,8 @@ public class HealthComponent : MonoBehaviour
     {
         max_health = newhealth;
         current_health = newhealth;
+        if(ui_hit_dmg)
+            UiUpdate(newhealth); 
         if (healthUiComp)
         {
             healthUiComp.Innit(max_health); 
@@ -56,6 +67,7 @@ public class HealthComponent : MonoBehaviour
         current_health -= dmg;
         if(linkedToUI)
             healthUiComp.NewValue(current_health);
+        UiUpdate(dmg); 
         if (current_health <= 0)
         {
             Death();
@@ -70,5 +82,11 @@ public class HealthComponent : MonoBehaviour
     private void Death()
     {
         Destroy(gameObject);
+    }
+
+    private void UiUpdate(float dmg)
+    {
+        GameObject g = Instantiate(Uihitdmg, _Canvas.gameObject.transform);
+        g.GetComponent<DmgUIManager>().Setup(dmg);
     }
 }

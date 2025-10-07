@@ -30,5 +30,10 @@ public class Summoned : MonoBehaviour
     {
         this.transform.position = g.transform.position;
     }
+
+    private void EndSummoned()
+    {
+        Destroy(this.gameObject);
+    }
     
 }

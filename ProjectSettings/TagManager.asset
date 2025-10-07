@@ -12,6 +12,7 @@ TagManager:
   - PlaceUnit
   - Unit
   - UnitFactory
+  - Canva
   layers:
   - Default
   - TransparentFX
@@ -72,6 +73,9 @@ TagManager:
     locked: 0
   - name: special_effect
     uniqueID: 3223313813
+    locked: 0
+  - name: Dmg_ui
+    uniqueID: 887128391
     locked: 0
   m_RenderingLayers:
   - Default
