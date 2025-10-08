@@ -8353,6 +8353,7 @@ MonoBehaviour:
   healthUiComp: {fileID: 1225749824}
   Uihitdmg: {fileID: 0}
   _Canvas: {fileID: 0}
+  ui_hit_dmg: 0
 --- !u!114 &1622949163
 MonoBehaviour:
   m_ObjectHideFlags: 0

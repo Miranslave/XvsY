@@ -58,7 +58,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 887128391
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &3850825357687746503
@@ -326,4 +326,5 @@ MonoBehaviour:
   linkedToUI: 0
   healthUiComp: {fileID: 0}
   Uihitdmg: {fileID: 2743584755829223540, guid: dc55ff1aa5086d248b2e2072f08dab01, type: 3}
-  _Canvas: {fileID: 0}
+  _Canvas: {fileID: 5038943148785281523}
+  ui_hit_dmg: 0

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Script;
 using Script.Struct;
+using Unity.VisualScripting;
 using UnityEditor.Animations;
 using UnityEngine;
 using Unit = Unity.VisualScripting.Unit;
@@ -11,6 +12,7 @@ public class Weapon : MonoBehaviour
     [Header("Weapon info")]
     [SerializeField] private WeaponStat weaponstat;
     [SerializeField] private Ammo ammo;
+    [SerializeField] private Ammo ammo_clone;
     [SerializeField] private Sprite Icon;
     [SerializeField] private StatusEffect _statusEffect;
     public Sprite Icon1 => Icon;
@@ -37,11 +39,11 @@ public class Weapon : MonoBehaviour
 
     public float GetAmmoDmg()
     {
-        return ammo.Damage;
+        return ammo_clone.Damage;
     }
     public void SetAmmoStatus(StatusEffect statusEffect)
     {
-        ammo.StatusEffect = statusEffect;
+        ammo_clone.StatusEffect = statusEffect;
     }
 
     public void SetWeaponStatus(StatusEffect statusEffect)
@@ -60,12 +62,13 @@ public class Weapon : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
+        ammo_clone = Instantiate(ammo);
         _unit = gameObject.GetComponentInParent<BaseUnit>();
         StartCoroutine(StartWeaponCooldown());
         _cooldown = weaponstat.frequency;
         if (weaponstat.isRanged)
         {
-            ammo.Prefab.GetComponent<Projectile>().ammo = ammo;
+            ammo_clone.Prefab.GetComponent<Projectile>().ammo = ammo;
         }
         if (animator = GetComponent<Animator>())
         {
@@ -114,27 +117,29 @@ public class Weapon : MonoBehaviour
     public void FireArrow()
     {
         
-        GameObject g = Instantiate(ammo.Prefab);
+        GameObject g = Instantiate(ammo_clone.Prefab);
 
         bool isCriticalStrike  = _unit.CheckCrit();
         AmmoAddingEffect(g);
         if (isCriticalStrike)
         {
-            //g.GetComponent<Projectile>().ammo.StatusEffect *= 1.5f;
+            g.GetComponent<Projectile>().SetCriticalStrike();
+            g.GetComponent<Projectile>().ammo.Damage *= 1.5f;
             Debug.Log("CRITICAL STRIKE");
         }
         g.transform.position = transform.position + Vector3.right*0.2f;
-        g.GetComponent<Rigidbody2D>().AddForce(Vector3.right * ammo.Speed,ForceMode2D.Impulse);
+        g.GetComponent<Rigidbody2D>().AddForce(Vector3.right * ammo_clone.Speed,ForceMode2D.Impulse);
     }
 
 
     public void CastMagic()
     {
-        GameObject g = Instantiate(ammo.Prefab);
+        GameObject g = Instantiate(ammo_clone.Prefab);
         bool isCriticalStrike  = _unit.CheckCrit();
         AmmoAddingEffect(g);
         if (isCriticalStrike)
         {
+            g.GetComponent<Projectile>().SetCriticalStrike();
             g.GetComponent<Ammo>().Damage *= 1.5f;
             Debug.Log("CRITICAL STRIKE");
         }
@@ -159,7 +164,8 @@ public class Weapon : MonoBehaviour
             bool isCriticalStrike  = _unit.CheckCrit();
             if (isCriticalStrike)
             {
-                enemyhit.TakeDmg(weaponstat.damage * 1.5f);
+                
+                enemyhit.TakeDmg(weaponstat.damage * 1.5f,true);
                 Debug.Log("CRITICAL STRIKE");
             }
             else

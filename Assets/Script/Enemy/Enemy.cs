@@ -9,7 +9,6 @@ public class Enemy : EntityBase
     [SerializeField] private Transform baseTarget;
     
     
-    
     [Header("Raycast")]
     public float rangeRaycast;
     public bool RaycastDebugMod;
@@ -72,11 +71,7 @@ public class Enemy : EntityBase
         rb.linearVelocity = direction * speed;
     }
 
-
-
-
-
-
+    
     private void Attack()
     {
         Attacking = true;

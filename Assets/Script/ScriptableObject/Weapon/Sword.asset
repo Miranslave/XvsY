@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isRanged: 0
   frequency: 0.2
-  damage: 3
+  damage: 1
   range: 2

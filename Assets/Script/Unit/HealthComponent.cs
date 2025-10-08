@@ -15,7 +15,7 @@ public class HealthComponent : MonoBehaviour
 
     [SerializeField] private Canvas _Canvas;
 
-    private bool ui_hit_dmg = false;
+    [SerializeField] private bool ui_hit_dmg = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -37,8 +37,8 @@ public class HealthComponent : MonoBehaviour
     {
         max_health = newhealth;
         current_health = newhealth;
-        if(ui_hit_dmg)
-            UiUpdate(newhealth); 
+        if(ui_hit_dmg && current_health  >= 0)
+            UiUpdate(newhealth,false); 
         if (healthUiComp)
         {
             healthUiComp.Innit(max_health); 
@@ -62,12 +62,13 @@ public class HealthComponent : MonoBehaviour
         }
     }
     
-    public void TakeDamage(float dmg)
+    public void TakeDamage(float dmg,bool iscrit = false)
     {
         current_health -= dmg;
         if(linkedToUI)
             healthUiComp.NewValue(current_health);
-        UiUpdate(dmg); 
+        if(ui_hit_dmg && current_health >= 0)
+            UiUpdate(dmg, iscrit); 
         if (current_health <= 0)
         {
             Death();
@@ -84,9 +85,19 @@ public class HealthComponent : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void UiUpdate(float dmg)
+    private void UiUpdate(float dmg,bool iscrit)
     {
-        GameObject g = Instantiate(Uihitdmg, _Canvas.gameObject.transform);
-        g.GetComponent<DmgUIManager>().Setup(dmg);
+        if (Uihitdmg == null || _Canvas == null)
+        {
+            Debug.LogWarning("⚠️ Uihitdmg prefab ou Canvas manquant sur " + gameObject.name);
+            return;
+        }
+        
+        // Instancie sous le Canvas
+        GameObject g = Instantiate(Uihitdmg, _Canvas.transform);
+        // Setup l’affichage du texte
+        var dmgUI = g.GetComponent<DmgUIManager>();
+        if (dmgUI != null)
+            dmgUI.Setup(dmg,iscrit);
     }
 }

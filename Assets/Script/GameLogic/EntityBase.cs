@@ -33,11 +33,10 @@ namespace Script
         
         
         // ----------------- Combat / Vie -----------------
-        public virtual void TakeDmg(float amount)
+        public virtual void TakeDmg(float amount,bool iscrit = false)
         {
             DmgTaken = true;
             if (rb != null) rb.linearVelocity = Vector2.zero;
-
             healthComponent.TakeDamage(amount);
             animator.SetTrigger("TakeHit");
         }
@@ -75,7 +74,7 @@ namespace Script
             Projectile p = g.GetComponent<Projectile>() ?? g.GetComponentInParent<Projectile>();
             if (p != null)
             {
-                TakeDmg(p.ammo.Damage);
+                TakeDmg(p.ammo.Damage,p.IsCriticalStrike);
                 p.statusEffect?.Apply(this);
             }
         }

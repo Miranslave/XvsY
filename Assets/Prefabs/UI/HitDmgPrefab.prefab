@@ -149,6 +149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7059f2c39a70d2643aeba9aa3e6ae02c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  lifetime: 1
   _color: {r: 1, g: 0.5045948, b: 0, a: 0}
   textMesh: {fileID: 874614684789588637}
+  scale: 0.05

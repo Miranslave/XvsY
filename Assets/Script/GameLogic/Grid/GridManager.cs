@@ -208,7 +208,7 @@ namespace Script
             {
                 if (_ishighlightcursor)
                 {
-                    Debug.LogWarning("this is just the highlight :V");
+                    //Debug.LogWarning("this is just the highlight :V");
                     return;
                 }
                 
