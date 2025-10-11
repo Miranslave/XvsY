@@ -8,15 +8,19 @@ public class EnemySpawner : MonoBehaviour
 {
 
 
-    public List<Transform> Spawnpoint;
-    public GameObject enemyToSpawn;
-    public Coroutine currentwork;
-    public int n = 0;
+    [SerializeField] private List<Transform> Spawnpoint;
+    [SerializeField] private GameObject enemyToSpawn;
+    [SerializeField] private Coroutine currentwork;
+    [SerializeField] private int n = 0;
+    [SerializeField] private float SpawnRate = 5f;
+
+    public bool Debug_mode;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //currentwork = StartCoroutine(Timer());
+        if(currentwork == null)
+            currentwork = StartCoroutine(Timer());
     }
 
     private void OnDisable()
@@ -27,29 +31,41 @@ public class EnemySpawner : MonoBehaviour
 
     private void OnEnable()
     {
+        
         if(currentwork == null)
             currentwork = StartCoroutine(Timer());
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 
     IEnumerator Timer()
     {
         while (true)
-        {
-            float t = 5;//Random.Range(3, 5);
-            yield return new WaitForSeconds(t);
-            Spawn();
+        { 
+            yield return new WaitForSeconds(SpawnRate);
+            Spawn(1);
         }
     }
 
     void Spawn()
     {
+        if (Spawnpoint == null || Spawnpoint.Count == 0)
+        {
+            Debug.LogWarning("⚠️ Aucun spawnpoint défini !");
+            return;
+        }
         Transform spawnedTransform = Spawnpoint[Random.Range(0, Spawnpoint.Count)];
+        GameObject g = Instantiate(enemyToSpawn, spawnedTransform.position, Quaternion.identity);
+        g.name = "slime " + n;
+        n++;
+    }
+    void Spawn(int i)
+    {
+        if (Spawnpoint == null || Spawnpoint.Count == 0)
+        {
+            Debug.LogWarning("⚠️ Aucun spawnpoint défini !");
+            return;
+        }
+        Transform spawnedTransform = Spawnpoint[0];
         GameObject g = Instantiate(enemyToSpawn, spawnedTransform.position, Quaternion.identity);
         g.name = "slime " + n;
         n++;

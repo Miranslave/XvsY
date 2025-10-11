@@ -30,7 +30,7 @@ public class Enemy : EntityBase
 
     private void FixedUpdate() // utiliser FixedUpdate pour la physique
     {
-        if (!DmgTaken && !UnitInRange)
+        if (!UnitInRange)
         {
             MoveToTarget(baseTarget);
         }
@@ -68,7 +68,7 @@ public class Enemy : EntityBase
         // direction en fonction de la position de la base
         direction = (new Vector2(target.position.x,this.transform.position.y) - rb.position).normalized; 
         // applique une vélocité constante
-        rb.linearVelocity = direction * speed;
+        rb.linearVelocity = direction * current_speed;
     }
 
     
@@ -86,7 +86,7 @@ public class Enemy : EntityBase
     {
         rb.linearVelocity = new Vector2(1.5f, 0);
     }
-    
+
 
 
 
@@ -98,7 +98,6 @@ public class Enemy : EntityBase
         if(RaycastDebugMod)
             Gizmos.DrawLine(origin,origin+(-transform.right)*rangeRaycast);
     }
-
 #endif
 
 }

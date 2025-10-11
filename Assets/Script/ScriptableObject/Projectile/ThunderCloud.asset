@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ThunderCloud
   m_EditorClassIdentifier: 
   speed: 5
-  damage: 1
+  baseDamage: 2
   cross: 0
-  statusEffect: {fileID: 11400000, guid: b9eca6ed65cda26499d2045bfe6720ef, type: 2}
+  statusEffect: {fileID: 0}
   prefab: {fileID: 7903214943953086655, guid: 79a2fe8432f086c4f97fe5918c8e848b, type: 3}

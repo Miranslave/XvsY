@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Bow
   m_EditorClassIdentifier: 
   isRanged: 1
-  frequency: 3
+  frequency: 1
   damage: 1
   range: 8

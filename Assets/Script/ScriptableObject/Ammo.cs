@@ -6,16 +6,16 @@ using UnityEngine.Serialization;
 public class Ammo : ScriptableObject
 {
   [SerializeField] private float speed;
-  [SerializeField] private float damage;
+  [SerializeField] private float baseDamage;
   [SerializeField] private bool cross;
   [SerializeField] private StatusEffect statusEffect;
   [SerializeField] private GameObject prefab;
   
   public float Speed => speed;
-  public float Damage
+  public float BaseDamage
   {
-    get => damage;
-    set => damage = value;
+    get => baseDamage;
+    set => baseDamage = value;
   }
   
   public StatusEffect StatusEffect

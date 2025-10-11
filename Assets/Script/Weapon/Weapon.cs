@@ -15,6 +15,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private Ammo ammo_clone;
     [SerializeField] private Sprite Icon;
     [SerializeField] private StatusEffect _statusEffect;
+    [SerializeField] private Coroutine WeaponCooldownCoroutine;
     public Sprite Icon1 => Icon;
     public StatusEffect StatusEffect
     {
@@ -31,7 +32,8 @@ public class Weapon : MonoBehaviour
     
     private static readonly int Attack = Animator.StringToHash("attack");
     private BaseUnit _unit;
-
+    private bool weaponIsFiring = false;
+    
     public bool GetIsRanged()
     {
         return weaponstat.isRanged;
@@ -39,16 +41,16 @@ public class Weapon : MonoBehaviour
 
     public float GetAmmoDmg()
     {
-        return ammo_clone.Damage;
+        return ammo_clone.BaseDamage;
     }
     public void SetAmmoStatus(StatusEffect statusEffect)
     {
-        ammo_clone.StatusEffect = statusEffect;
+        ammo_clone.StatusEffect = Instantiate(statusEffect);
     }
 
     public void SetWeaponStatus(StatusEffect statusEffect)
     {
-        _statusEffect = statusEffect;
+        _statusEffect = Instantiate(statusEffect);
     }
     public float GetRange()
     {
@@ -60,16 +62,23 @@ public class Weapon : MonoBehaviour
         return weaponstat.damage;
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private void Start()
+
+    private void Awake()
     {
         ammo_clone = Instantiate(ammo);
-        _unit = gameObject.GetComponentInParent<BaseUnit>();
-        StartCoroutine(StartWeaponCooldown());
-        _cooldown = weaponstat.frequency;
         if (weaponstat.isRanged)
         {
             ammo_clone.Prefab.GetComponent<Projectile>().ammo = ammo;
         }
+    }
+
+    private void Start()
+    {
+        _unit = gameObject.GetComponentInParent<BaseUnit>();
+        WeaponCooldownCoroutine = StartCoroutine(StartWeaponCooldown());
+        
+        _cooldown = weaponstat.frequency;
+
         if (animator = GetComponent<Animator>())
         {
             animatorup = true;
@@ -79,7 +88,14 @@ public class Weapon : MonoBehaviour
             animatorup = false;
         }
     }
-    
+
+    public void Update()
+    {
+        if (_unit.EnemyInSight && WeaponCooldownCoroutine == null & !weaponIsFiring)
+        {
+            WeaponCooldownCoroutine = StartCoroutine(StartWeaponCooldown());
+        }
+    }
 
 
     public void Fire()
@@ -92,25 +108,23 @@ public class Weapon : MonoBehaviour
         if (animatorup)
         { 
             animator.SetTrigger(Attack);
-            //StartCoroutine(InstantiateProjectile(ammo, spawntimer));
         }
     }
-    
-   
     
     
     public IEnumerator StartWeaponCooldown()
     {
-        while (true)
+        weaponIsFiring = true;
+        while (true && _unit.EnemyInSight)
         {
             yield return new WaitForSeconds(weaponstat.frequency);
             if (_unit.EnemyInSight)
             {
                 Fire();  
             }
-            
         }
-        
+
+        weaponIsFiring = false;
     }
 
 
@@ -124,7 +138,6 @@ public class Weapon : MonoBehaviour
         if (isCriticalStrike)
         {
             g.GetComponent<Projectile>().SetCriticalStrike();
-            g.GetComponent<Projectile>().ammo.Damage *= 1.5f;
             Debug.Log("CRITICAL STRIKE");
         }
         g.transform.position = transform.position + Vector3.right*0.2f;
@@ -140,7 +153,6 @@ public class Weapon : MonoBehaviour
         if (isCriticalStrike)
         {
             g.GetComponent<Projectile>().SetCriticalStrike();
-            g.GetComponent<Ammo>().Damage *= 1.5f;
             Debug.Log("CRITICAL STRIKE");
         }
         g.GetComponent<Summoned>().toFollowed = _unit.enemy_Gameobject;

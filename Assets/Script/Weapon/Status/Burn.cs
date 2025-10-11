@@ -16,10 +16,13 @@ namespace Script.Status
             BurnDmg = burnDmg;
         }
         
-        public void Apply(Enemy target)
+        public override void Apply(EntityBase target)
         {
-            target.TakeDmgOverTime(BurnDuration,BurnDuration,TickRate);
+            Debug.Log("Burn this "+ target.name);
+            target.TakeDmgOverTime(BurnDuration,BurnDmg,TickRate);
+            target.ChangeSpriteColor(Color.red);
         }
+        
         
 
     }

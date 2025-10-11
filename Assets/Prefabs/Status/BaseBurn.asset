@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1658a2ca5388438cb47edee2018ccb42, type: 3}
   m_Name: BaseBurn
   m_EditorClassIdentifier: Assembly-CSharp::Script.Status.Burn
-  name: Burn
-  duration: 3
-  BurnDmg: 1
-  BurnDuration: 3
-  TickRate: 0.5
+  StatusUIname: 
+  duration: 1
+  BurnDmg: 2
+  BurnDuration: 2
+  TickRate: 0.4

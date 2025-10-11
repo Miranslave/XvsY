@@ -17,6 +17,7 @@ public class StatusAbility : SpecialCapacity
     public override void Remove(EntityBase target)
     {
         statusEffect.Remove(target);
+        target.ResetSpriteColor();
         Debug.Log($"{target.name} n'est plus {statusEffect?.name}");
     }
 }

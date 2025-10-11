@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Arrow
   m_EditorClassIdentifier: 
   speed: 5
-  damage: 1
+  baseDamage: 1
   cross: 0
-  statusEffect: {fileID: 11400000, guid: 51033057e1794204c856c302981fc3ad, type: 2}
+  statusEffect: {fileID: 0}
   prefab: {fileID: 2832738556506850047, guid: d25fdc10ebdf8ed48af0c15f2bcdd050, type: 3}

@@ -7,7 +7,14 @@ public class Projectile : MonoBehaviour
 {
     public Ammo ammo;
     public StatusEffect statusEffect;
+    public float currentDmg;
     public bool IsCriticalStrike = false;
+
+    private void Awake()
+    {
+        currentDmg = ammo.BaseDamage;
+    }
+
     public void OnCollisionEnter2D(Collision2D other)
     {
         if (!ammo.Cross)
@@ -19,6 +26,7 @@ public class Projectile : MonoBehaviour
     public void SetCriticalStrike()
     {
         IsCriticalStrike = true;
+        currentDmg *= 1.5f;
     }
     
 }

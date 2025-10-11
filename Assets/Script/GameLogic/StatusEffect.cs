@@ -6,7 +6,7 @@ namespace Script
     
     public abstract class StatusEffect : ScriptableObject
     {
-        public string name;
+        public string StatusUIname;
         public float duration = 1f; //durée en secondes
         protected float elapsedTime = 0f;
         
