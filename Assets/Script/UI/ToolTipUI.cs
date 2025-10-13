@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public class ToolTipUI : MonoBehaviour
 {
     public GameObject tooltipUI;
-    public TMP_Text nameText, hpText, dmgText;
-    public Image spriteIcon,WeaponIcon;
+    public TMP_Text nameText, hpText, dmgText,capacityDescription,CritText;
+    public Image spriteIcon,WeaponIcon,CapacityIcon;
     public Vector2 Offset; 
     [SerializeField] private LayerMask layertohit;
     [SerializeField] private GridManager g;
@@ -67,7 +67,10 @@ public class ToolTipUI : MonoBehaviour
             spriteIcon.sprite = unit.icon;
             nameText.text = unit.entityName;
             hpText.text = $"HP: {unit.healthComponent.getCurrentHealth()}";
+            CritText.text = $"Crit: {unit.critChance}";
             WeaponIcon.sprite = unit.weapon.Icon1;
+            CapacityIcon.sprite = unit.specialCapacity.Icon;
+            capacityDescription.text = unit.specialCapacity.effectName + " : " + unit.specialCapacity.effectDescription;
 
             if (unit.weapon.GetIsRanged())
             {

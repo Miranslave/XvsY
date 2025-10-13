@@ -60,6 +60,7 @@ public class DmgUIManager : MonoBehaviour
         seq.OnComplete(() => Destroy(gameObject));
     }
 
+    
 
     //Make sure to kill the TWEEN to make dodge shady message
     public void CleanKill()

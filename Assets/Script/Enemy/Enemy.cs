@@ -1,13 +1,14 @@
 using System;
 using Script;
 using UnityEngine;
+using Random = UnityEngine.Random;
 using UnitBase = Unity.VisualScripting.UnitBase;
 
 public class Enemy : EntityBase
 {
     [Header("Enemy info")] 
     [SerializeField] private Transform baseTarget;
-    
+    [SerializeField] private bool isDead = false;
     
     [Header("Raycast")]
     public float rangeRaycast;
@@ -15,10 +16,12 @@ public class Enemy : EntityBase
     public LayerMask layerMaskToDetect;
     public bool UnitInRange;
     public GameObject UnitRaycasted;
+    public int Gold_Reward;
 
     protected override void Awake()
     {
         base.Awake();
+        Gold_Reward = Random.Range(10, 50);
         baseTarget = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -30,7 +33,7 @@ public class Enemy : EntityBase
 
     private void FixedUpdate() // utiliser FixedUpdate pour la physique
     {
-        if (!UnitInRange)
+        if (!UnitInRange && !isDead)
         {
             MoveToTarget(baseTarget);
         }
@@ -84,11 +87,36 @@ public class Enemy : EntityBase
     // to modify to get different behavior (keep static) get pushed harder
     public void EnemyHitPhysics()
     {
-        rb.linearVelocity = new Vector2(1.5f, 0);
+        isDead = true;
+        // 1️⃣ On s’assure d’avoir un Rigidbody2D valide
+        if (rb == null)
+            rb = GetComponent<Rigidbody2D>();
+
+        // 2️⃣ On désactive les collisions avec le reste
+        Collider2D col = GetComponent<Collider2D>();
+        if (col != null)
+            col.enabled = false; // plus de collisions
+
+        // 3️⃣ On libère les contraintes du rigidbody (mais bloque la rotation pour le style Paper Mario)
+        rb.constraints = RigidbodyConstraints2D.None;
+        Random.InitState((int)System.DateTime.Now.Ticks & 0x0000FFFF);
+        float ForceInX,ForceInY,TorqueForce;
+        ForceInY = Random.Range(3f, 6f);
+        ForceInX = Random.Range(0.5f,3f);
+        TorqueForce = Random.Range(3f, 9f);
+        // 4️⃣ On applique une impulsion vers le haut (et un peu de côté)// petit aléatoire pour la direction
+        rb.AddForce(new Vector2(ForceInX, ForceInY),ForceMode2D.Impulse);
+        rb.AddTorque(TorqueForce,ForceMode2D.Impulse);
+        rb.gravityScale = 2f;
+        rb.linearDamping = 0f; // renforce la chute pour que ce soit visible
+
     }
 
 
-
+    public void GiveReward()
+    {
+        baseTarget.GetComponent<PlayerManager>().AddMoney(Gold_Reward);
+    }
 
 #if UNITY_EDITOR
     private void OnDrawGizmos()

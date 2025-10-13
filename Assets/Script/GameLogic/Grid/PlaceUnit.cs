@@ -25,8 +25,10 @@ namespace Script
         
         public Image Race_preview;
         public Image Weapon_preview;
+        public Image Capacity_preview;
         public Sprite placeholder;
         public Sprite weaponplaceholder;
+        public Sprite capacityplaceholder;
         private Unit _unit;
         private GameObject _grid;
        
@@ -67,6 +69,7 @@ namespace Script
             {
                 Race_preview.sprite = placeholder;
                 Weapon_preview.sprite = weaponplaceholder;
+                Capacity_preview.sprite = capacityplaceholder;
                 //preview.color = Color.clear; // cache si pas d’unité
             }
             else
@@ -77,6 +80,8 @@ namespace Script
                 {
                     Race_preview.sprite = u.icon;
                     Weapon_preview.sprite = u.weapon.Icon1;
+                    
+                    Capacity_preview.sprite = u.specialCapacity.Icon;
                     Race_preview.color = Color.white;
                 }
             }

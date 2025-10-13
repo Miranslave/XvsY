@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StatusAbility
   abilityType: 1
   effectName: Burning
+  effectDescription: 'It burns !! '
   Icon: {fileID: 21300000, guid: 13a4c7d033a5b99478350bda18125076, type: 3}
   chance: 1
   statusEffect: {fileID: 11400000, guid: 51033057e1794204c856c302981fc3ad, type: 2}

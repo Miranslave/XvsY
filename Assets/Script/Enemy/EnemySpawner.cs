@@ -42,7 +42,7 @@ public class EnemySpawner : MonoBehaviour
         while (true)
         { 
             yield return new WaitForSeconds(SpawnRate);
-            Spawn(1);
+            Spawn();
         }
     }
 

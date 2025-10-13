@@ -138,7 +138,7 @@ public class Weapon : MonoBehaviour
         if (isCriticalStrike)
         {
             g.GetComponent<Projectile>().SetCriticalStrike();
-            Debug.Log("CRITICAL STRIKE");
+//            Debug.Log("CRITICAL STRIKE");
         }
         g.transform.position = transform.position + Vector3.right*0.2f;
         g.GetComponent<Rigidbody2D>().AddForce(Vector3.right * ammo_clone.Speed,ForceMode2D.Impulse);
@@ -153,7 +153,7 @@ public class Weapon : MonoBehaviour
         if (isCriticalStrike)
         {
             g.GetComponent<Projectile>().SetCriticalStrike();
-            Debug.Log("CRITICAL STRIKE");
+ //           Debug.Log("CRITICAL STRIKE");
         }
         g.GetComponent<Summoned>().toFollowed = _unit.enemy_Gameobject;
         g.GetComponent<Summoned>().Offset = new Vector3(0,0.38f,0);
@@ -178,7 +178,7 @@ public class Weapon : MonoBehaviour
             {
                 
                 enemyhit.TakeDmg(weaponstat.damage * 1.5f,true);
-                Debug.Log("CRITICAL STRIKE");
+                //Debug.Log("CRITICAL STRIKE");
             }
             else
             {

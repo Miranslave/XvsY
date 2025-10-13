@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StatusAbility
   abilityType: 1
   effectName: Frostbites
+  effectDescription: Slowly you snails
   Icon: {fileID: 21300000, guid: 3512988ab4fa37d4fb74030c3c94cc05, type: 3}
   chance: 1
   statusEffect: {fileID: 11400000, guid: b9eca6ed65cda26499d2045bfe6720ef, type: 2}

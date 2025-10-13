@@ -119,7 +119,14 @@ public class HealthComponent : MonoBehaviour
         {
             t.CleanKill();
         }
-        Destroy(gameObject);
+
+        Enemy e = GetComponent<Enemy>();
+        if (e)
+        {
+            e.GiveReward();
+            e.EnemyHitPhysics();
+        }
+        
     }
 
     private void UiUpdate(float dmg,bool iscrit,bool isfromstatus = false)

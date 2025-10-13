@@ -7,6 +7,7 @@ namespace Script
         [Header("Infos générales")] 
         public AbilityType abilityType;
         public string effectName = "New Effect";
+        public string effectDescription = "The description of the Capacity";
         public Sprite Icon;
         [Range(0f, 1f)] public float chance = 1f; // proba d'application
 
