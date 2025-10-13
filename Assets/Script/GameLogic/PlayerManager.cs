@@ -21,8 +21,23 @@ public class PlayerManager : MonoBehaviour
 
     [SerializeField] private GridManager _gridManager;
     [SerializeField] private UIManager _uiMoneyManager;
+    [SerializeField] private SlotMachine _slotMachine;
+    [Header("User actions input")]
+    private InputActionSetBasic Controls;
     private Camera _camera;
 
+    
+    void OnDestroy()
+    {
+        // 🔌 Désabonnement propre
+        Controls.Basic.Interract.performed -= interract;
+    }
+        
+    void Awake()
+    {
+        SetupInput();
+    }
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -54,6 +69,21 @@ public class PlayerManager : MonoBehaviour
             }
         }
     }
+    
+    
+    
+    void SetupInput()
+    {
+        Controls = new InputActionSetBasic();
+        Controls.Enable();
+        Controls.Basic.Interract.performed += interract;
+    }
+    public void interract(InputAction.CallbackContext context)
+    {
+        Debug.Log("keyboard stop slots");
+        
+        _slotMachine.StopWheel();
+    }
 
     public void AddMoney(int toadd)
     {
@@ -69,4 +99,5 @@ public class PlayerManager : MonoBehaviour
     {
         _healthComponent.TakeDamage(dmg);
     }
+    
 }

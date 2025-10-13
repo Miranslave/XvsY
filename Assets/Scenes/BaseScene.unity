@@ -231,16 +231,22 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f998ac1b2d5e0ff4d985a2c741f75339, type: 3}
---- !u!1 &85813472 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3494891374860435873, guid: db0ba59052b7f054b8fd920bdb980132, type: 3}
-  m_PrefabInstance: {fileID: 1894822138}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &85813473 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6731176581970768247, guid: db0ba59052b7f054b8fd920bdb980132, type: 3}
   m_PrefabInstance: {fileID: 1894822138}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &85813474 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6895182281167456584, guid: db0ba59052b7f054b8fd920bdb980132, type: 3}
+  m_PrefabInstance: {fileID: 1894822138}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f9e27c2201062c43962b3d5d43f69cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &114615627
 GameObject:
   m_ObjectHideFlags: 0
@@ -4097,11 +4103,6 @@ Transform:
   - {fileID: 1378175089}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &364643582 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3494891374860435873, guid: db0ba59052b7f054b8fd920bdb980132, type: 3}
-  m_PrefabInstance: {fileID: 232071450}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &369805701
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5375,6 +5376,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6731176581970768247, guid: db0ba59052b7f054b8fd920bdb980132, type: 3}
   m_PrefabInstance: {fileID: 232071450}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1174760217 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6895182281167456584, guid: db0ba59052b7f054b8fd920bdb980132, type: 3}
+  m_PrefabInstance: {fileID: 232071450}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f9e27c2201062c43962b3d5d43f69cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1187683806
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7498,16 +7510,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1468011728}
   m_CullTransparentMesh: 1
---- !u!1 &1512294554 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3494891374860435873, guid: db0ba59052b7f054b8fd920bdb980132, type: 3}
-  m_PrefabInstance: {fileID: 1187683806}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1512294555 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6731176581970768247, guid: db0ba59052b7f054b8fd920bdb980132, type: 3}
   m_PrefabInstance: {fileID: 1187683806}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1512294556 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6895182281167456584, guid: db0ba59052b7f054b8fd920bdb980132, type: 3}
+  m_PrefabInstance: {fileID: 1187683806}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f9e27c2201062c43962b3d5d43f69cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1532745694
 GameObject:
   m_ObjectHideFlags: 0
@@ -7592,6 +7610,7 @@ MonoBehaviour:
   _healthComponent: {fileID: 1622949162}
   _gridManager: {fileID: 0}
   _uiMoneyManager: {fileID: 776237482}
+  _slotMachine: {fileID: 910533628}
 --- !u!114 &1622949162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8337,7 +8356,7 @@ PrefabInstance:
     - target: {fileID: 9188849068979527199, guid: a04896340ae32cd4c855a38ace51d6e4, type: 3}
       propertyPath: raceSpinUI
       value: 
-      objectReference: {fileID: 85813472}
+      objectReference: {fileID: 85813474}
     - target: {fileID: 9188849068979527199, guid: a04896340ae32cd4c855a38ace51d6e4, type: 3}
       propertyPath: placeManager
       value: 
@@ -8345,11 +8364,11 @@ PrefabInstance:
     - target: {fileID: 9188849068979527199, guid: a04896340ae32cd4c855a38ace51d6e4, type: 3}
       propertyPath: weaponSpinUI
       value: 
-      objectReference: {fileID: 1512294554}
+      objectReference: {fileID: 1512294556}
     - target: {fileID: 9188849068979527199, guid: a04896340ae32cd4c855a38ace51d6e4, type: 3}
       propertyPath: abilitySpinUI
       value: 
-      objectReference: {fileID: 364643582}
+      objectReference: {fileID: 1174760217}
     - target: {fileID: 9188849068979527199, guid: a04896340ae32cd4c855a38ace51d6e4, type: 3}
       propertyPath: RaceListToDraw.Array.size
       value: 3

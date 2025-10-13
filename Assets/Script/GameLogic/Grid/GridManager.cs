@@ -51,7 +51,6 @@ namespace Script
         void OnDestroy()
         {
             // 🔌 Désabonnement propre
-            Controls.Basic.Interract.performed -= interract;
             Controls.Basic.Place.performed -= place;
         }
         
@@ -148,7 +147,6 @@ namespace Script
                 Debug.Log("Mouse device activé manuellement.");
             }
             
-            Controls.Basic.Interract.performed += interract;
             Controls.Basic.Place.performed += place;
         }
         
@@ -195,10 +193,7 @@ namespace Script
             _ishighlightcursor = true;
         }
         
-        public void interract(InputAction.CallbackContext context)
-        {
-            Debug.Log("keyboard");
-        }
+
         
 
 

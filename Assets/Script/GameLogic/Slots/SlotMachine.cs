@@ -12,16 +12,19 @@ public class SlotMachine : MonoBehaviour
     ///public GameObject BaseUnit;
     
     [Header("UI Elements")]
-    public GameObject raceSpinUI;
-    public GameObject weaponSpinUI;
-    public GameObject abilitySpinUI;
+    public SlotsUI raceSpinUI;
+    public SlotsUI weaponSpinUI;
+    public SlotsUI abilitySpinUI;
     
     [Header("Rollables")] 
     [SerializeField] private List<Rollable> RaceListToDraw;
     [SerializeField] private List<Rollable> WeaponListToDraw;
     [SerializeField] private List<Rollable> AbilitiesListToDraw;
 
-    [Header("Slots machine Animator")] 
+    [Header("Slots machine Unit Constructed")]
+    [SerializeField] private GameObject raceResult = null;
+    [SerializeField] private GameObject weaponResult = null;
+    [SerializeField] private SpecialCapacity abilityResult = null;
     //[SerializeField] private Animator _animator;
     /*[SerializeField] private float rollTime = 2f;          // durée totale du spin
     [SerializeField] private float interval = 0.1f;        // vitesse de changement de sprite
@@ -29,18 +32,27 @@ public class SlotMachine : MonoBehaviour
     
     [Header("Timing")]
     public float delayBetweenStops = 0.5f; // délai entre chaque arrêt
-    
+
     [Header("Debug")] 
+    [SerializeField] private List<SlotsUI> _slotsUis;
+    
+
+    [SerializeField] private int slotUi_index_to_stop = 0;
     public UnitFactory factory;
     public PlaceUnitManager placeManager;
-
     public PlayerManager playerManager;
+    
+    
     [SerializeField] private List<GameObject> RaceWeightedListToDraw;
     [SerializeField] private List<GameObject> WeaponWeightedListToDraw;
     [SerializeField] private List<SpecialCapacity> AbilitiesWeightedListToDraw;
     
+    
     private void Awake()
     {
+        _slotsUis.Add(raceSpinUI);
+        _slotsUis.Add(weaponSpinUI);
+        _slotsUis.Add(abilitySpinUI);
         RaceWeightedListToDraw = Normalizing(RaceListToDraw);
         WeaponWeightedListToDraw = Normalizing(WeaponListToDraw);
         AbilitiesWeightedListToDraw = NormalizingScriptable(AbilitiesListToDraw);
@@ -58,8 +70,10 @@ public class SlotMachine : MonoBehaviour
                 factory.PlaceUnit_current = p;
                 playerManager.AddMoney(-50);
                 //_animator.SetTrigger("SlotStart");
-                StartCoroutine(SpinCoroutine());
-
+                //StartCoroutine(SpinCoroutine());
+                trySpinWheel(raceSpinUI,RaceListToDraw);
+                trySpinWheel(weaponSpinUI,WeaponListToDraw);
+                trySpinWheel(abilitySpinUI,AbilitiesListToDraw);
             }
             else
             {
@@ -73,6 +87,54 @@ public class SlotMachine : MonoBehaviour
 
     }
 
+    private void trySpinWheel(SlotsUI sui,List<Rollable> rollables)
+    {
+        sui.LaunchSlot(rollables);
+    }
+
+    
+    //Wheel stops working but TO DO bit optimization and code cleaning 
+    public void StopWheel()
+    {
+        SlotsUI temp_slotUi = _slotsUis[slotUi_index_to_stop % _slotsUis.Count];
+        if (slotUi_index_to_stop == 0)
+        {
+            temp_slotUi.gDrawn = drawthing(RaceWeightedListToDraw);
+            raceResult = (GameObject)temp_slotUi.gDrawn;
+        } else if(slotUi_index_to_stop == 1)
+        {
+            temp_slotUi.gDrawn = drawthing(WeaponWeightedListToDraw);
+            weaponResult = (GameObject)temp_slotUi.gDrawn;
+        }else if (slotUi_index_to_stop == 2)
+        {
+            temp_slotUi.gDrawn = drawthing(WeaponWeightedListToDraw,AbilitiesWeightedListToDraw);
+            abilityResult = (SpecialCapacity)temp_slotUi.gDrawn;
+        }
+        _slotsUis[slotUi_index_to_stop%_slotsUis.Count].StopSpin();
+        if (slotUi_index_to_stop%_slotsUis.Count == 2)
+        {
+            factory.Assemble(raceResult,weaponResult,abilityResult);
+        }
+        
+        slotUi_index_to_stop++;
+    }
+
+    private object drawthing(List<GameObject> L_Ra_We,List<SpecialCapacity> L_spe = null)
+    {
+        object Choice = null;
+        if (L_spe == null)
+        {
+            Choice = L_Ra_We[Random.Range(0, L_Ra_We.Count)];
+           
+        }
+        else
+        {
+            Choice = L_spe[Random.Range(0, L_spe.Count)];
+        }
+
+        return Choice;
+    }
+    /*
     private IEnumerator SpinCoroutine()
     {
         GameObject raceResult = null;
@@ -94,7 +156,7 @@ public class SlotMachine : MonoBehaviour
         factory.Assemble(raceResult,weaponResult,abilityResult);
 
         
-    }
+    }*/
     
     private IEnumerator SpinWheel(GameObject uiGameObject,List<GameObject> GameObjectWeightedList,List<Rollable> rollables,Action<GameObject> onFinished)
     {
@@ -103,7 +165,7 @@ public class SlotMachine : MonoBehaviour
         
         if (uiGameObject)
         {
-            uiGameObject.GetComponent<SlotsUI>().LaunchSlot(Choice,rollables);
+            uiGameObject.GetComponent<SlotsUI>().LaunchSlot(rollables);
         }
         else
         {
@@ -119,7 +181,7 @@ public class SlotMachine : MonoBehaviour
         Choice = scriptableObjectsWeightedList[Random.Range(0, scriptableObjectsWeightedList.Count)];
         if (uiGameObject)
         {
-            uiGameObject.GetComponent<SlotsUI>().LaunchSlot(Choice,rollables);
+            uiGameObject.GetComponent<SlotsUI>().LaunchSlot(rollables);
         }
         else
         {

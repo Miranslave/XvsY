@@ -23,36 +23,40 @@ public class SlotsUI : MonoBehaviour
     [SerializeField] private float rollTime = 2f;          // durée totale du spin
     [SerializeField] private float interval = 0.1f;        // vitesse de changement de sprite
     [SerializeField] private float elapsed = 0f;
+    [SerializeField] private bool Spinning = false;
 
-    public List<GameObject> WeightedListToDraw;
+
+    public object gDrawn;
+    
     // Current_G
     private GameObject g;
    
     
-    public void LaunchSlot(GameObject gDrawn,List<Rollable> rollables)
+
+    public void LaunchSlot(List<Rollable> rollables)
     {
         //launch the ROLLLLLLLS
-        StartCoroutine(Roll(gDrawn,rollables));
+        StartCoroutine(Roll(rollables));
     }
-    
-    public void LaunchSlot(ScriptableObject sDrawn,List<Rollable> rollables)
+
+    public void StopSpin()
     {
-        //launch the ROLLLLLLLS
-        StartCoroutine(Roll(sDrawn,rollables));
+        Spinning = false;
+        SetEndSprite();
     }
-
-    
     
     
 
 
-    IEnumerator Roll(GameObject gDrawn,List<Rollable>rollables)
+    IEnumerator Roll(List<Rollable>rollables)
     {
         if (listToDraw == null)
         {
             listToDraw = rollables;
         }
-        while (elapsed < rollTime)
+
+        Spinning = true;
+        while (Spinning)
         {
             // Choisit un sprite aléatoire dans la liste
             Sprite randomSprite = rollables[Random.Range(0, rollables.Count)].icon;
@@ -61,40 +65,28 @@ public class SlotsUI : MonoBehaviour
             _result.sprite = randomSprite;
             if (_top) _top.sprite = rollables[Random.Range(0, rollables.Count)].icon;
             if (_bottom) _bottom.sprite = rollables[Random.Range(0, rollables.Count)].icon;
-
             yield return new WaitForSeconds(interval);
-            elapsed += interval;
         }
-
-        // Une fois terminé → fixe le sprite final
-        SetEndSprite(gDrawn);
+       
     }
     
-    IEnumerator Roll(ScriptableObject sDrawn,List<Rollable>rollables)
+
+    public void SetEndSprite()
     {
-        if (listToDraw == null)
-        {
-            listToDraw = rollables;
-        }
-        while (elapsed < rollTime)
-        {
-            // Choisit un sprite aléatoire dans la liste
-            Sprite randomSprite = rollables[Random.Range(0, rollables.Count)].icon;
-            
-            // Mets à jour les 3 slots (optionnel : pour donner l’illusion que ça bouge)
-            _result.sprite = randomSprite;
-            if (_top) _top.sprite = rollables[Random.Range(0, rollables.Count)].icon;
-            if (_bottom) _bottom.sprite = rollables[Random.Range(0, rollables.Count)].icon;
+        
+        if (gDrawn == null) return;
 
-            yield return new WaitForSeconds(interval);
-            elapsed += interval;
+        foreach (var vaRollable in listToDraw)
+        {
+            if ((gDrawn is GameObject go && vaRollable.prefab == go) ||
+                (gDrawn is ScriptableObject so && vaRollable.effect == so))
+            {
+                _result.sprite = vaRollable.icon;
+                return;
+            }
         }
-
-        // Une fois terminé → fixe le sprite final
-        SetEndSprite(sDrawn);
     }
-
-    
+    /*
     public void SetEndSprite(GameObject gDrawn)
     {
         Reset();
@@ -122,9 +114,6 @@ public class SlotsUI : MonoBehaviour
             }
         }
     }
-    
-    private void Reset()
-    {
-        elapsed = 0;
-    }
+    */
+
 }
