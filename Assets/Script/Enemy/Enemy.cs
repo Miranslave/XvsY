@@ -99,7 +99,6 @@ public class Enemy : EntityBase
 
         // 3️⃣ On libère les contraintes du rigidbody (mais bloque la rotation pour le style Paper Mario)
         rb.constraints = RigidbodyConstraints2D.None;
-        Random.InitState((int)System.DateTime.Now.Ticks & 0x0000FFFF);
         float ForceInX,ForceInY,TorqueForce;
         ForceInY = Random.Range(3f, 6f);
         ForceInX = Random.Range(0.5f,3f);

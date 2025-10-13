@@ -29,7 +29,6 @@ public class PlayerManager : MonoBehaviour
     
     void OnDestroy()
     {
-        // 🔌 Désabonnement propre
         Controls.Basic.Interract.performed -= interract;
     }
         
@@ -80,7 +79,7 @@ public class PlayerManager : MonoBehaviour
     }
     public void interract(InputAction.CallbackContext context)
     {
-        Debug.Log("keyboard stop slots");
+        //Debug.Log("keyboard stop slots");
         
         _slotMachine.StopWheel();
     }

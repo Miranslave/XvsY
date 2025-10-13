@@ -65,7 +65,7 @@ public class HealthComponent : MonoBehaviour
         {
             Dot_timer = 0f;
             totalDotDmg = CalculateTotalDotDmg(duration, dmgpertick, tickrate);
-            Debug.Log(this.gameObject.name + " reset dot dmg");
+            //Debug.Log(this.gameObject.name + " reset dot dmg");
         }
             
     }

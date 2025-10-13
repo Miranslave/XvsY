@@ -51,11 +51,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityName: Elf
   dmg: 1
-  speed: 2
+  current_speed: 2
+  base_speed: 0
   critChance: 0
   healthComponent: {fileID: 5729364908325464636}
   rb: {fileID: 0}
   animator: {fileID: 0}
+  spriteRenderer: {fileID: 0}
   icon: {fileID: 2048155614, guid: aea054ee20763674689a2b9c2c826574, type: 3}
   level: 1
   effect_cooldown: 3
@@ -125,11 +127,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42052311802e4054fbfa80c5bd623823, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dmgprefablist: []
   max_health: 100
   current_health: 0
   linkedToUI: 0
   healthUiComp: {fileID: 5850468873791413829}
   Uihitdmg: {fileID: 2743584755829223540, guid: dc55ff1aa5086d248b2e2072f08dab01, type: 3}
+  _Canvas: {fileID: 0}
+  ui_hit_dmg: 0
+  istakingDot: 0
+  Dot_timer: 0
+  totalDotDmg: 0
 --- !u!114 &5850468873791413829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -418,8 +426,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f6184d1c3941c664f988e36467005d29, type: 2}
+  m_sharedMaterial: {fileID: -2834071703558708295, guid: f6184d1c3941c664f988e36467005d29, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

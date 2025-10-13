@@ -18,7 +18,7 @@ namespace Script.Status
         
         public override void Apply(EntityBase target)
         {
-            Debug.Log("Burn this "+ target.name);
+            //Debug.Log("Burn this "+ target.name);
             target.TakeDmgOverTime(BurnDuration,BurnDmg,TickRate);
             target.ChangeSpriteColor(Color.red);
         }

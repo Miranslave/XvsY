@@ -20,13 +20,13 @@ public class SlotsUI : MonoBehaviour
     private List<Rollable> listToDraw;
     
     [Header("Slots machine Parameters")]
-    [SerializeField] private float rollTime = 2f;          // durée totale du spin
+    public object gDrawn;          // durée totale du spin
     [SerializeField] private float interval = 0.1f;        // vitesse de changement de sprite
     [SerializeField] private float elapsed = 0f;
     [SerializeField] private bool Spinning = false;
 
 
-    public object gDrawn;
+    
     
     // Current_G
     private GameObject g;
@@ -42,7 +42,7 @@ public class SlotsUI : MonoBehaviour
     public void StopSpin()
     {
         Spinning = false;
-        SetEndSprite();
+        SetEndSprite(); 
     }
     
     

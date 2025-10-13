@@ -35,6 +35,8 @@ public class SlotMachine : MonoBehaviour
 
     [Header("Debug")] 
     [SerializeField] private List<SlotsUI> _slotsUis;
+
+    public bool DuringASpin = false;
     
 
     [SerializeField] private int slotUi_index_to_stop = 0;
@@ -61,7 +63,7 @@ public class SlotMachine : MonoBehaviour
 
     public void StartSpin()
     {
-        if (playerManager.Money > 50)
+        if (playerManager.Money > 50 && !DuringASpin)
         {
 
             PlaceUnit p;
@@ -74,6 +76,7 @@ public class SlotMachine : MonoBehaviour
                 trySpinWheel(raceSpinUI,RaceListToDraw);
                 trySpinWheel(weaponSpinUI,WeaponListToDraw);
                 trySpinWheel(abilitySpinUI,AbilitiesListToDraw);
+                DuringASpin = true;
             }
             else
             {
@@ -89,6 +92,8 @@ public class SlotMachine : MonoBehaviour
 
     private void trySpinWheel(SlotsUI sui,List<Rollable> rollables)
     {
+        
+        DuringASpin = true;
         sui.LaunchSlot(rollables);
     }
 
@@ -96,6 +101,10 @@ public class SlotMachine : MonoBehaviour
     //Wheel stops working but TO DO bit optimization and code cleaning 
     public void StopWheel()
     {
+        if (!DuringASpin)
+        {
+            return;
+        }
         SlotsUI temp_slotUi = _slotsUis[slotUi_index_to_stop % _slotsUis.Count];
         if (slotUi_index_to_stop == 0)
         {
@@ -113,10 +122,16 @@ public class SlotMachine : MonoBehaviour
         _slotsUis[slotUi_index_to_stop%_slotsUis.Count].StopSpin();
         if (slotUi_index_to_stop%_slotsUis.Count == 2)
         {
+            DuringASpin = false;
             factory.Assemble(raceResult,weaponResult,abilityResult);
+            slotUi_index_to_stop = 0;
+        }
+        else
+        {
+            slotUi_index_to_stop++;
         }
         
-        slotUi_index_to_stop++;
+        
     }
 
     private object drawthing(List<GameObject> L_Ra_We,List<SpecialCapacity> L_spe = null)
@@ -124,12 +139,16 @@ public class SlotMachine : MonoBehaviour
         object Choice = null;
         if (L_spe == null)
         {
-            Choice = L_Ra_We[Random.Range(0, L_Ra_We.Count)];
+            int  i = Random.Range(0,L_Ra_We.Count);
+            Debug.Log($"🎲 [drawthing] Tirage GameObject index {i}/{L_Ra_We.Count} : {L_Ra_We[i].name}");
+            Choice = L_Ra_We[i];
            
         }
         else
         {
-            Choice = L_spe[Random.Range(0, L_spe.Count)];
+            int i = Random.Range(0, L_spe.Count);
+            Debug.Log($"🎲 [drawthing] Tirage Special index {i}/{L_spe.Count} : {L_spe[i].name}");
+            Choice = L_spe[i];
         }
 
         return Choice;
