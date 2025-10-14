@@ -34,6 +34,7 @@ public class SlotMachine : MonoBehaviour
     public float delayBetweenStops = 0.5f; // délai entre chaque arrêt
 
     [Header("Debug")] 
+    [SerializeField] private GameObject slotmachine_display;
     [SerializeField] private List<SlotsUI> _slotsUis;
 
     public bool DuringASpin = false;
@@ -66,6 +67,7 @@ public class SlotMachine : MonoBehaviour
         if (playerManager.Money > 50 && !DuringASpin)
         {
 
+            slotmachine_display.SetActive(true);
             PlaceUnit p;
             if (placeManager.GetFirstUnusedPlaceUnit(out p))
             {
@@ -124,6 +126,7 @@ public class SlotMachine : MonoBehaviour
         {
             DuringASpin = false;
             factory.Assemble(raceResult,weaponResult,abilityResult);
+            StartCoroutine(WaitAndHideSlotMachine());
             slotUi_index_to_stop = 0;
         }
         else
@@ -132,6 +135,12 @@ public class SlotMachine : MonoBehaviour
         }
         
         
+    }
+    
+    private IEnumerator WaitAndHideSlotMachine()
+    {
+        yield return new WaitForSeconds(3f);
+        slotmachine_display.SetActive(false);
     }
 
     private object drawthing(List<GameObject> L_Ra_We,List<SpecialCapacity> L_spe = null)
