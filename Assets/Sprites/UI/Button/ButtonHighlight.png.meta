@@ -1,22 +1,91 @@
 fileFormatVersion: 2
-guid: aea054ee20763674689a2b9c2c826574
+guid: 9895400c915ecf740bb00c875f8e21c6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7032685582455520434
-    second: SlottsIcon_0
+      213: -3520174939420250906
+    second: ButtonHighlight_0
   - first:
-      213: 2731708229096555494
-    second: SlottsIcon_1
+      213: 419990796608635748
+    second: ButtonHighlight_1
   - first:
-      213: -1904446444876296550
-    second: SlottsIcon_2
+      213: -7631973364426708488
+    second: ButtonHighlight_2
   - first:
-      213: 7970356542635057792
-    second: SlottsIcon_3
+      213: 4241492341541058106
+    second: ButtonHighlight_3
   - first:
-      213: 7852020177221308206
-    second: SlottsIcon_4
+      213: 893273953326799141
+    second: ButtonHighlight_4
+  - first:
+      213: 7437006545770022185
+    second: ButtonHighlight_5
+  - first:
+      213: 8426594298654284491
+    second: ButtonHighlight_6
+  - first:
+      213: 2501956662045516745
+    second: ButtonHighlight_7
+  - first:
+      213: -6842352264608206342
+    second: ButtonHighlight_8
+  - first:
+      213: 3288348651456353263
+    second: ButtonHighlight_9
+  - first:
+      213: -8896886281543921026
+    second: ButtonHighlight_10
+  - first:
+      213: 2033310599294399320
+    second: ButtonHighlight_11
+  - first:
+      213: -254989877849018420
+    second: ButtonHighlight_12
+  - first:
+      213: 5384295350824139726
+    second: ButtonHighlight_13
+  - first:
+      213: 4701226254254282878
+    second: ButtonHighlight_14
+  - first:
+      213: 4073641588263276122
+    second: ButtonHighlight_15
+  - first:
+      213: 6581443188471758596
+    second: ButtonHighlight_16
+  - first:
+      213: 4310412424032700768
+    second: ButtonHighlight_17
+  - first:
+      213: -7177937735850459397
+    second: ButtonHighlight_18
+  - first:
+      213: 8190839384674330545
+    second: ButtonHighlight_19
+  - first:
+      213: -6565004640311436539
+    second: ButtonHighlight_20
+  - first:
+      213: 5633206263725265946
+    second: ButtonHighlight_21
+  - first:
+      213: -1412866593962552055
+    second: ButtonHighlight_22
+  - first:
+      213: 8142623625567061498
+    second: ButtonHighlight_23
+  - first:
+      213: -2617844553311118871
+    second: ButtonHighlight_24
+  - first:
+      213: -7031281868341685063
+    second: ButtonHighlight_25
+  - first:
+      213: -7926157628238659562
+    second: ButtonHighlight_26
+  - first:
+      213: 7702372598848262480
+    second: ButtonHighlight_27
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -63,7 +132,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -108,30 +177,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BowIcon
+      name: ButtonHighlight_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 22
-        width: 5
-        height: 9
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,20 +196,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2bcb547c64e199160800000000000000
-      internalID: 7032685582455520434
+      spriteID: 6ecaf941b83d52fc0800000000000000
+      internalID: -3520174939420250906
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: OrcIcon
+      name: ButtonHighlight_1
       rect:
         serializedVersion: 2
-        x: 20
-        y: 24
-        width: 12
-        height: 8
+        x: 64
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,20 +218,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6e3cf41492af8e520800000000000000
-      internalID: 2731708229096555494
+      spriteID: 4638ac0876b14d500800000000000000
+      internalID: 419990796608635748
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SwordIcon
+      name: ButtonHighlight_2
       rect:
         serializedVersion: 2
-        x: 3
-        y: 13
-        width: 8
-        height: 8
+        x: 128
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,20 +240,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a9e846f6c0c0295e0800000000000000
-      internalID: -1904446444876296550
+      spriteID: 8f96a1639a8c51690800000000000000
+      internalID: -7631973364426708488
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HumanIcon
+      name: ButtonHighlight_3
       rect:
         serializedVersion: 2
-        x: 21
-        y: 12
-        width: 10
-        height: 10
+        x: 192
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -206,20 +262,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 08229f8fb056c9e60800000000000000
-      internalID: 7970356542635057792
+      spriteID: a36381fefceccda30800000000000000
+      internalID: 4241492341541058106
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ThunderIcon
+      name: ButtonHighlight_4
       rect:
         serializedVersion: 2
-        x: 3
-        y: 2
-        width: 8
-        height: 8
+        x: 256
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -228,30 +284,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e2fc978dfbaf7fc60800000000000000
-      internalID: 7852020177221308206
+      spriteID: 52917238deb856c00800000000000000
+      internalID: 893273953326799141
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ElveIcon
+      name: ButtonHighlight_5
       rect:
         serializedVersion: 2
-        x: 20
-        y: 1
-        width: 12
-        height: 10
+        x: 320
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 6c7e8785b0b51f841a84273ee3b1476e
-      internalID: 2048155614
+      spriteID: 92580e8ec0e853760800000000000000
+      internalID: 7437006545770022185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButtonHighlight_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcade9d5ed641f470800000000000000
+      internalID: 8426594298654284491
       vertices: []
       indices: 
       edges: []
@@ -260,7 +338,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 6d0d3eea33108a14b911e16a80839ed6
+    spriteID: 635ae13d80185b341aec71bd2c29abd6
     internalID: 0
     vertices: []
     indices: 
@@ -269,15 +347,18 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries:
+      - key: SpriteEditor.SliceOnImport
+        value: False
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":2.0,"y":3.0},"gridSpriteSize":{"x":16.0,"y":10.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      BowIcon: 7032685582455520434
-      ElveIcon: 2048155614
-      HumanIcon: 7970356542635057792
-      OrcIcon: 2731708229096555494
-      SwordIcon: -1904446444876296550
-      ThunderIcon: 7852020177221308206
+      ButtonHighlight_0: -3520174939420250906
+      ButtonHighlight_1: 419990796608635748
+      ButtonHighlight_2: -7631973364426708488
+      ButtonHighlight_3: 4241492341541058106
+      ButtonHighlight_4: 893273953326799141
+      ButtonHighlight_5: 7437006545770022185
+      ButtonHighlight_6: 8426594298654284491
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

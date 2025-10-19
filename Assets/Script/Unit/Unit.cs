@@ -17,7 +17,6 @@ namespace Script
         [SerializeField] public float effect_cooldown = 3f;
         
         
-        
         [Header("Components")]
         public Weapon weapon;
         public SpecialCapacity specialCapacity;
@@ -29,11 +28,7 @@ namespace Script
         [SerializeField] private LayerMask layerMaskEnemyToDetect;
         [SerializeField] private bool RaycastDebugMod;
         
-        protected override void Awake()
-        {
-            base.Awake();
-            
-        }
+
         
         public void Start()
         {

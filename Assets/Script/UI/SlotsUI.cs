@@ -22,7 +22,7 @@ public class SlotsUI : MonoBehaviour
     [Header("Slots machine Parameters")]
     public object gDrawn;          // durée totale du spin
     [SerializeField] private float interval = 0.1f;        // vitesse de changement de sprite
-    [SerializeField] private float elapsed = 0f;
+    //[SerializeField] private float elapsed = 0f;
     [SerializeField] private bool Spinning = false;
 
 

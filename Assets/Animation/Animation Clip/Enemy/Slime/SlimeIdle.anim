@@ -92,7 +92,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 1.0166667
-    functionName: ResetDmgTaken
+    functionName: ResetAttackState
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

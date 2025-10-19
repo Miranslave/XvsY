@@ -5,9 +5,12 @@ using UnityEngine;
 public class UnitFactory : MonoBehaviour
 {
     public PlaceUnit PlaceUnit_current;
+    public PresentationBandManager _presentationBandManager;
+    public PlayerManager _PlayerManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        _PlayerManager = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
         PlaceUnit_current = GetComponent<PlaceUnit>();
     }
 
@@ -21,6 +24,15 @@ public class UnitFactory : MonoBehaviour
         toSend.GetComponent<BaseUnit>().weapon = toSendWeapon.GetComponent<Weapon>();
         toSend.GetComponent<BaseUnit>().specialCapacity = ability;
         PlaceUnit_current.rolledUnitPrefab = toSend;
+        toSend.GetComponent<BaseUnit>().Innit();
+        if (_PlayerManager.CheckIfNewUnit(toSend.GetComponent<BaseUnit>()))
+        {
+            SpriteRenderer srU = toSend.GetComponent<BaseUnit>().spriteRenderer;
+            SpriteRenderer srW = toSendWeapon.GetComponent<SpriteRenderer>();
+            _presentationBandManager.new_unit = srU.sprite;
+            _presentationBandManager.new_weapon = srW.sprite;
+            _presentationBandManager.Innit();
+        }
         toSend.transform.SetParent(PlaceUnit_current.transform);
         Deactivate(toSend);
     }

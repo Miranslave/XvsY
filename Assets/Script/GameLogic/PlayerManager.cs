@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Script;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -6,6 +7,8 @@ public class PlayerManager : MonoBehaviour
 {
     [SerializeField] private int _money;
     [SerializeField] private HealthComponent _healthComponent;
+    [SerializeField] private List<Unit> _Discovered_unitList;
+    [SerializeField] private PresentationBandManager _presentationBandManager;
     public int Money
     {
         get => _money;
@@ -80,8 +83,12 @@ public class PlayerManager : MonoBehaviour
     public void interract(InputAction.CallbackContext context)
     {
         //Debug.Log("keyboard stop slots");
-        
-        _slotMachine.StopWheel();
+        if(_slotMachine.DuringASpin)
+            _slotMachine.StopWheel();
+        if (_presentationBandManager.state == PresentationBandManager.PresentationState.Active)
+        {
+            _presentationBandManager.End();
+        }
     }
 
     public void AddMoney(int toadd)
@@ -97,6 +104,24 @@ public class PlayerManager : MonoBehaviour
     public void TakeDmg(float dmg)
     {
         _healthComponent.TakeDamage(dmg);
+    }
+
+
+    public bool CheckIfNewUnit(Unit drawUnit)
+    {
+        foreach (Unit u in _Discovered_unitList )
+        {
+            if (u.weapon.name == drawUnit.weapon.name && 
+                u.name == drawUnit.name &&
+                u.specialCapacity.name == drawUnit.specialCapacity.name)
+            {
+                Debug.Log("PAS de new");
+                return false;
+            }
+        }
+        _Discovered_unitList.Add(drawUnit);
+        Debug.Log("NOUVELLE UNIT2");
+        return true;
     }
     
 }

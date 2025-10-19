@@ -93,7 +93,7 @@ MonoBehaviour:
   healthComponent: {fileID: 7224009298018353196}
   rb: {fileID: 0}
   animator: {fileID: 0}
-  spriteRenderer: {fileID: 0}
+  spriteRenderer: {fileID: 5765403615608420524}
   icon: {fileID: 2731708229096555494, guid: aea054ee20763674689a2b9c2c826574, type: 3}
   level: 1
   effect_cooldown: 3
@@ -169,6 +169,7 @@ MonoBehaviour:
   linkedToUI: 0
   healthUiComp: {fileID: 7161787365955322150}
   Uihitdmg: {fileID: 2743584755829223540, guid: dc55ff1aa5086d248b2e2072f08dab01, type: 3}
+  _entityBase: {fileID: 0}
   _Canvas: {fileID: 0}
   ui_hit_dmg: 0
   istakingDot: 0

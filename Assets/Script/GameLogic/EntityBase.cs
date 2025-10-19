@@ -25,15 +25,27 @@ namespace Script
         public SpriteRenderer spriteRenderer;
         protected bool DmgTaken = false;
         protected bool Attacking = false;
+        protected bool CanTakeDmg = true;
 
         [Header("Debug")] public List<Coroutine> Status_effects_cd;
+
+        public void Innit()
+        {
+            //spriteRenderer = GetComponent<SpriteRenderer>();
+        }
+        
+        
         protected virtual void Awake()
         {
             
             current_speed = base_speed;
             rb = GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
-            spriteRenderer = GetComponent<SpriteRenderer>();
+     /*       
+            if (spriteRenderer == null)
+            {
+                spriteRenderer = GetComponentInParent<SpriteRenderer>();
+            }*/
             if (rb != null)
             {
                 rb.gravityScale = 0;
@@ -50,6 +62,10 @@ namespace Script
         // ----------------- Combat / Vie -----------------
         public virtual void TakeDmg(float amount,bool iscrit = false)
         {
+            if (!CanTakeDmg)
+            {
+                return;
+            }
             DmgTaken = true;
             if (rb != null) rb.linearVelocity = Vector2.zero;
             healthComponent.TakeDamage(amount,iscrit);
@@ -58,6 +74,10 @@ namespace Script
 
         public virtual void TakeDmgOverTime(float duration, float amountpertick, float tickrate)
         {
+            if (!CanTakeDmg)
+            {
+                return;
+            }
             DmgTaken = true;
             if (rb != null) rb.linearVelocity = Vector2.zero;
             healthComponent.TakeDamageOverTime(duration,amountpertick,tickrate);
@@ -86,12 +106,32 @@ namespace Script
 
         private void HandleProjectile(GameObject g)
         {
+
             Projectile p = g.GetComponent<Projectile>() ?? g.GetComponentInParent<Projectile>();
             if (p != null)
             {
                 TakeDmg(p.currentDmg,p.IsCriticalStrike);
                 p.statusEffect?.Apply(this);
             }
+        }
+
+        public void Invulnerabilty(float time)
+        {
+            CanTakeDmg = false;
+            ChangeSpriteColor(Color.black);
+            StartCoroutine(Cooldown(time));
+        }
+
+        IEnumerator Cooldown(float cd)
+        {
+            float timer = 0f; 
+            while (timer < cd)
+            {
+                yield return new WaitForSeconds(0.1f);
+                timer += 0.1f;
+            }
+            CanTakeDmg = true;
+            ChangeSpriteColor(Color.yellow);
         }
 
         public bool CheckCrit()

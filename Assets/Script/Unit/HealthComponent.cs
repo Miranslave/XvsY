@@ -14,7 +14,7 @@ public class HealthComponent : MonoBehaviour
     [SerializeField] private bool linkedToUI = false;
     [SerializeField] private UIManager healthUiComp;//temporary
     [SerializeField] private GameObject Uihitdmg;
-
+    [SerializeField] private EntityBase _entityBase;
     [SerializeField] private Canvas _Canvas;
 
     [SerializeField] private bool ui_hit_dmg = false;
@@ -27,6 +27,7 @@ public class HealthComponent : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        _entityBase = this.GetComponent<EntityBase>();
         _Canvas = this.GetComponentInChildren<Canvas>();
         if (_Canvas)
         {
@@ -97,6 +98,11 @@ public class HealthComponent : MonoBehaviour
     
     public void TakeDamage(float dmg,bool iscrit = false,bool isfromstatus = false)
     {
+
+        if (!isfromstatus && !this.gameObject.CompareTag("Player"))
+        {
+            _entityBase.Invulnerabilty(1f);
+        }
         current_health -= dmg;
         if(linkedToUI)
             healthUiComp.NewValue(current_health);

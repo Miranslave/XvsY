@@ -1,22 +1,34 @@
 fileFormatVersion: 2
-guid: aea054ee20763674689a2b9c2c826574
+guid: 4298032bf0efd7744a6dbb973c02c213
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7032685582455520434
-    second: SlottsIcon_0
+      213: 2270444946439293702
+    second: ButttonRotate_0
   - first:
-      213: 2731708229096555494
-    second: SlottsIcon_1
+      213: -6161918042565026851
+    second: ButttonRotate_1
   - first:
-      213: -1904446444876296550
-    second: SlottsIcon_2
+      213: -1041643692977077629
+    second: ButttonRotate_2
   - first:
-      213: 7970356542635057792
-    second: SlottsIcon_3
+      213: 8970000453331886673
+    second: ButttonRotate_3
   - first:
-      213: 7852020177221308206
-    second: SlottsIcon_4
+      213: 7627601760320504453
+    second: ButttonRotate_4
+  - first:
+      213: -6668588830845724128
+    second: ButttonRotate_5
+  - first:
+      213: 7292647871883025199
+    second: ButttonRotate_6
+  - first:
+      213: 2337461998772795819
+    second: ButttonRotate_7
+  - first:
+      213: -4793158985852658557
+    second: ButttonRotate_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -63,7 +75,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -108,150 +120,203 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BowIcon
+      name: ButttonRotate_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 22
-        width: 5
-        height: 9
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2bcb547c64e199160800000000000000
-      internalID: 7032685582455520434
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: OrcIcon
-      rect:
-        serializedVersion: 2
-        x: 20
-        y: 24
-        width: 12
-        height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6e3cf41492af8e520800000000000000
-      internalID: 2731708229096555494
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SwordIcon
-      rect:
-        serializedVersion: 2
-        x: 3
-        y: 13
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a9e846f6c0c0295e0800000000000000
-      internalID: -1904446444876296550
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: HumanIcon
-      rect:
-        serializedVersion: 2
-        x: 21
-        y: 12
-        width: 10
-        height: 10
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 08229f8fb056c9e60800000000000000
-      internalID: 7970356542635057792
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ThunderIcon
-      rect:
-        serializedVersion: 2
-        x: 3
+        x: 8
         y: 2
-        width: 8
-        height: 8
+        width: 55
+        height: 53
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e2fc978dfbaf7fc60800000000000000
-      internalID: 7852020177221308206
+      spriteID: 60b489246ad328f10800000000000000
+      internalID: 2270444946439293702
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ElveIcon
+      name: ButttonRotate_1
       rect:
         serializedVersion: 2
-        x: 20
-        y: 1
-        width: 12
-        height: 10
+        x: 68
+        y: 0
+        width: 54
+        height: 52
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 6c7e8785b0b51f841a84273ee3b1476e
-      internalID: 2048155614
+      spriteID: ddb57d100387c7aa0800000000000000
+      internalID: -6161918042565026851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButttonRotate_2
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 1
+        width: 53
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 382439184965b81f0800000000000000
+      internalID: -1041643692977077629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButttonRotate_3
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 3
+        width: 57
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 152a0ff13e7db7c70800000000000000
+      internalID: 8970000453331886673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButttonRotate_4
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 2
+        width: 55
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5824c04636faad960800000000000000
+      internalID: 7627601760320504453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButttonRotate_5
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 3
+        width: 52
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02a9d404ac96473a0800000000000000
+      internalID: -6668588830845724128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButttonRotate_6
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 3
+        width: 53
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2b9893f990b43560800000000000000
+      internalID: 7292647871883025199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButttonRotate_7
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 5
+        width: 55
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba9b3d0bd45507020800000000000000
+      internalID: 2337461998772795819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButttonRotate_8
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 7
+        width: 54
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38cd7403c474b7db0800000000000000
+      internalID: -4793158985852658557
       vertices: []
       indices: 
       edges: []
@@ -260,7 +325,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 6d0d3eea33108a14b911e16a80839ed6
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -268,16 +333,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":2.0,"y":3.0},"gridSpriteSize":{"x":16.0,"y":10.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      BowIcon: 7032685582455520434
-      ElveIcon: 2048155614
-      HumanIcon: 7970356542635057792
-      OrcIcon: 2731708229096555494
-      SwordIcon: -1904446444876296550
-      ThunderIcon: 7852020177221308206
+      ButttonRotate_0: 2270444946439293702
+      ButttonRotate_1: -6161918042565026851
+      ButttonRotate_2: -1041643692977077629
+      ButttonRotate_3: 8970000453331886673
+      ButttonRotate_4: 7627601760320504453
+      ButttonRotate_5: -6668588830845724128
+      ButttonRotate_6: 7292647871883025199
+      ButttonRotate_7: 2337461998772795819
+      ButttonRotate_8: -4793158985852658557
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

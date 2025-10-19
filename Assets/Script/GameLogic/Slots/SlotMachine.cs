@@ -162,6 +162,8 @@ public class SlotMachine : MonoBehaviour
 
         return Choice;
     }
+    
+    
     /*
     private IEnumerator SpinCoroutine()
     {
@@ -182,8 +184,6 @@ public class SlotMachine : MonoBehaviour
         yield return abilitySpin;
         
         factory.Assemble(raceResult,weaponResult,abilityResult);
-
-        
     }*/
     
     private IEnumerator SpinWheel(GameObject uiGameObject,List<GameObject> GameObjectWeightedList,List<Rollable> rollables,Action<GameObject> onFinished)

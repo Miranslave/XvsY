@@ -280,8 +280,9 @@ MonoBehaviour:
   healthComponent: {fileID: 3327845185524717763}
   rb: {fileID: 0}
   animator: {fileID: 0}
-  spriteRenderer: {fileID: 0}
+  spriteRenderer: {fileID: 126836888156634431}
   baseTarget: {fileID: 0}
+  isDead: 0
   rangeRaycast: 0.5
   RaycastDebugMod: 1
   layerMaskToDetect:
@@ -289,6 +290,7 @@ MonoBehaviour:
     m_Bits: 256
   UnitInRange: 0
   UnitRaycasted: {fileID: 0}
+  Gold_Reward: 0
 --- !u!95 &-5405266382901624128
 Animator:
   serializedVersion: 7
@@ -329,6 +331,7 @@ MonoBehaviour:
   linkedToUI: 0
   healthUiComp: {fileID: 0}
   Uihitdmg: {fileID: 2743584755829223540, guid: dc55ff1aa5086d248b2e2072f08dab01, type: 3}
+  _entityBase: {fileID: 0}
   _Canvas: {fileID: 5038943148785281523}
   ui_hit_dmg: 0
   istakingDot: 0

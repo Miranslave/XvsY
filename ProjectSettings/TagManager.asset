@@ -25,7 +25,7 @@ TagManager:
   - Unit
   - Unit_UI
   - SLOTS
-  - 
+  - PresentationBand
   - 
   - 
   - 
@@ -71,11 +71,14 @@ TagManager:
   - name: SLOTS
     uniqueID: 1023288627
     locked: 0
+  - name: Dmg_ui
+    uniqueID: 887128391
+    locked: 0
   - name: special_effect
     uniqueID: 3223313813
     locked: 0
-  - name: Dmg_ui
-    uniqueID: 887128391
+  - name: PresentationBand
+    uniqueID: 3208600809
     locked: 0
   m_RenderingLayers:
   - Default

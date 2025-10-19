@@ -100,9 +100,9 @@ public class Enemy : EntityBase
         // 3️⃣ On libère les contraintes du rigidbody (mais bloque la rotation pour le style Paper Mario)
         rb.constraints = RigidbodyConstraints2D.None;
         float ForceInX,ForceInY,TorqueForce;
-        ForceInY = Random.Range(3f, 6f);
-        ForceInX = Random.Range(0.5f,3f);
-        TorqueForce = Random.Range(3f, 9f);
+        ForceInY = Random.Range(5f, 6f);
+        ForceInX = Random.Range(1.5f,3f);
+        TorqueForce = Random.Range(-9f, 9f);
         // 4️⃣ On applique une impulsion vers le haut (et un peu de côté)// petit aléatoire pour la direction
         rb.AddForce(new Vector2(ForceInX, ForceInY),ForceMode2D.Impulse);
         rb.AddTorque(TorqueForce,ForceMode2D.Impulse);
@@ -110,6 +110,7 @@ public class Enemy : EntityBase
         rb.linearDamping = 0f; // renforce la chute pour que ce soit visible
 
     }
+    
 
 
     public void GiveReward()
