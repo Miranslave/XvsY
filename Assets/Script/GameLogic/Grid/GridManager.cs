@@ -187,7 +187,8 @@ namespace Script
         public void Resetcursor()
         {
             _flowerToPlace = null;
-            _placeUnit.CleanCurrentPrefab();
+            if(!_placeUnit.GetDummyMode())
+                _placeUnit.CleanCurrentPrefab();
             highlightInstance.GetComponent<SpriteRenderer>().sprite =
                 highlightPrefab.GetComponent<SpriteRenderer>().sprite;
             _ishighlightcursor = true;

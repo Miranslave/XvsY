@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5474410724378677168}
   - component: {fileID: 7441506621007009778}
   m_Layer: 8
-  m_Name: RGO_Human
+  m_Name: RGO_Dummy
   m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1750819119501913762}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -50,15 +50,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityName: Human
-  dmg: 1
-  current_speed: 2
+  dmg: 0
+  current_speed: 0
   base_speed: 0
   critChance: 0
   healthComponent: {fileID: 5729364908325464636}
   rb: {fileID: 0}
   animator: {fileID: 0}
   spriteRenderer: {fileID: 3916173358441642798}
-  icon: {fileID: 7970356542635057792, guid: aea054ee20763674689a2b9c2c826574, type: 3}
+  icon: {fileID: 21300000, guid: c5afc2b584b8cbc4fa4ba7f679c74116, type: 3}
   level: 1
   effect_cooldown: 3
   weapon: {fileID: 0}
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dmgprefablist: []
-  max_health: 100
+  max_health: 1000
   current_health: 0
   linkedToUI: 0
   healthUiComp: {fileID: 5474410724378677168}
@@ -165,9 +165,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1750819119501913762}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0c80e223932de3243b8dba1db56eb99d, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -546,7 +546,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Human
+  m_text: 'Dummy
 
 
 '
@@ -700,7 +700,7 @@ SpriteRenderer:
   m_SortingLayerID: -241106529
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: -4563781881041438645, guid: f3a3a2227262549499018e27712e6c11, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c5afc2b584b8cbc4fa4ba7f679c74116, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

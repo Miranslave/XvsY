@@ -14,7 +14,7 @@ public class SlotsUI : MonoBehaviour
     [SerializeField] private SpriteRenderer _result;
     [SerializeField] private SpriteRenderer _top;
     [SerializeField] private SpriteRenderer _bottom;
-    
+    [SerializeField] private Material Base, Outline;
     
     [Header("Rollables")]
     private List<Rollable> listToDraw;
@@ -42,6 +42,7 @@ public class SlotsUI : MonoBehaviour
     public void StopSpin()
     {
         Spinning = false;
+        UnSetOutline();
         SetEndSprite(); 
     }
     
@@ -85,6 +86,16 @@ public class SlotsUI : MonoBehaviour
                 return;
             }
         }
+    }
+
+    public void SetOutlineShader()
+    {
+        _result.material = Outline;
+    }
+
+    private void UnSetOutline()
+    {
+        _result.material = Base;
     }
     /*
     public void SetEndSprite(GameObject gDrawn)

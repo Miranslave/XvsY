@@ -32,13 +32,15 @@ namespace Script
         
         public void Start()
         {
-            CapacityAdding();
+            if(specialCapacity)
+                CapacityAdding();
             EffectLoopCoroutine = StartCoroutine(StartUnitCooldown());
         }
 
         public void Update()
         {
-            CheckIfEnemyInLane();
+            if(weapon)
+                CheckIfEnemyInLane();
         }
 
         public abstract void Effect();

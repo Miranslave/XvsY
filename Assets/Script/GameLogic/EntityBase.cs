@@ -118,7 +118,7 @@ namespace Script
         public void Invulnerabilty(float time)
         {
             CanTakeDmg = false;
-            ChangeSpriteColor(Color.black);
+            //ChangeSpriteColor(Color.black);
             StartCoroutine(Cooldown(time));
         }
 
@@ -131,7 +131,7 @@ namespace Script
                 timer += 0.1f;
             }
             CanTakeDmg = true;
-            ChangeSpriteColor(Color.yellow);
+            //ChangeSpriteColor(Color.yellow);
         }
 
         public bool CheckCrit()

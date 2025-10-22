@@ -43,7 +43,7 @@ public class PlaceUnitManager : MonoBehaviour
         p = null;
         foreach (var pU in PlaceUnits_list)
         {
-            if (pU.rolledUnitPrefab == null)
+            if (pU.RolledUnitPrefab == null)
             {
                 p = pU;
                 return true;

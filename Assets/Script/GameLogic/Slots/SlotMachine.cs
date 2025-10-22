@@ -76,6 +76,7 @@ public class SlotMachine : MonoBehaviour
                 //_animator.SetTrigger("SlotStart");
                 //StartCoroutine(SpinCoroutine());
                 trySpinWheel(raceSpinUI,RaceListToDraw);
+                raceSpinUI.SetOutlineShader();
                 trySpinWheel(weaponSpinUI,WeaponListToDraw);
                 trySpinWheel(abilitySpinUI,AbilitiesListToDraw);
                 DuringASpin = true;
@@ -112,10 +113,12 @@ public class SlotMachine : MonoBehaviour
         {
             temp_slotUi.gDrawn = drawthing(RaceWeightedListToDraw);
             raceResult = (GameObject)temp_slotUi.gDrawn;
+            weaponSpinUI.SetOutlineShader();
         } else if(slotUi_index_to_stop == 1)
         {
             temp_slotUi.gDrawn = drawthing(WeaponWeightedListToDraw);
             weaponResult = (GameObject)temp_slotUi.gDrawn;
+            abilitySpinUI.SetOutlineShader();
         }else if (slotUi_index_to_stop == 2)
         {
             temp_slotUi.gDrawn = drawthing(WeaponWeightedListToDraw,AbilitiesWeightedListToDraw);
@@ -139,7 +142,7 @@ public class SlotMachine : MonoBehaviour
     
     private IEnumerator WaitAndHideSlotMachine()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.5f);
         slotmachine_display.SetActive(false);
     }
 

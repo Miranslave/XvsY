@@ -7,6 +7,9 @@ public class UnitFactory : MonoBehaviour
     public PlaceUnit PlaceUnit_current;
     public PresentationBandManager _presentationBandManager;
     public PlayerManager _PlayerManager;
+    
+    
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -23,8 +26,11 @@ public class UnitFactory : MonoBehaviour
         //toSendWeapon.transform.position += new Vector3(0.3f, 0, 0); 
         toSend.GetComponent<BaseUnit>().weapon = toSendWeapon.GetComponent<Weapon>();
         toSend.GetComponent<BaseUnit>().specialCapacity = ability;
-        PlaceUnit_current.rolledUnitPrefab = toSend;
+        PlaceUnit_current.RolledUnitPrefab = toSend;
         toSend.GetComponent<BaseUnit>().Innit();
+        
+        // BAND TO DO PRESENTATION 
+        
         if (_PlayerManager.CheckIfNewUnit(toSend.GetComponent<BaseUnit>()))
         {
             SpriteRenderer srU = toSend.GetComponent<BaseUnit>().spriteRenderer;
@@ -33,10 +39,14 @@ public class UnitFactory : MonoBehaviour
             _presentationBandManager.new_weapon = srW.sprite;
             _presentationBandManager.Innit();
         }
+        
+        // END
         toSend.transform.SetParent(PlaceUnit_current.transform);
         Deactivate(toSend);
     }
 
+    
+    
     public void Deactivate(GameObject toSend)
     {
         toSend.SetActive(false);
@@ -44,7 +54,7 @@ public class UnitFactory : MonoBehaviour
 
     public void Clean()
     {
-        if (PlaceUnit_current.rolledUnitPrefab)
+        if (PlaceUnit_current.RolledUnitPrefab)
         {
             PlaceUnit_current.CleanCurrentPrefab();
         }

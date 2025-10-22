@@ -25,10 +25,12 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private GridManager _gridManager;
     [SerializeField] private UIManager _uiMoneyManager;
     [SerializeField] private SlotMachine _slotMachine;
+    [SerializeField] private GameObject _dummyprefab;
     [Header("User actions input")]
     private InputActionSetBasic Controls;
     private Camera _camera;
 
+    
     
     void OnDestroy()
     {
@@ -124,4 +126,9 @@ public class PlayerManager : MonoBehaviour
         return true;
     }
     
+    // Debug purpose setup target dummy that can be cleaned
+    public void GetDummy()
+    {
+
+    }
 }

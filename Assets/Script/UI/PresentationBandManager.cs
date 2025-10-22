@@ -1,6 +1,7 @@
 using System;
 using Script;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PresentationBandManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class PresentationBandManager : MonoBehaviour
     public Sprite new_unit,new_weapon,new_ability;
     public enum PresentationState { Inactive, Entering, Active, Exiting }
     public PresentationState state = PresentationState.Inactive;// 0 prez inactive - 1 prez run to mid - 2 prez end
+
+     public ParticleSystem _particleSystem;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -49,6 +52,11 @@ public class PresentationBandManager : MonoBehaviour
     {
         state = PresentationState.Active;
         Debug.Log("✅ Présentation active — en attente d’un input...");
+    }
+
+    public void TriggerParticles()
+    {
+        _particleSystem.Play();
     }
 
     public void End()

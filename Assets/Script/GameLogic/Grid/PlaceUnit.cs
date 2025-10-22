@@ -7,8 +7,8 @@ namespace Script
 {
     public class PlaceUnit : MonoBehaviour
     {
-        private GameObject _rolledUnitPrefab;
-        public GameObject rolledUnitPrefab
+        [SerializeField] private GameObject _rolledUnitPrefab;
+        public GameObject RolledUnitPrefab
         {
             get => _rolledUnitPrefab;
             set
@@ -29,7 +29,7 @@ namespace Script
         public Sprite placeholder;
         public Sprite weaponplaceholder;
         public Sprite capacityplaceholder;
-        private Unit _unit;
+        [SerializeField] private Unit _unit;
         private GameObject _grid;
        
         
@@ -38,13 +38,14 @@ namespace Script
         [SerializeField] private GameObject _player;
         [SerializeField] private PlayerManager _playerManager;
         [SerializeField] private UnitFactory _unitFactory;
-        
+        [SerializeField] private bool Dummymode;
 
   
         public void Start()
         {
             _grid = GameObject.FindGameObjectWithTag("Grid");
-            _unitFactory = GameObject.FindGameObjectWithTag("UnitFactory").GetComponent<UnitFactory>();
+            if(!Dummymode)
+                _unitFactory = GameObject.FindGameObjectWithTag("UnitFactory").GetComponent<UnitFactory>();
             _player = GameObject.FindGameObjectWithTag("Player");
             //_unit = prefab.GetComponent<Unit>();
             _playerManager = _player.GetComponent<PlayerManager>();
@@ -53,13 +54,23 @@ namespace Script
 
         public void ChangeCursor()
         {
-            if(rolledUnitPrefab)
-                _gridManager.ChangeHighlight(rolledUnitPrefab,this);
+            if(RolledUnitPrefab && !Dummymode)
+                _gridManager.ChangeHighlight(RolledUnitPrefab,this);
+            if (Dummymode)
+            {
+                GameObject g = Instantiate(_rolledUnitPrefab);
+                g.SetActive(false);
+                if (g)
+                {
+                    _gridManager.ChangeHighlight(g,this);
+                }
+            }
         }
 
         public void CleanCurrentPrefab()
         {
-            rolledUnitPrefab = null;
+            if(!Dummymode)
+                RolledUnitPrefab = null;
         }
         
         private void UpdatePreview()
@@ -80,11 +91,15 @@ namespace Script
                 {
                     Race_preview.sprite = u.icon;
                     Weapon_preview.sprite = u.weapon.Icon1;
-                    
                     Capacity_preview.sprite = u.specialCapacity.Icon;
                     Race_preview.color = Color.white;
                 }
             }
+        }
+
+        public bool GetDummyMode()
+        {
+            return Dummymode;
         }
         
         
