@@ -27,17 +27,22 @@ public class Enemy : EntityBase
 
     private void Update()
     {
-        CheckIfEnemyInLane();
+        if(!paused)
+            CheckIfEnemyInLane();
         
     }
 
     private void FixedUpdate() // utiliser FixedUpdate pour la physique
     {
-        if (!UnitInRange && !isDead)
+        if (!paused)
         {
-            MoveToTarget(baseTarget);
+            if (!UnitInRange && !isDead)
+            {
+                MoveToTarget(baseTarget);
+            }
+            animator.SetBool("IsMoving", rb.linearVelocity != Vector2.zero);
         }
-        animator.SetBool("IsMoving", rb.linearVelocity != Vector2.zero);
+
     }
 
     public void CheckIfEnemyInLane()

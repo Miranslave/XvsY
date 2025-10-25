@@ -31,7 +31,7 @@ namespace Script
         public Sprite capacityplaceholder;
         [SerializeField] private Unit _unit;
         private GameObject _grid;
-       
+        private GameObject dummy;
         
         [Header("debug testing")]
         [SerializeField] private GridManager _gridManager;
@@ -44,7 +44,7 @@ namespace Script
         public void Start()
         {
             _grid = GameObject.FindGameObjectWithTag("Grid");
-            if(!Dummymode)
+           
                 _unitFactory = GameObject.FindGameObjectWithTag("UnitFactory").GetComponent<UnitFactory>();
             _player = GameObject.FindGameObjectWithTag("Player");
             //_unit = prefab.GetComponent<Unit>();
@@ -58,11 +58,14 @@ namespace Script
                 _gridManager.ChangeHighlight(RolledUnitPrefab,this);
             if (Dummymode)
             {
-                GameObject g = Instantiate(_rolledUnitPrefab);
-                g.SetActive(false);
-                if (g)
+                if (!dummy || dummy.activeInHierarchy)
                 {
-                    _gridManager.ChangeHighlight(g,this);
+                    dummy = Instantiate(_rolledUnitPrefab);
+                    dummy.SetActive(false);
+                }
+                if (dummy)
+                {
+                    _gridManager.ChangeHighlight(dummy,this);
                 }
             }
         }

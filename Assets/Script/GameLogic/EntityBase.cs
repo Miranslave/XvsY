@@ -7,14 +7,14 @@ using Random = UnityEngine.Random;
 
 namespace Script
 {
-    public class EntityBase: MonoBehaviour
+    public class EntityBase: MonoBehaviour , IPausable
     {
         [Header("Entity Info")]
         public string entityName;
         public int dmg = 1;
         public float current_speed = 2;
         public float base_speed;
-        
+        protected bool paused = false;
         
         [Range(0f, 100f)] public float critChance = 0f;
 
@@ -61,7 +61,7 @@ namespace Script
         
         // ----------------- Combat / Vie -----------------
         public virtual void TakeDmg(float amount,bool iscrit = false)
-        {
+        {   
             if (!CanTakeDmg)
             {
                 return;
@@ -157,6 +157,22 @@ namespace Script
         private void OnDestroy()
         {
             healthComponent.DOKill(healthComponent);
+        }
+
+
+
+        public void OnPause()
+        {
+            paused = true;
+            animator.speed = 0f;
+            if(rb)
+                rb.linearVelocity = Vector2.zero;
+        }
+
+        public void OnResume()
+        {
+            paused = false;
+            animator.speed = 1f;
         }
     }
 }

@@ -49,7 +49,7 @@ public class SlotMachine : MonoBehaviour
     [SerializeField] private List<GameObject> RaceWeightedListToDraw;
     [SerializeField] private List<GameObject> WeaponWeightedListToDraw;
     [SerializeField] private List<SpecialCapacity> AbilitiesWeightedListToDraw;
-    
+    [SerializeField] private PausingManager _pausingManager;
     
     private void Awake()
     {
@@ -80,6 +80,7 @@ public class SlotMachine : MonoBehaviour
                 trySpinWheel(weaponSpinUI,WeaponListToDraw);
                 trySpinWheel(abilitySpinUI,AbilitiesListToDraw);
                 DuringASpin = true;
+                GameEvents.RequestPause();
             }
             else
             {
@@ -131,6 +132,14 @@ public class SlotMachine : MonoBehaviour
             factory.Assemble(raceResult,weaponResult,abilityResult);
             StartCoroutine(WaitAndHideSlotMachine());
             slotUi_index_to_stop = 0;
+            
+            // not working as intended
+            // Check if unit is new 
+            bool newUnitProc = playerManager.CheckIfNewUnit(factory.toSend.GetComponent<Unit>());            
+            if(!newUnitProc)
+                GameEvents.RequestResume();
+            
+           // aaaaa
         }
         else
         {

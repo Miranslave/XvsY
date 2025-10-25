@@ -83,4 +83,9 @@ public class PresentationBandManager : MonoBehaviour
         gameObject.SetActive(false);
         Debug.Log("🔄 Présentation réinitialisée.");
     }
+
+    private void SendUnpauseEvent()
+    {
+        GameEvents.RequestResume();
+    }
 }

@@ -39,8 +39,11 @@ namespace Script
 
         public void Update()
         {
-            if(weapon)
-                CheckIfEnemyInLane();
+            if (!paused)
+            {
+                if(weapon)
+                    CheckIfEnemyInLane();
+            }
         }
 
         public abstract void Effect();

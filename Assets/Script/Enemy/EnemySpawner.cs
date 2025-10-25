@@ -1,10 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Script;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class EnemySpawner : MonoBehaviour
+public class EnemySpawner : MonoBehaviour,IPausable
 {
 
 
@@ -13,6 +14,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Coroutine currentwork;
     [SerializeField] private int n = 0;
     [SerializeField] private float SpawnRate = 5f;
+    private bool paused = false;
 
     public bool Debug_mode;
     
@@ -42,7 +44,8 @@ public class EnemySpawner : MonoBehaviour
         while (true)
         { 
             yield return new WaitForSeconds(SpawnRate);
-            Spawn();
+            if(!paused)
+                Spawn();
         }
     }
 
@@ -69,5 +72,16 @@ public class EnemySpawner : MonoBehaviour
         GameObject g = Instantiate(enemyToSpawn, spawnedTransform.position, Quaternion.identity);
         g.name = "slime " + n;
         n++;
+    }
+
+    public void OnPause()
+    {
+        // maybe we could stop couroutine and make it start again somewhere else but taking the easy road now we just put condition
+        paused = true;
+    }
+
+    public void OnResume()
+    {
+        paused = false;
     }
 }

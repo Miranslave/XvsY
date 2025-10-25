@@ -3,10 +3,12 @@ using Script;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class Projectile : MonoBehaviour,IPausable
 {
     public Ammo ammo;
     public StatusEffect statusEffect;
+    private Rigidbody2D _rb2d;
+    private Vector2 _velocity;
     public float currentDmg;
     public bool IsCriticalStrike = false;
 
@@ -28,5 +30,15 @@ public class Projectile : MonoBehaviour
         IsCriticalStrike = true;
         currentDmg *= 1.5f;
     }
-    
+
+    public void OnPause()
+    {
+        _velocity = _rb2d.linearVelocity;
+        _rb2d.linearVelocity = Vector2.zero;
+    }
+
+    public void OnResume()
+    {
+        _rb2d.linearVelocity = _velocity;
+    }
 }

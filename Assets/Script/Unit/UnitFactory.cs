@@ -7,7 +7,7 @@ public class UnitFactory : MonoBehaviour
     public PlaceUnit PlaceUnit_current;
     public PresentationBandManager _presentationBandManager;
     public PlayerManager _PlayerManager;
-    
+    public GameObject toSend;
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -21,7 +21,7 @@ public class UnitFactory : MonoBehaviour
     public void Assemble(GameObject race, GameObject weapon, SpecialCapacity ability)
     {
         Clean();
-        GameObject toSend = Instantiate(race);
+        toSend = Instantiate(race);
         GameObject toSendWeapon = Instantiate(weapon, toSend.transform);
         //toSendWeapon.transform.position += new Vector3(0.3f, 0, 0); 
         toSend.GetComponent<BaseUnit>().weapon = toSendWeapon.GetComponent<Weapon>();

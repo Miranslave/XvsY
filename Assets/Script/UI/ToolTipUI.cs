@@ -68,18 +68,27 @@ public class ToolTipUI : MonoBehaviour
             nameText.text = unit.entityName;
             hpText.text = $"HP: {unit.healthComponent.getCurrentHealth()}";
             CritText.text = $"Crit: {unit.critChance}";
-            WeaponIcon.sprite = unit.weapon.Icon1;
-            CapacityIcon.sprite = unit.specialCapacity.Icon;
-            capacityDescription.text = unit.specialCapacity.effectName + " : " + unit.specialCapacity.effectDescription;
+            if (unit.weapon)
+            {
+                WeaponIcon.sprite = unit.weapon.Icon1;
+                if (unit.weapon.GetIsRanged())
+                {
+                    dmgText.text = $"DMG: {unit.weapon.GetAmmoDmg()}";
+                }
+                else
+                {
+                    dmgText.text = $"DMG: {unit.weapon.GetDmg()}";
+                }
+            }
+               
+            if (unit.specialCapacity)
+            {
+                CapacityIcon.sprite = unit.specialCapacity.Icon;
+                capacityDescription.text = unit.specialCapacity.effectName + " : " + unit.specialCapacity.effectDescription;
+            }
+ 
 
-            if (unit.weapon.GetIsRanged())
-            {
-                dmgText.text = $"DMG: {unit.weapon.GetAmmoDmg()}";
-            }
-            else
-            {
-                dmgText.text = $"DMG: {unit.weapon.GetDmg()}";
-            }
+
                 
             
         }

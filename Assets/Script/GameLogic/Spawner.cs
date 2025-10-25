@@ -1,13 +1,17 @@
 using System.Collections.Generic;
+using Script;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class Spawner : MonoBehaviour, IPausable
 {
     public GameObject prefab;
     public bool blaunch;
     public float delay;
 
     private float _delay;
+
+    private bool paused = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -17,15 +21,18 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_delay > 0)
+        if (!paused)
         {
-            _delay -= Time.deltaTime;
-        }
-        else
-        {
-            Spawn();
-            _delay = delay;
+            if (_delay > 0)
+            {
+                _delay -= Time.deltaTime;
+            }
+            else
+            {
+                Spawn();
+                _delay = delay;
 
+            }
         }
         
     }
@@ -58,5 +65,15 @@ public class Spawner : MonoBehaviour
 
         
     }
-    
+
+
+    public void OnPause()
+    {
+        paused = true;
+    }
+
+    public void OnResume()
+    {
+        paused = false;
+    }
 }
