@@ -13,6 +13,7 @@ TagManager:
   - Unit
   - UnitFactory
   - Canva
+  - PresentationBand
   layers:
   - Default
   - TransparentFX

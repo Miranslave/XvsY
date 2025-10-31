@@ -132,6 +132,10 @@ public class HealthComponent : MonoBehaviour
             e.GiveReward();
             e.EnemyHitPhysics();
         }
+        else
+        {
+            Destroy(this.gameObject);
+        }
         
     }
 

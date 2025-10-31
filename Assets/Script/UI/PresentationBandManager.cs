@@ -74,6 +74,7 @@ public class PresentationBandManager : MonoBehaviour
     public void ExitFinished()
     {
         Reset();
+        GameEvents.RequestResume();
     }
 
     private void Reset()
@@ -83,9 +84,5 @@ public class PresentationBandManager : MonoBehaviour
         gameObject.SetActive(false);
         Debug.Log("🔄 Présentation réinitialisée.");
     }
-
-    private void SendUnpauseEvent()
-    {
-        GameEvents.RequestResume();
-    }
+    
 }

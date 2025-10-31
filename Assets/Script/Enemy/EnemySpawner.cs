@@ -10,7 +10,7 @@ public class EnemySpawner : MonoBehaviour,IPausable
 
 
     [SerializeField] private List<Transform> Spawnpoint;
-    [SerializeField] private GameObject enemyToSpawn;
+    [SerializeField] private List<GameObject> _listEnemyToSpawn;
     [SerializeField] private Coroutine currentwork;
     [SerializeField] private int n = 0;
     [SerializeField] private float SpawnRate = 5f;
@@ -44,8 +44,20 @@ public class EnemySpawner : MonoBehaviour,IPausable
         while (true)
         { 
             yield return new WaitForSeconds(SpawnRate);
-            if(!paused)
-                Spawn();
+            if (!paused)
+            {
+                if (Debug_mode)
+                {
+                    Spawn(0);
+                    yield break;
+                }
+                else
+                {
+                    Spawn();
+                }
+            }
+                
+            
         }
     }
 
@@ -57,8 +69,9 @@ public class EnemySpawner : MonoBehaviour,IPausable
             return;
         }
         Transform spawnedTransform = Spawnpoint[Random.Range(0, Spawnpoint.Count)];
+        GameObject enemyToSpawn = _listEnemyToSpawn[Random.Range(0, _listEnemyToSpawn.Count)];
         GameObject g = Instantiate(enemyToSpawn, spawnedTransform.position, Quaternion.identity);
-        g.name = "slime " + n;
+        g.name = g.GetComponent<Enemy>().name + n;
         n++;
     }
     void Spawn(int i)
@@ -69,8 +82,9 @@ public class EnemySpawner : MonoBehaviour,IPausable
             return;
         }
         Transform spawnedTransform = Spawnpoint[0];
+        GameObject enemyToSpawn = _listEnemyToSpawn[Random.Range(0, _listEnemyToSpawn.Count)];
         GameObject g = Instantiate(enemyToSpawn, spawnedTransform.position, Quaternion.identity);
-        g.name = "slime " + n;
+        g.name = g.GetComponent<Enemy>().name + n;
         n++;
     }
 

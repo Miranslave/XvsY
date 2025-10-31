@@ -245,7 +245,12 @@ MonoBehaviour:
   - {fileID: 818623659892916848}
   - {fileID: 1075195232424245681}
   - {fileID: 4137832228179358800}
-  enemyToSpawn: {fileID: 7911640846123794808, guid: 61979d73f728a2e4dbc3f7e6b18158d1, type: 3}
+  _listEnemyToSpawn:
+  - {fileID: 7579885758470953762, guid: 65ce2e8e01b8105499a3b7477c7d7ff6, type: 3}
+  - {fileID: 7911640846123794808, guid: 61979d73f728a2e4dbc3f7e6b18158d1, type: 3}
+  n: 0
+  SpawnRate: 5
+  Debug_mode: 0
 --- !u!1 &8723191155307675164
 GameObject:
   m_ObjectHideFlags: 0

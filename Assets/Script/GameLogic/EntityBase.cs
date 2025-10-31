@@ -41,11 +41,11 @@ namespace Script
             current_speed = base_speed;
             rb = GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
-     /*       
+            spriteRenderer = GetComponent<SpriteRenderer>();
             if (spriteRenderer == null)
             {
-                spriteRenderer = GetComponentInParent<SpriteRenderer>();
-            }*/
+                spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+            }
             if (rb != null)
             {
                 rb.gravityScale = 0;
@@ -94,6 +94,7 @@ namespace Script
             {
                 HandleProjectile(other.gameObject);
             }
+            
         }
 
         protected virtual void OnTriggerEnter2D(Collider2D other)

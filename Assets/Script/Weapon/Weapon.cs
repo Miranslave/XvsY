@@ -29,6 +29,7 @@ public class Weapon : MonoBehaviour
     private Collider2D attackZone;
     private Animator animator;
     private bool animatorup;
+    public SpriteRenderer _spriteRenderer;
     
     private static readonly int Attack = Animator.StringToHash("attack");
     private BaseUnit _unit;
@@ -66,6 +67,7 @@ public class Weapon : MonoBehaviour
     private void Awake()
     {
         ammo_clone = Instantiate(ammo);
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         if (weaponstat.isRanged)
         {
             ammo_clone.Prefab.GetComponent<Projectile>().ammo = ammo;

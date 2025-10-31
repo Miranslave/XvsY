@@ -36,7 +36,8 @@ public class SlotMachine : MonoBehaviour
     [Header("Debug")] 
     [SerializeField] private GameObject slotmachine_display;
     [SerializeField] private List<SlotsUI> _slotsUis;
-
+    public PresentationBandManager _presentationBandManager;
+    
     public bool DuringASpin = false;
     
 
@@ -102,7 +103,7 @@ public class SlotMachine : MonoBehaviour
     }
 
     
-    //Wheel stops working but TO DO bit optimization and code cleaning 
+   
     public void StopWheel()
     {
         if (!DuringASpin)
@@ -129,17 +130,30 @@ public class SlotMachine : MonoBehaviour
         if (slotUi_index_to_stop%_slotsUis.Count == 2)
         {
             DuringASpin = false;
-            factory.Assemble(raceResult,weaponResult,abilityResult);
+            BaseUnit CreatedUnit = factory.Assemble(raceResult,weaponResult,abilityResult);
             StartCoroutine(WaitAndHideSlotMachine());
             slotUi_index_to_stop = 0;
             
             // not working as intended
             // Check if unit is new 
-            bool newUnitProc = playerManager.CheckIfNewUnit(factory.toSend.GetComponent<Unit>());            
-            if(!newUnitProc)
+            //bool newUnitProc = playerManager.CheckIfNewUnit(factory.toSend.GetComponent<Unit>());       
+
+            bool newUnitProc = playerManager.CheckIfNewUnit(CreatedUnit);
+            if (newUnitProc)
+            {
+                SpriteRenderer srU = CreatedUnit.spriteRenderer;
+                SpriteRenderer srW = CreatedUnit.weapon._spriteRenderer;
+                _presentationBandManager.new_unit = srU.sprite;
+                _presentationBandManager.new_weapon = srW.sprite;
+                _presentationBandManager.Innit();
+                playerManager.AddANewUnit(CreatedUnit.GetComponent<Unit>());
+            }
+            else
+            {
                 GameEvents.RequestResume();
+            }
             
-           // aaaaa
+            
         }
         else
         {
@@ -161,14 +175,14 @@ public class SlotMachine : MonoBehaviour
         if (L_spe == null)
         {
             int  i = Random.Range(0,L_Ra_We.Count);
-            Debug.Log($"🎲 [drawthing] Tirage GameObject index {i}/{L_Ra_We.Count} : {L_Ra_We[i].name}");
+            //Debug.Log($"🎲 [drawthing] Tirage GameObject index {i}/{L_Ra_We.Count} : {L_Ra_We[i].name}");
             Choice = L_Ra_We[i];
            
         }
         else
         {
             int i = Random.Range(0, L_spe.Count);
-            Debug.Log($"🎲 [drawthing] Tirage Special index {i}/{L_spe.Count} : {L_spe[i].name}");
+            //Debug.Log($"🎲 [drawthing] Tirage Special index {i}/{L_spe.Count} : {L_spe[i].name}");
             Choice = L_spe[i];
         }
 

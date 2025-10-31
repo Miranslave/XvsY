@@ -26,6 +26,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private UIManager _uiMoneyManager;
     [SerializeField] private SlotMachine _slotMachine;
     [SerializeField] private GameObject _dummyprefab;
+    
     [Header("User actions input")]
     private InputActionSetBasic Controls;
     private Camera _camera;
@@ -109,6 +110,8 @@ public class PlayerManager : MonoBehaviour
     }
 
 
+    
+    //Func that verify if the unit drawn is new for the player if yes return true 
     public bool CheckIfNewUnit(Unit drawUnit)
     {
         foreach (Unit u in _Discovered_unitList )
@@ -121,10 +124,16 @@ public class PlayerManager : MonoBehaviour
                 return false;
             }
         }
-        _Discovered_unitList.Add(drawUnit);
         Debug.Log("NOUVELLE UNIT2");
         return true;
     }
+
+
+
+    public void AddANewUnit(Unit drawUnit)
+    {
+        _Discovered_unitList.Add(drawUnit);        
+    } 
     
     // Debug purpose setup target dummy that can be cleaned
     public void GetDummy()

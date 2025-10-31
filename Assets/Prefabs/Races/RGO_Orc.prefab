@@ -93,7 +93,7 @@ MonoBehaviour:
   healthComponent: {fileID: 7224009298018353196}
   rb: {fileID: 0}
   animator: {fileID: 0}
-  spriteRenderer: {fileID: 5765403615608420524}
+  spriteRenderer: {fileID: 0}
   icon: {fileID: 2731708229096555494, guid: aea054ee20763674689a2b9c2c826574, type: 3}
   level: 1
   effect_cooldown: 3
