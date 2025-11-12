@@ -7,7 +7,7 @@ using UnityEditor.Animations;
 using UnityEngine;
 using Unit = Unity.VisualScripting.Unit;
 
-public class Weapon : MonoBehaviour
+public class Weapon : MonoBehaviour,IPausable
 {
     [Header("Weapon info")]
     [SerializeField] private WeaponStat weaponstat;
@@ -100,13 +100,10 @@ public class Weapon : MonoBehaviour
     }
 
 
-    public void Fire()
-    {
-            PlayAttackAnimation();
-    }
 
     private void PlayAttackAnimation()
     {
+        weaponIsFiring = true;
         if (animatorup)
         { 
             animator.SetTrigger(Attack);
@@ -116,17 +113,17 @@ public class Weapon : MonoBehaviour
     
     public IEnumerator StartWeaponCooldown()
     {
-        weaponIsFiring = true;
-        while (true && _unit.EnemyInSight)
+        
+        while (true)
         {
+            weaponIsFiring = false;
             yield return new WaitForSeconds(weaponstat.frequency);
             if (_unit.EnemyInSight)
             {
-                Fire();  
+                PlayAttackAnimation();
             }
         }
-
-        weaponIsFiring = false;
+        
     }
 
 
@@ -199,5 +196,15 @@ public class Weapon : MonoBehaviour
     {
         Projectile p = g.GetComponent<Projectile>();
         p.statusEffect = _statusEffect;
+    }
+
+    public void OnPause()
+    {
+        animator.speed = 0f;
+    }
+
+    public void OnResume()
+    {
+        animator.speed = 1f;
     }
 }

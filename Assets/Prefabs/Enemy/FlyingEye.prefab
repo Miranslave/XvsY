@@ -416,9 +416,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   entityName: Eye
-  dmg: 1
-  current_speed: 2
-  base_speed: 1
+  dmg: 2
+  current_speed: 1
+  base_speed: 1.2
   critChance: 0
   healthComponent: {fileID: 4999056175758239114}
   rb: {fileID: 4999748959855932680}
@@ -451,13 +451,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
   dmgprefablist: []
-  max_health: 0
+  max_health: 5
   current_health: 0
   linkedToUI: 0
   healthUiComp: {fileID: 0}
-  Uihitdmg: {fileID: 0}
+  Uihitdmg: {fileID: 2743584755829223540, guid: dc55ff1aa5086d248b2e2072f08dab01, type: 3}
   _entityBase: {fileID: 0}
-  _Canvas: {fileID: 0}
+  _Canvas: {fileID: 4026306852858482271}
   ui_hit_dmg: 0
   istakingDot: 0
   Dot_timer: 0

@@ -118,6 +118,15 @@ public partial class @InputActionSetBasic: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Check Almanaks"",
+                    ""type"": ""Button"",
+                    ""id"": ""df1c7dcf-863a-4ed3-b4af-4e6d7ccd64e7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -153,6 +162,17 @@ public partial class @InputActionSetBasic: IInputActionCollection2, IDisposable
                     ""action"": ""Place"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3ea24ae7-9463-4ad9-8152-a59f8b04deeb"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Check Almanaks"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -164,6 +184,7 @@ public partial class @InputActionSetBasic: IInputActionCollection2, IDisposable
         m_Basic_Interract = m_Basic.FindAction("Interract", throwIfNotFound: true);
         m_Basic_PointerPosition = m_Basic.FindAction("PointerPosition", throwIfNotFound: true);
         m_Basic_Place = m_Basic.FindAction("Place", throwIfNotFound: true);
+        m_Basic_CheckAlmanaks = m_Basic.FindAction("Check Almanaks", throwIfNotFound: true);
     }
 
     ~@InputActionSetBasic()
@@ -247,6 +268,7 @@ public partial class @InputActionSetBasic: IInputActionCollection2, IDisposable
     private readonly InputAction m_Basic_Interract;
     private readonly InputAction m_Basic_PointerPosition;
     private readonly InputAction m_Basic_Place;
+    private readonly InputAction m_Basic_CheckAlmanaks;
     /// <summary>
     /// Provides access to input actions defined in input action map "Basic".
     /// </summary>
@@ -270,6 +292,10 @@ public partial class @InputActionSetBasic: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Basic/Place".
         /// </summary>
         public InputAction @Place => m_Wrapper.m_Basic_Place;
+        /// <summary>
+        /// Provides access to the underlying input action "Basic/CheckAlmanaks".
+        /// </summary>
+        public InputAction @CheckAlmanaks => m_Wrapper.m_Basic_CheckAlmanaks;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -305,6 +331,9 @@ public partial class @InputActionSetBasic: IInputActionCollection2, IDisposable
             @Place.started += instance.OnPlace;
             @Place.performed += instance.OnPlace;
             @Place.canceled += instance.OnPlace;
+            @CheckAlmanaks.started += instance.OnCheckAlmanaks;
+            @CheckAlmanaks.performed += instance.OnCheckAlmanaks;
+            @CheckAlmanaks.canceled += instance.OnCheckAlmanaks;
         }
 
         /// <summary>
@@ -325,6 +354,9 @@ public partial class @InputActionSetBasic: IInputActionCollection2, IDisposable
             @Place.started -= instance.OnPlace;
             @Place.performed -= instance.OnPlace;
             @Place.canceled -= instance.OnPlace;
+            @CheckAlmanaks.started -= instance.OnCheckAlmanaks;
+            @CheckAlmanaks.performed -= instance.OnCheckAlmanaks;
+            @CheckAlmanaks.canceled -= instance.OnCheckAlmanaks;
         }
 
         /// <summary>
@@ -386,5 +418,12 @@ public partial class @InputActionSetBasic: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnPlace(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Check Almanaks" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnCheckAlmanaks(InputAction.CallbackContext context);
     }
 }

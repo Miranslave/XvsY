@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using NUnit.Framework;
 using Script;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,6 +11,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private HealthComponent _healthComponent;
     [SerializeField] private List<Unit> _Discovered_unitList;
     [SerializeField] private PresentationBandManager _presentationBandManager;
+    [SerializeField] private List<PlayerItems> Current_Items;
     public int Money
     {
         get => _money;
@@ -82,6 +85,7 @@ public class PlayerManager : MonoBehaviour
         Controls = new InputActionSetBasic();
         Controls.Enable();
         Controls.Basic.Interract.performed += interract;
+        Controls.Basic.CheckAlmanaks.performed += OpenAlmanak;
     }
     public void interract(InputAction.CallbackContext context)
     {
@@ -92,6 +96,10 @@ public class PlayerManager : MonoBehaviour
         {
             _presentationBandManager.End();
         }
+    }
+    public void OpenAlmanak(InputAction.CallbackContext context)
+    {
+
     }
 
     public void AddMoney(int toadd)

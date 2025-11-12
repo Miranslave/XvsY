@@ -120,9 +120,15 @@ namespace Script
         {
             CanTakeDmg = false;
             //ChangeSpriteColor(Color.black);
-            StartCoroutine(Cooldown(time));
+            Invoke("CooldownTakeDmg",time);
+            ResetSpriteColor();
+            //StartCoroutine(Cooldown(time));
         }
 
+        void CooldownTakeDmg()
+        {
+            CanTakeDmg = true;
+        }
         IEnumerator Cooldown(float cd)
         {
             float timer = 0f; 
