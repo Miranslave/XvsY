@@ -3,23 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using Script;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class EnemySpawner : MonoBehaviour,IPausable
 {
 
 
-    [SerializeField] private List<Transform> Spawnpoint;
+    [SerializeField] private List<Transform> _listSpawnpoint;
     [SerializeField] private List<GameObject> _listEnemyToSpawn;
     [SerializeField] private Coroutine currentwork;
     [SerializeField] private int n = 0;
-    [SerializeField] private float SpawnRate = 5f;
+    [SerializeField] private float SpawnRate;// in second
+    [SerializeField] private int maximum_multi_spawn = 1;
 
-    public float SpawnRate1
-    {
-        get => SpawnRate;
-        set => SpawnRate = value;
-    }
+
 
     public bool Paused
     {
@@ -32,21 +30,30 @@ public class EnemySpawner : MonoBehaviour,IPausable
     public bool Debug_mode;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        if(currentwork == null)
-            currentwork = StartCoroutine(Timer());
-    }
 
+    
+    public void Innit(float spawnrate,int multi_spawn)
+    {
+        SpawnRate = spawnrate;
+        maximum_multi_spawn = multi_spawn;
+    }
+    
     private void OnDisable()
     {
         StopCoroutine(currentwork);
         currentwork = null;
     }
 
+    public void TriggerFinal()
+    {
+        foreach (var point in _listSpawnpoint)
+        {
+            Spawn(point);
+        }
+    }
+
     private void OnEnable()
     {
-        
         if(currentwork == null)
             currentwork = StartCoroutine(Timer());
     }
@@ -76,12 +83,12 @@ public class EnemySpawner : MonoBehaviour,IPausable
 
     void Spawn()
     {
-        if (Spawnpoint == null || Spawnpoint.Count == 0)
+        if (_listSpawnpoint == null || _listSpawnpoint.Count == 0)
         {
             Debug.LogWarning("⚠️ Aucun spawnpoint défini !");
             return;
         }
-        Transform spawnedTransform = Spawnpoint[Random.Range(0, Spawnpoint.Count)];
+        Transform spawnedTransform = _listSpawnpoint[Random.Range(0, _listSpawnpoint.Count)];
         GameObject enemyToSpawn = _listEnemyToSpawn[Random.Range(0, _listEnemyToSpawn.Count)];
         GameObject g = Instantiate(enemyToSpawn, spawnedTransform.position, Quaternion.identity);
         g.name = g.GetComponent<Enemy>().name + n;
@@ -89,14 +96,27 @@ public class EnemySpawner : MonoBehaviour,IPausable
     }
     void Spawn(int i)
     {
-        if (Spawnpoint == null || Spawnpoint.Count == 0)
+        if (_listSpawnpoint == null || _listSpawnpoint.Count == 0)
         {
             Debug.LogWarning("⚠️ Aucun spawnpoint défini !");
             return;
         }
-        Transform spawnedTransform = Spawnpoint[0];
+        Transform spawnedTransform = _listSpawnpoint[0];
         GameObject enemyToSpawn = _listEnemyToSpawn[Random.Range(0, _listEnemyToSpawn.Count)];
         GameObject g = Instantiate(enemyToSpawn, spawnedTransform.position, Quaternion.identity);
+        g.name = g.GetComponent<Enemy>().name + n;
+        n++;
+    }
+    
+    void Spawn(Transform spawnpoint)
+    {
+        if (spawnpoint == null)
+        {
+            Debug.LogWarning("⚠️ Aucun spawnpoint défini !  l115");
+            return;
+        }
+        GameObject enemyToSpawn = _listEnemyToSpawn[Random.Range(0, _listEnemyToSpawn.Count)];
+        GameObject g = Instantiate(enemyToSpawn, spawnpoint.position, Quaternion.identity);
         g.name = g.GetComponent<Enemy>().name + n;
         n++;
     }

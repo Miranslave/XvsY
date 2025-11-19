@@ -9,12 +9,14 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private float duration;
     public Slider uiSlider;
     public EnemySpawner enemySpawner;
+    private bool final_triggered = false;
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         ResetUI();
+        enemySpawner.Innit(spawnRate,1);
         enemySpawner.gameObject.SetActive(true);
     }
 
@@ -35,10 +37,21 @@ public class WaveManager : MonoBehaviour
     void TriggerFinal()
     {
         enemySpawner.Paused = true;
+        final_triggered = true;
+        enemySpawner.TriggerFinal();
+        Debug.Log("trigger boss or end of level  if no boss");
     }
     
     // Update is called once per frame
     void Update()
+    {
+        if (!final_triggered)
+        {
+            WaveProgress();
+        }
+    }
+
+    void WaveProgress()
     {
         if (duration < total_duration)
         {
