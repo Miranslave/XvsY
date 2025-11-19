@@ -14,6 +14,19 @@ public class EnemySpawner : MonoBehaviour,IPausable
     [SerializeField] private Coroutine currentwork;
     [SerializeField] private int n = 0;
     [SerializeField] private float SpawnRate = 5f;
+
+    public float SpawnRate1
+    {
+        get => SpawnRate;
+        set => SpawnRate = value;
+    }
+
+    public bool Paused
+    {
+        get => paused;
+        set => paused = value;
+    }
+
     private bool paused = false;
 
     public bool Debug_mode;
