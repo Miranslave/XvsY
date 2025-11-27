@@ -55,7 +55,7 @@ public class LevelButton : MonoBehaviour,IPointerEnterHandler,IPointerExitHandle
 
     public void LaunchLevel()
     {
-        SceneManager.LoadScene("BaseScene");// a remplacer par la var SceneName
+        SceneManager.LoadScene(SceneName);// a remplacer par la var SceneName
     }
 
     public void OnPointerEnter(PointerEventData eventData)

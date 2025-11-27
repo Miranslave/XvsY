@@ -54,17 +54,14 @@ namespace Script
             Controls.Basic.Place.performed -= place;
         }
         
-        void Awake()
-        {
-            SetupInput();
-        }
+
 
         void Start()
         {
             prefabSR = prefab.GetComponent<SpriteRenderer>();
             _playerManager = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
             _placeUnit = GameObject.FindGameObjectWithTag("PlaceUnit").GetComponent<PlaceUnit>();
-            
+            Controls = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Controls;
             CalculateOffset();
             InitGridData();
             CreateHighlight();
@@ -136,19 +133,7 @@ namespace Script
                
             }
         }
-        void SetupInput()
-        {
-            Controls = new InputActionSetBasic();
-            Controls.Enable();
 
-            if (Mouse.current != null && !Mouse.current.enabled)
-            {
-                InputSystem.EnableDevice(Mouse.current);
-                Debug.Log("Mouse device activé manuellement.");
-            }
-            
-            Controls.Basic.Place.performed += place;
-        }
         
         
         bool GetGridIndexFromWorld(Vector3 worldPos,out Vector2 pos)

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class LevelSelector : MonoBehaviour
@@ -9,25 +10,13 @@ public class LevelSelector : MonoBehaviour
 
     public Button[] Lvl_Buttons;
 
-    private void Awake()
-    {
-        SetupInput();
-        
-    }
     
-    void SetupInput()
-    {
-        Controls = new InputActionSetBasic();
-        Controls.Enable();
 
-        if (Mouse.current != null && !Mouse.current.enabled)
-        {
-            InputSystem.EnableDevice(Mouse.current);
-            Debug.Log("Mouse device activé manuellement.");
-        }
-        
+
+    public void BackMenu()
+    {
+        SceneManager.LoadScene("Scenes/Menu");
     }
-    
     
     
     

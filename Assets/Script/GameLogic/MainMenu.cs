@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour
 {
     
     [Header("User actions input")]
-    private InputActionSetBasic Controls;
+    
     
     private Resolution[] resolutions;
     private int currentResolutionIndex = 0;
@@ -17,7 +17,6 @@ public class MainMenu : MonoBehaviour
     public GameObject BaseMenuPanel;
     private void Awake()
     {
-        SetupInput();
         
         // Charger les résolutions et trouver la résolution actuelle
         resolutions = GetAvailableResolutions();
@@ -55,7 +54,7 @@ public class MainMenu : MonoBehaviour
     public void PressPlay()
     {
         Debug.Log("Play");
-        SceneManager.LoadScene("BaseScene");
+        SceneManager.LoadScene("Levels Choice");
     }
     
     public void PressOption()
@@ -104,16 +103,5 @@ public class MainMenu : MonoBehaviour
         Resolution r = resolutions[currentResolutionIndex];
         Screen.SetResolution(r.width, r.height, Screen.fullScreen);
     }
-    void SetupInput()
-    {
-        Controls = new InputActionSetBasic();
-        Controls.Enable();
 
-        if (Mouse.current != null && !Mouse.current.enabled)
-        {
-            InputSystem.EnableDevice(Mouse.current);
-            Debug.Log("Mouse device activé manuellement.");
-        }
-        
-    }
 }
